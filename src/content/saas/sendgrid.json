@@ -1,0 +1,120 @@
+{
+  "id": "sendgrid",
+  "name": "SendGrid",
+  "slug": "sendgrid",
+  "category": "Email Marketing",
+  "description": "Transactional and marketing email delivery platform by Twilio.",
+  "websiteUrl": "https://sendgrid.com",
+  "pricingUrl": "https://sendgrid.com/pricing/",
+  "affiliateUrl": null,
+  "pricingModel": "custom",
+  "freeTrialDays": 60,
+  "lastVerified": "2026-06-15",
+  "popularityScore": 85,
+  "g2Rating": 4,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "saml_sso",
+    "reporting",
+    "email_templates",
+    "transactional_email",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "email_api",
+      "name": "Email API",
+      "description": "RESTful API for transactional email delivery",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "email_validation",
+      "name": "Email Validation",
+      "description": "Verify email addresses before sending",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "dedicated_ip",
+      "name": "Dedicated IP",
+      "description": "Dedicated sending IP for reputation control",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "subuser_mgmt",
+      "name": "Subuser Management",
+      "description": "Manage separate sending domains and users",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free Trial",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "essentials",
+      "name": "Essentials",
+      "priceMonthly": 19.95,
+      "priceAnnually": 239.4,
+      "seatsIncluded": 1,
+      "priceNote": "Starting at $19.95/mo; covers 50K–100K emails/mo, scales with volume.",
+      "sourceUrl": "https://sendgrid.com/pricing/",
+      "capturedAt": "2026-06-15",
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium"
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 89.95,
+      "priceAnnually": 1079.4,
+      "seatsIncluded": 1,
+      "priceNote": "Starting at $89.95/mo; covers 100K–2.5M emails/mo, scales with volume.",
+      "sourceUrl": "https://sendgrid.com/pricing/",
+      "capturedAt": "2026-06-15",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "saml_sso": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium"
+    },
+    {
+      "id": "premier",
+      "name": "Premier",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "saml_sso": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true
+    }
+  ]
+}

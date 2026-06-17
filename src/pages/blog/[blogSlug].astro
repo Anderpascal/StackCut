@@ -1,0 +1,188 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import SchemaOrg from '../../components/SchemaOrg.astro';
+import { getCollection, render } from 'astro:content';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { blogSlug: post.id },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props;
+const { title, description, pubDate, author, tags, category } = post.data;
+const { Content } = await render(post);
+
+// Extract TOC from raw body
+const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+const tocItems: { level: number; text: string; slug: string }[] = [];
+let match: RegExpExecArray | null;
+const rawBody: string = (post as any).body || '';
+while ((match = headingRegex.exec(rawBody)) !== null) {
+  const level = match[1].length;
+  const text = match[2].trim();
+  const slug = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  tocItems.push({ level, text, slug });
+}
+
+// Related posts
+const allPosts = await getCollection('blog');
+const currentTags: string[] = tags || [];
+const currentCategory: string = category || '';
+const relatedPosts = allPosts
+  .filter(p => {
+    if (p.id === post.id) return false;
+    const sameCategory = p.data.category === currentCategory;
+    const sharedTags = (p.data.tags || []).some((t: string) => currentTags.includes(t));
+    return sameCategory || sharedTags;
+  })
+  .slice(0, 3);
+---
+
+<Layout 
+  title={`${title} | StackCut Blog`}
+  description={description}
+  canonicalURL={new URL(`/blog/${post.id}`, 'https://stackcut.app').href}
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Blog', href: '/blog' }, { label: title }]} />
+  <main id="main-content" role="main" class="flex-1">
+    <article class="section-padding pt-20 pb-8">
+      <div class="max-w-4xl mx-auto">
+        <header class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-[10px] text-save border border-save/20 rounded px-2 py-0.5 uppercase font-semibold">
+              {category}
+            </span>
+            <span class="text-ink-soft text-sm">
+              {pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </span>
+          </div>
+          <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-ink mb-4 leading-tight">
+            {title}
+          </h1>
+          <p class="text-ink-soft text-lg leading-relaxed max-w-3xl">
+            {description}
+          </p>
+          <div class="flex items-center gap-3 mt-6">
+            <span class="text-sm text-ink-soft">By <span class="text-ink font-medium">{author}</span></span>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-4">
+            {tags.map(tag => (
+              <span class="text-xs text-ink-faint bg-paper-raised border border-rule rounded px-2 py-0.5">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </header>
+
+        <div class="flex flex-col lg:flex-row gap-10">
+          {/* TOC Sidebar */}
+          {tocItems.length > 0 && (
+            <aside class="lg:w-64 shrink-0">
+              <div class="sticky top-20 card-blur rounded-xl p-4">
+                <h3 class="text-sm font-semibold text-ink mb-3 uppercase tracking-wider">Table of Contents</h3>
+                <nav>
+                  <ul class="space-y-1.5">
+                    {tocItems.map(item => (
+                      <li>
+                        <a
+                          href={`#${item.slug}`}
+                          class={`block text-xs transition-colors hover:text-save focus:ring-2 focus:ring-save focus:outline-none rounded ${
+                            item.level === 2 ? 'text-ink-soft font-medium' : 'text-ink-faint pl-3'
+                          }`}
+                        >
+                          {item.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
+            </aside>
+          )}
+          <div class="flex-1 min-w-0">
+            <div class="max-w-none prose-content">
+              <Content />
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-rule">
+              <h3 class="text-sm font-semibold text-ink mb-4">Related Posts</h3>
+              {relatedPosts.length > 0 ? (
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                  {relatedPosts.map(rp => (
+                    <a
+                      href={`/blog/${rp.id}`}
+                      class="card-blur rounded-lg p-4 hover:border-save/30 hover:bg-save/5 transition-all group focus:ring-2 focus:ring-save focus:outline-none"
+                    >
+                      <span class="text-[10px] text-save border border-save/20 rounded px-1.5 py-0.5 uppercase font-semibold">
+                        {rp.data.category}
+                      </span>
+                      <h4 class="text-sm font-medium text-ink mt-2 group-hover:text-save transition-colors line-clamp-2">
+                        {rp.data.title}
+                      </h4>
+                      <p class="text-xs text-ink-faint mt-1 line-clamp-2">{rp.data.description}</p>
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <p class="text-sm text-ink-faint mb-8">No related posts found. Check back soon.</p>
+              )}
+            </div>
+
+            <div class="pt-6 border-t border-rule">
+              <h3 class="text-sm font-semibold text-ink mb-4">Share this article</h3>
+              <div class="flex items-center gap-3">
+                <a
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://stackcut.app/blog/${post.id}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-paper-raised border border-rule text-ink-soft hover:text-ink hover:border-ink-soft transition-all text-sm focus:ring-2 focus:ring-save focus:outline-none"
+                  data-plausible-event="Blog Share"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  Twitter
+                </a>
+                <a
+                  href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://stackcut.app/blog/${post.id}`)}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(description)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-paper-raised border border-rule text-ink-soft hover:text-ink hover:border-ink-soft transition-all text-sm focus:ring-2 focus:ring-save focus:outline-none"
+                  data-plausible-event="Blog Share"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  LinkedIn
+                </a>
+                <button
+                  onclick={`navigator.clipboard.writeText('https://stackcut.app/blog/${post.id}')`}
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-paper-raised border border-rule text-ink-soft hover:text-ink hover:border-ink-soft transition-all text-sm focus:ring-2 focus:ring-save focus:outline-none"
+                  data-plausible-event="Blog Share"
+                  aria-label="Copy article link"
+                >
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                  Copy Link
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<SchemaOrg 
+  type="BlogPosting"
+  postTitle={title}
+  postDescription={description}
+  postDate={pubDate.toISOString()}
+  postAuthor={author}
+/>

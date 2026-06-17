@@ -1,0 +1,104 @@
+{
+  "id": "help-scout",
+  "name": "Help Scout",
+  "slug": "help-scout",
+  "category": "Customer Support",
+  "description": "Customer service platform with shared inbox and knowledge base.",
+  "websiteUrl": "https://helpscout.com",
+  "pricingUrl": "https://www.helpscout.com/pricing/",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 15,
+  "popularityScore": 68,
+  "g2Rating": 4.5,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "reporting",
+    "roles_permissions",
+    "ticketing",
+    "knowledge_base",
+    "custom_fields",
+    "shared_inbox",
+    "workflows"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "shared_inbox_hs",
+      "name": "Shared Inbox",
+      "description": "Collaborative email management",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "beacon",
+      "name": "Beacon",
+      "description": "In-app messaging widget",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "docs_kb",
+      "name": "Docs",
+      "description": "SEO-optimized knowledge base",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "standard",
+      "name": "Standard",
+      "priceMonthly": 30,
+      "priceAnnually": 300,
+      "seatsIncluded": 1,
+      "priceNote": "$30/user/mo monthly; $25/user/mo billed annually (−16%).",
+      "sourceUrl": "https://www.helpscout.com/pricing/",
+      "capturedAt": "2026-06-15",
+      "features": {
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "plus",
+      "name": "Plus",
+      "priceMonthly": 54,
+      "priceAnnually": 540,
+      "seatsIncluded": 1,
+      "priceNote": "$54/user/mo monthly; $45/user/mo billed annually (−16%).",
+      "sourceUrl": "https://www.helpscout.com/pricing/",
+      "capturedAt": "2026-06-15",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 90,
+      "priceAnnually": 900,
+      "seatsIncluded": 1,
+      "priceNote": "$90/user/mo monthly; $75/user/mo billed annually (−16%). Adds SSO/SAML, HIPAA, up to 50 light users.",
+      "sourceUrl": "https://www.helpscout.com/pricing/",
+      "capturedAt": "2026-06-15",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "lastVerified": "2026-06-15"
+}

@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import StackMonitor from '../components/StackMonitor';
+import { getAllProducts } from '../lib/saas-data';
+
+const allProducts = await getAllProducts();
+// Hand the client only what the monitor needs — keep the island payload lean.
+const monitorProducts = allProducts
+  .map(p => ({ id: p.id, name: p.name, slug: p.slug, category: p.category, lastVerified: p.lastVerified }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Layout
+  title="Stack Monitor — get alerted when your SaaS prices change | StackCut"
+  description="Pick the SaaS tools you pay for and get an email the moment their published pricing changes. No account, no dashboard, no tracking. Free."
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Stack Monitor' }]} />
+
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-400/20 bg-emerald-400/5 text-emerald-400 text-xs font-medium mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Set it once — we watch the prices
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+            Stack <span class="text-emerald-400">Monitor</span>
+          </h1>
+          <p class="text-zinc-400 max-w-2xl mx-auto text-lg">
+            Vendors change pricing quietly — a tier renamed, a feature pushed to enterprise, a
+            renewal bumped. Pick the tools you pay for and we’ll email you the moment their
+            published price changes. Nothing else lands in your inbox.
+          </p>
+        </div>
+
+        <StackMonitor client:visible products={monitorProducts} />
+
+        <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          <div class="card-blur rounded-lg p-5">
+            <h3 class="text-sm font-semibold text-zinc-100 mb-1">Only real changes</h3>
+            <p class="text-xs text-zinc-500">We track every vendor’s pricing page weekly. You hear from us only when a number actually moves.</p>
+          </div>
+          <div class="card-blur rounded-lg p-5">
+            <h3 class="text-sm font-semibold text-zinc-100 mb-1">No account, no tracking</h3>
+            <p class="text-xs text-zinc-500">We tag your email with the tools you chose — that’s the whole system. No dashboard, no profile.</p>
+          </div>
+          <div class="card-blur rounded-lg p-5">
+            <h3 class="text-sm font-semibold text-zinc-100 mb-1">Then act on it</h3>
+            <p class="text-xs text-zinc-500">A price jumps? Run the <a href="/downgrade" class="text-emerald-400 hover:underline">Downgrade Engine</a> or a <a href="/negotiation" class="text-emerald-400 hover:underline">renewal script</a> straight away.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<SchemaOrg
+  type="WebApplication"
+  toolTitle="StackCut Stack Monitor"
+  toolDescription="Pick the SaaS tools you pay for and get an email the moment their published pricing changes. No account, no dashboard, no tracking."
+/>

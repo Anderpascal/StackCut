@@ -1,0 +1,46 @@
+@media print {
+  nav, footer, .ea-container, button:not(.keep-for-print),
+  [data-export-hide], .no-print,
+  select, input[type="search"], input[type="number"],
+  .print\:hidden {
+    display: none !important;
+  }
+  .print\:block { display: block !important; }
+  body {
+    background: white !important;
+    color: black !important;
+    font-family: 'Public Sans', system-ui, sans-serif !important;
+  }
+  .card-blur, .card-blur * {
+    background: white !important;
+    color: black !important;
+    border-color: #ddd !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+  .text-emerald-400, .text-emerald-400 * {
+    color: #177245 !important;
+  }
+  body::before {
+    content: "StackCut — Cost Analysis Report";
+    display: block;
+    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: 2em;
+    border-bottom: 2px solid #177245;
+    padding-bottom: 0.5em;
+  }
+  body::after {
+    content: "Generated " attr(data-print-date) " — For informational purposes only. Verify on vendor's site.";
+    display: block;
+    font-size: 8pt;
+    color: #666;
+    margin-top: 2em;
+    border-top: 1px solid #ddd;
+    padding-top: 1em;
+  }
+  @page {
+    margin: 2cm;
+    size: A4;
+  }
+}

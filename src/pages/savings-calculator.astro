@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SaaSavingsCalculator from '../components/SaaSavingsCalculator';
+import EmailCapture from '../components/EmailCapture';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import { getAllProducts } from '../lib/saas-data';
+
+const allProducts = await getAllProducts();
+---
+
+<Layout 
+  title="SaaS Savings Calculator | Calculate Your Potential Savings"
+  description="Calculate how much you can save on SaaS costs. Enter your current tools and usage to see your potential savings from downgrades, consolidation, and negotiation."
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Savings Calculator' }]} />
+  
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-400/20 bg-emerald-400/5 text-emerald-400 text-xs font-medium mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Quick Ballpark Estimator — No Login Required
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+            SaaS <span class="text-emerald-400">Savings Calculator</span>
+          </h1>
+          <p class="text-zinc-400 max-w-2xl mx-auto">
+            Get a quick ballpark estimate of your SaaS savings potential. Enter your tools and we will estimate what you could save through downgrades, consolidation, and negotiation. For exact, dataset-verified figures, use our <a href="/downgrade" class="text-emerald-400 hover:text-emerald-300 underline underline-offset-2">Downgrade Engine</a> and <a href="/audit" class="text-emerald-400 hover:text-emerald-300 underline underline-offset-2">Stack Auditor</a>.
+          </p>
+        </div>
+        <SaaSavingsCalculator client:visible products={allProducts} />
+        
+        <div class="mt-12 card-blur rounded-xl p-8 border border-emerald-400/10 text-center">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-3">Get your personalized savings report</h2>
+          <p class="text-zinc-400 mb-6 max-w-lg mx-auto">
+            Enter your email to receive a detailed PDF report with your savings breakdown, downgrade paths, and negotiation scripts.
+          </p>
+          <EmailCapture client:load variant="inline" headline="Get your savings report" />
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<SchemaOrg 
+  type="WebApplication"
+  toolTitle="SaaS Savings Calculator"
+  toolDescription="Calculate how much you can save on SaaS costs. Enter your current tools and usage to see your potential savings from downgrades, consolidation, and negotiation."
+/>

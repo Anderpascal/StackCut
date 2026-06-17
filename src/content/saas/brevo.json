@@ -1,0 +1,89 @@
+{
+  "id": "brevo",
+  "name": "Brevo",
+  "slug": "brevo",
+  "category": "Email Marketing",
+  "description": "All-in-one CRM and email marketing suite (formerly Sendinblue).",
+  "websiteUrl": "https://brevo.com",
+  "pricingUrl": "https://www.brevo.com/pricing/",
+  "affiliateUrl": null,
+  "pricingModel": "custom",
+  "freeTrialDays": null,
+  "popularityScore": 69,
+  "g2Rating": 4.4,
+  "featureIds": [
+    "email_automation",
+    "api_access",
+    "integrations",
+    "reporting",
+    "email_templates",
+    "a_b_testing",
+    "transactional_email",
+    "email_sequences"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "sms_marketing",
+      "name": "SMS Marketing",
+      "description": "Integrated SMS campaigns",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "chat_brevo",
+      "name": "Brevo Chat",
+      "description": "Live chat widget",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "email_automation": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "starter",
+      "name": "Starter",
+      "priceMonthly": 9,
+      "priceAnnually": 108,
+      "sourceUrl": "https://www.brevo.com/pricing/",
+      "capturedAt": "2026-06-14",
+      "seatsIncluded": 1,
+      "priceNote": "Marketing Platform Starter for up to 500 contacts; scales with contacts/email volume.",
+      "features": {
+        "email_automation": true,
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "priceMonthly": 18,
+      "priceAnnually": 216,
+      "sourceUrl": "https://www.brevo.com/pricing/",
+      "capturedAt": "2026-06-14",
+      "seatsIncluded": 1,
+      "priceNote": "Marketing Platform Business for up to 500 contacts; scales with contacts/email volume.",
+      "features": {
+        "email_automation": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false
+    }
+  ],
+  "lastVerified": "2026-06-14"
+}

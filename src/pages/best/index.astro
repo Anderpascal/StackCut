@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { CATEGORY_ORDER } from '../../lib/categories';
+import { getAllProducts } from '../../lib/saas-data';
+
+const products = await getAllProducts();
+
+const categoryData = CATEGORY_ORDER.map(category => {
+  const categoryProducts = products.filter(p => p.category === category);
+  const categorySlug = category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  return {
+    name: category,
+    slug: categorySlug,
+    count: categoryProducts.length,
+    cheapest: categoryProducts.reduce((min, p) => {
+      const pCheapest = p.plans.find(pl => pl.priceMonthly !== null && pl.priceMonthly > 0);
+      if (!pCheapest) return min;
+      return min === null || (pCheapest.priceMonthly || Infinity) < min ? pCheapest.priceMonthly : min;
+    }, null as number | null),
+  };
+});
+---
+
+<Layout 
+  title="Best SaaS Tools in 2026 | Category Comparisons"
+  description="Compare the best SaaS tools by category. See exact pricing, features, and find cheaper alternatives with the same functionality."
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Best Tools' }]} />
+  
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-12">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+            Best <span class="text-emerald-400">SaaS Tools</span> in 2026
+          </h1>
+          <p class="text-zinc-400 max-w-3xl text-lg">
+            Compare the best SaaS tools by category. See exact pricing, features, and find cheaper alternatives with the same functionality.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {categoryData.map(cat => (
+            <a href={`/best/${cat.slug}`} class="card-blur rounded-xl p-6 hover:border-emerald-400/30 transition-all group">
+              <h2 class="text-lg font-bold text-zinc-100 mb-2 group-hover:text-emerald-400 transition-colors">
+                Best {cat.name} Tools
+              </h2>
+              <p class="text-zinc-500 text-sm mb-4">
+                {cat.count} tools compared
+              </p>
+              <div class="flex items-center justify-between">
+                {cat.cheapest !== null ? (
+                  <span class="text-emerald-400 font-mono text-sm" data-price-usd={cat.cheapest} data-price-period="/mo">
+                    From ${cat.cheapest}/mo
+                  </span>
+                ) : (
+                  <span class="text-zinc-500 text-sm">Custom pricing</span>
+                )}
+                <span class="text-xs text-zinc-500 group-hover:text-emerald-400 transition-colors">
+                  View all →
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

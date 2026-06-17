@@ -1,0 +1,87 @@
+name: Refresh pricing & FX
+
+# Keeps the dataset fresh WITHOUT ever auto-merging price changes. It refreshes
+# FX rates and re-scrapes vendor pricing, then opens a PR with the diff for a
+# human to review and approve. Data fidelity stays under human control.
+
+on:
+  schedule:
+    # Mondays at 06:00 UTC.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Optional single product slug to re-scrape (e.g. slack). Empty = all.'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Refresh FX rates
+        env:
+          FX_RATES_URL: ${{ vars.FX_RATES_URL }}
+        run: npm run update-fx
+
+      - name: Re-scrape vendor pricing
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+        run: node scripts/scrape-pricing.mjs ${{ github.event.inputs.slug }}
+
+      # Must still pass schema + business rules after the scrape, or we don't
+      # open a PR with broken data.
+      - name: Validate data integrity
+        run: npm run validate
+
+      # Non-blocking freshness audit — surfaces anything still >90 days old in
+      # the job summary so reviewers know what the scrape could NOT refresh.
+      - name: Freshness audit (report only)
+        if: always()
+        run: |
+          echo "### Freshness audit" >> "$GITHUB_STEP_SUMMARY"
+          STRICT_FRESHNESS=1 npm run validate >> "$GITHUB_STEP_SUMMARY" 2>&1 || \
+            echo "⚠️ Some products are over 90 days old — see above." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open pull request with changes
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'chore(data): weekly pricing & FX refresh'
+          branch: bot/data-refresh
+          delete-branch: true
+          title: 'Weekly data refresh — review before merge'
+          labels: data-refresh, needs-review
+          body: |
+            Automated weekly refresh of FX rates and vendor pricing.
+
+            **Do not merge blindly.** Review the price diffs against the linked
+            vendor pricing pages. This PR exists precisely so a human verifies
+            every change before it ships — pricing is the product's core claim.
+
+            - FX rates refreshed from the configured provider.
+            - Vendor pricing re-scraped via Firecrawl (changed plans bump `lastVerified`).
+            - `npm run validate` passed on the scraped data.
+
+            See the run's job summary for the freshness audit (anything still
+            older than 90 days that the scrape could not refresh).
+
+            ---
+            **After merging a real price change:** notify the people watching that
+            tool. In Buttondown, send a broadcast filtered to the `watch:<slug>`
+            tag (e.g. `watch:slack`) — that segment is exactly the Stack Monitor
+            subscribers for it. See `api/monitor.js` for how the tags are set.

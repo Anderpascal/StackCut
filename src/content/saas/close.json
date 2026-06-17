@@ -1,0 +1,145 @@
+{
+  "id": "close",
+  "name": "Close",
+  "slug": "close",
+  "category": "CRM & Sales",
+  "description": "Sales engagement CRM with built-in calling, emailing, SMS, and AI sales agent (Chloe).",
+  "websiteUrl": "https://close.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 14,
+  "lastVerified": "2026-06-13",
+  "capturedAt": "2026-06-13",
+  "popularityScore": 65,
+  "g2Rating": 4.6,
+  "featureIds": [
+    "crm_basic",
+    "api_access",
+    "integrations",
+    "email_automation",
+    "pipeline_mgmt",
+    "lead_scoring",
+    "email_sequences",
+    "voip_telephony",
+    "reporting",
+    "roles_permissions",
+    "workflows",
+    "saml_sso",
+    "audit_logs",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "power_dialer",
+      "name": "Power Dialer",
+      "description": "Predictive dialing with auto-logging",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "smart_views",
+      "name": "Smart Views",
+      "description": "Custom filtered lead views",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "sequences_close",
+      "name": "Sequences",
+      "description": "Multi-channel outreach sequences",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "chloe_ai",
+      "name": "Chloe AI Agent",
+      "description": "AI sales agent with included monthly credits",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "solo",
+      "name": "Solo",
+      "priceMonthly": 19,
+      "priceAnnually": 108,
+      "seatsIncluded": 1,
+      "priceNote": "$9/user/mo billed annually ($19/mo monthly). Limited to 1 user and 10k leads; workflows not included. Includes 500 AI credits/user/mo.",
+      "sourceUrl": "https://close.com/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "crm_basic": true,
+        "api_access": true,
+        "chloe_ai": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "essentials",
+      "name": "Essentials",
+      "priceMonthly": 49,
+      "priceAnnually": 420,
+      "seatsIncluded": 1,
+      "priceNote": "$35/user/mo billed annually ($49/mo monthly). Workflows not included. Includes 1,000 AI credits/user/mo.",
+      "sourceUrl": "https://close.com/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "crm_basic": true,
+        "api_access": true,
+        "integrations": true,
+        "chloe_ai": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "growth",
+      "name": "Growth",
+      "priceMonthly": 109,
+      "priceAnnually": 1188,
+      "seatsIncluded": 1,
+      "priceNote": "$99/user/mo billed annually ($109/mo monthly). Includes power dialer, workflows and 1,500 AI credits/user/mo.",
+      "sourceUrl": "https://close.com/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "crm_basic": true,
+        "email_automation": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "power_dialer": true,
+        "chloe_ai": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "scale",
+      "name": "Scale",
+      "priceMonthly": 149,
+      "priceAnnually": 1668,
+      "seatsIncluded": 1,
+      "priceNote": "$139/user/mo billed annually ($149/mo monthly). Includes predictive dialer, role-based permissions and 2,000 AI credits/user/mo.",
+      "sourceUrl": "https://close.com/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "crm_basic": true,
+        "email_automation": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "roles_permissions": true,
+        "power_dialer": true,
+        "chloe_ai": true
+      },
+      "isEnterprise": false
+    }
+  ],
+  "pricingUrl": "https://close.com/pricing"
+}

@@ -1,0 +1,154 @@
+{
+  "id": "zoom",
+  "name": "Zoom",
+  "slug": "zoom",
+  "category": "Video Conferencing",
+  "description": "Video conferencing and online meeting platform.",
+  "websiteUrl": "https://zoom.us",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-14",
+  "popularityScore": 93,
+  "g2Rating": 4.5,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "reporting",
+    "recording",
+    "video_conferencing",
+    "screen_sharing",
+    "custom_fields",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "meetings",
+      "name": "Meetings",
+      "description": "HD video meetings up to 1000 participants",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "webinars",
+      "name": "Webinars",
+      "description": "Webinar hosting up to 50k attendees",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "zoom_phone",
+      "name": "Zoom Phone",
+      "description": "Cloud VoIP phone system",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "zoom_rooms",
+      "name": "Zoom Rooms",
+      "description": "Conference room system",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "whiteboard",
+      "name": "Whiteboard",
+      "description": "Collaborative digital whiteboard",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "ai_companion",
+      "name": "AI Companion",
+      "description": "AI meeting summaries and highlights",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "basic",
+      "name": "Basic",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {},
+      "isEnterprise": false
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 16.99,
+      "priceAnnually": 159.90,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "reporting": true,
+        "custom_fields": true
+      },
+      "isEnterprise": false,
+      "priceNote": "$159.90/license/yr (effective ~$13.33/mo); month-to-month is $16.99/license.",
+      "sourceUrl": "https://www.zoom.com/en/products/collaboration-tools/zoom-workplace-pro/",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "priceMonthly": 21.99,
+      "priceAnnually": 199.90,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "reporting": true,
+        "custom_fields": true,
+        "integrations": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": false,
+      "priceNote": "$199.90/license/yr (effective ~$16.66/mo); month-to-month is $21.99/license. Minimum 10 licenses for Business tier.",
+      "sourceUrl": "https://zoom.us/pricing",
+      "capturedAt": "2026-06-14",
+      "addOns": [
+        {
+          "id": "zoom_large_meetings",
+          "name": "Large Meetings",
+          "description": "Increase meeting participant limits (starts at 500/1,000).",
+          "priceMonthly": 50,
+          "priceAnnually": 600,
+          "unit": "flat"
+        }
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true,
+      "priceNote": "Enterprise/Enterprise+ pricing by quote; typically $19.99–$24.99/license depending on scale.",
+      "capturedAt": "2026-06-14"
+    }
+  ],
+  "pricingUrl": "https://zoom.us/pricing"
+}

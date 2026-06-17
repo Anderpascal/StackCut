@@ -1,0 +1,125 @@
+{
+  "id": "klaviyo",
+  "name": "Klaviyo",
+  "slug": "klaviyo",
+  "category": "Email Marketing",
+  "description": "AI-powered marketing automation platform for email, SMS, and customer data.",
+  "websiteUrl": "https://www.klaviyo.com",
+  "pricingUrl": "https://www.klaviyo.com/pricing",
+  "affiliateUrl": null,
+  "pricingModel": "per_month",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-15",
+  "popularityScore": 90,
+  "g2Rating": 4.5,
+  "featureIds": [
+    "email_automation",
+    "email_templates",
+    "a_b_testing",
+    "reporting",
+    "custom_fields",
+    "integrations",
+    "api_access",
+    "advanced_analytics",
+    "ai_features",
+    "transactional_email"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "klaviyo_cdp",
+      "name": "Klaviyo CDP",
+      "description": "Unified customer data platform with predictive analytics",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    },
+    {
+      "id": "klaviyo_reviews",
+      "name": "Klaviyo Reviews",
+      "description": "Review collection and display for ecommerce",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "customer_hub",
+      "name": "Customer Hub",
+      "description": "Self-service customer account and order portal",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "email_automation": true,
+        "email_templates": true,
+        "reporting": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Up to 250 profiles, 500 emails/mo, 150 SMS credits."
+    },
+    {
+      "id": "email",
+      "name": "Email",
+      "priceMonthly": 20,
+      "priceAnnually": 240,
+      "seatsIncluded": 1,
+      "features": {
+        "email_automation": true,
+        "email_templates": true,
+        "a_b_testing": true,
+        "reporting": true,
+        "custom_fields": true,
+        "integrations": true,
+        "api_access": true,
+        "advanced_analytics": true,
+        "transactional_email": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Priced by active profiles: $20/mo up to 500, $60/mo up to 2,500, $100/mo up to 5,000.",
+      "sourceUrl": "https://www.klaviyo.com/pricing",
+      "capturedAt": "2026-06-15"
+    },
+    {
+      "id": "email_sms",
+      "name": "Email & SMS",
+      "priceMonthly": 35,
+      "priceAnnually": 420,
+      "seatsIncluded": 1,
+      "features": {
+        "email_automation": true,
+        "email_templates": true,
+        "a_b_testing": true,
+        "reporting": true,
+        "custom_fields": true,
+        "integrations": true,
+        "api_access": true,
+        "advanced_analytics": true,
+        "ai_features": true,
+        "transactional_email": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Starting price for up to 500 contacts incl. 1,250 SMS credits/mo; scales by contacts/credits.",
+      "sourceUrl": "https://www.klaviyo.com/pricing",
+      "capturedAt": "2026-06-14",
+      "addOns": [
+        {
+          "id": "sms_credits",
+          "name": "SMS Credits",
+          "description": "Additional 1,250 SMS credits per month.",
+          "priceMonthly": 15,
+          "priceAnnually": 180,
+          "unit": "per_unit"
+        }
+      ]
+    }
+  ]
+}

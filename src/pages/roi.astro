@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import ROICalculator from '../components/ROICalculator';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<Layout 
+  title="ROI Calculator | StackCut"
+  description="Calculate your 5-year SaaS optimization savings. See how much you can save by downgrading and eliminating redundancies."
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'ROI Calculator' }]} />
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-400/20 bg-emerald-400/5 text-emerald-400 text-xs font-medium mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Module 05 — ROI Calculator
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">ROI Calculator</h1>
+          <p class="text-zinc-400 max-w-2xl mx-auto">
+            Project your 5-year savings from SaaS stack optimization. See the compound effect of every percentage point saved.
+          </p>
+        </div>
+        <ROICalculator client:visible />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

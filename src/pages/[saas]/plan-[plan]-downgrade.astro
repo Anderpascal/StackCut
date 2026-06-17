@@ -1,0 +1,177 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import SchemaOrg from '../../components/SchemaOrg.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure';
+import { getAllProducts } from '../../lib/saas-data';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const products = await getAllProducts();
+  const paths = [];
+  
+  for (const product of products) {
+    for (const plan of product.plans) {
+      const isCheapest = product.plans
+        .filter(p => p.priceMonthly !== null && p.priceMonthly > 0)
+        .sort((a, b) => (a.priceMonthly || 0) - (b.priceMonthly || 0))[0]?.id === plan.id;
+      
+      if (!isCheapest) {
+        paths.push({
+          params: { 
+            saas: product.slug,
+            plan: plan.id,
+          },
+          props: { product, plan },
+        });
+      }
+    }
+  }
+  
+  return paths;
+};
+
+const { product, plan } = Astro.props;
+
+const lowerPlans = product.plans
+  .filter(p => {
+    if (p.id === plan.id) return false;
+    const pPrice = p.priceMonthly || 0;
+    const cPrice = plan.priceMonthly || 0;
+    return pPrice < cPrice && pPrice > 0;
+  })
+  .sort((a, b) => (b.priceMonthly || 0) - (a.priceMonthly || 0));
+
+const annualCost = plan.priceAnnually ?? (plan.priceMonthly || 0) * 12;
+---
+
+<Layout 
+  title={`${product.name} ${plan.name} Downgrade Path | StackCut`}
+  description={`Should you downgrade from ${product.name} ${plan.name}? Analyze exact feature loss and savings before you downgrade.`}
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: product.name }, { label: `${plan.name} Downgrade` }]} />
+  <AffiliateDisclosure client:load />
+  
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-12">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-400/20 bg-emerald-400/5 text-emerald-400 text-xs font-medium mb-6">
+            Verified Pricing
+          </span>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+            Downgrade <span class="text-emerald-400">{product.name} {plan.name}</span>
+          </h1>
+          <p class="text-zinc-400 max-w-2xl text-lg">
+            You are currently paying <strong class="text-zinc-100" data-price-usd={plan.priceMonthly} data-price-period="/mo">${plan.priceMonthly}/mo</strong> (<span data-price-usd={annualCost} data-price-period="/yr">${annualCost.toLocaleString()}/yr</span>) for the {plan.name} plan. 
+            Here is every cheaper plan and exactly what you would lose.
+          </p>
+        </div>
+
+        {/* Current Plan Card */}
+        <div class="card-blur rounded-xl p-6 mb-8 border border-zinc-700">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-lg font-semibold text-zinc-100">Current Plan: {plan.name}</span>
+            <span class="text-2xl font-bold text-zinc-100" data-price-usd={plan.priceMonthly} data-price-period="/mo">${plan.priceMonthly}/mo</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            {((product as any).featureIds || []).map((fid: string) => {
+              const hasFeature = (plan as any).features?.[fid] === true;
+              return (
+                <span class={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs ${
+                  hasFeature 
+                    ? 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/20' 
+                    : 'bg-zinc-900 text-zinc-500 border border-zinc-800'
+                }`}>
+                  {hasFeature ? '✓' : '✕'} {fid.replace(/_/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Downgrade Options */}
+        <h2 class="text-xl font-bold text-zinc-100 mb-6">Downgrade Options</h2>
+        
+        {lowerPlans.length > 0 ? (
+          <div class="space-y-6">
+            {lowerPlans.map(targetPlan => {
+              const savings = (plan.priceAnnually ?? (plan.priceMonthly || 0) * 12) - (targetPlan.priceAnnually ?? (targetPlan.priceMonthly || 0) * 12);
+              const lostFeatures = ((product as any).featureIds || []).filter((fid: string) => (plan as any).features?.[fid] === true && (targetPlan as any).features?.[fid] !== true);
+              
+              return (
+                <div class="card-blur rounded-xl p-6 border-l-2 border-l-emerald-400">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                    <div>
+                      <span class="text-lg font-semibold text-zinc-100">{targetPlan.name}</span>
+                      <span class="text-zinc-500 text-sm ml-2" data-price-usd={targetPlan.priceMonthly} data-price-period="/mo">${targetPlan.priceMonthly}/mo</span>
+                    </div>
+                    <div class="text-right">
+                      <div class="text-xl font-bold text-emerald-400" data-price-usd={savings} data-price-period="/yr">${savings.toLocaleString()}/yr saved</div>
+                    </div>
+                  </div>
+                  
+                  {lostFeatures.length > 0 && (
+                    <div class="mb-4">
+                      <div class="text-xs font-medium text-red-400 uppercase tracking-wider mb-2">You will lose</div>
+                      <div class="flex flex-wrap gap-2">
+                        {lostFeatures.map((fid: string) => (
+                          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-red-400/5 border border-red-400/20 text-red-400 text-xs">
+                            ✕ {fid.replace(/_/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {lostFeatures.length === 0 && (
+                    <div class="mb-4">
+                      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-400/10 text-emerald-400 text-xs font-medium border border-emerald-400/20">
+                        ✓ Zero feature loss — safe downgrade
+                      </span>
+                    </div>
+                  )}
+                  
+                  <a href="/downgrade" class="text-sm text-emerald-400 hover:underline inline-flex items-center gap-1">
+                    Verify with Downgrade Engine &rarr;
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div class="card-blur rounded-xl p-8 text-center">
+            <p class="text-zinc-500">No cheaper paid plans available. Consider free alternatives or switching SaaS entirely.</p>
+          </div>
+        )}
+
+        {/* Alternatives CTA */}
+        <div class="mt-12 card-blur rounded-xl p-8 border border-emerald-400/10 bg-emerald-400/5">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 class="text-lg font-bold text-zinc-100 mb-1">Still too expensive?</h3>
+              <p class="text-zinc-400 text-sm">Explore cheaper alternatives with the same feature set.</p>
+            </div>
+            <a href={`/alternatives/${product.slug}-cheap`} class="btn-primary shrink-0">
+              View {product.name} Alternatives
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<SchemaOrg 
+  type="Product"
+  productName={`${product.name} ${plan.name}`}
+  pageDescription={`Should you downgrade from ${product.name} ${plan.name}? Analyze exact feature loss and savings before you downgrade.`}
+  verdictText={`Current plan: ${plan.name} at $${plan.priceMonthly}/mo. Explore downgrade options to save.`}
+  offer1Name={plan.name}
+  offer1Price={String(plan.priceMonthly ?? 0)}
+/>

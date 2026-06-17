@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<Layout title="Terms of Use | StackCut" description="Terms of use including pricing disclaimer and affiliate disclosure.">
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Terms of Use' }]} />
+  <main id="main-content" role="main" class="flex-1 section-padding">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-3xl sm:text-4xl font-bold text-zinc-100 mb-8">Terms of Use</h1>
+      <div class="prose prose-zinc prose-invert max-w-none space-y-6 text-zinc-300 leading-relaxed">
+        <p class="text-zinc-400">Last updated: 2026-06-07</p>
+        
+        <h2 class="text-xl font-semibold text-zinc-100 mt-8">Pricing Data Disclaimer</h2>
+        <p>StackCut provides pricing information for informational purposes only. While we manually verify all data against vendor pricing pages, prices change frequently. Always verify pricing on the vendor's official website before making purchasing decisions.</p>
+        
+        <h2 class="text-xl font-semibold text-zinc-100 mt-8">Affiliate Disclosure</h2>
+        <p>Some links on this site are affiliate links. If you click an affiliate link and make a purchase or sign up, we may earn a commission at no additional cost to you. This revenue helps support our research and keeps all tools free. Affiliate links are marked with <code>rel="sponsored"</code> in the HTML and we clearly disclose their presence on every page that contains them.</p>
+        
+        <h2 class="text-xl font-semibold text-zinc-100 mt-8">No Guarantees</h2>
+        <p>We do not guarantee the accuracy, completeness, or timeliness of any information on this site. Software pricing, features, and availability change without notice. Use at your own risk.</p>
+        
+        <h2 class="text-xl font-semibold text-zinc-100 mt-8">Limitation of Liability</h2>
+        <p>StackCut is not liable for any financial decisions made based on information from this site. Our tools provide analysis based on publicly available data. Always perform your own due diligence before changing vendors or downgrading plans.</p>
+        
+        <h2 class="text-xl font-semibold text-zinc-100 mt-8">Intellectual Property</h2>
+        <p>All tools, analysis algorithms, and original content on StackCut are the intellectual property of StackCut. SaaS product names, logos, and trademarks belong to their respective owners.</p>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

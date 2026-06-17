@@ -1,0 +1,280 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import AuditAnimation from '../components/AuditAnimation.astro';
+import SocialProof from '../components/SocialProof';
+import EmailCapture from '../components/EmailCapture';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import { getAllProducts } from '../lib/saas-data';
+import { getDatasetStats, formatCompactSavings } from '../lib/stats';
+
+const allProducts = await getAllProducts();
+const { totalPlans, totalSpread: totalSavings, avgSpreadPerTool: avgSavingsPerTool } = getDatasetStats(allProducts);
+
+// Derive the Notion downgrade worked-example figure directly from the live dataset
+// so the card can never silently drift from real prices.
+const _notionProduct = allProducts.find(p => p.id === 'notion');
+const _notionPlus = _notionProduct?.plans.find(p => p.id === 'plus');
+const _notionBusiness = _notionProduct?.plans.find(p => p.id === 'business');
+const _NOTION_SEATS = 30;
+const _notionPlusAnnual = _notionPlus
+  ? (_notionPlus.priceAnnually ?? (_notionPlus.priceMonthly ?? 0) * 12)
+  : 120;
+const _notionBusinessAnnual = _notionBusiness
+  ? (_notionBusiness.priceAnnually ?? (_notionBusiness.priceMonthly ?? 0) * 12)
+  : 240;
+const notionDowngradeExample = (_notionBusinessAnnual - _notionPlusAnnual) * _NOTION_SEATS;
+
+const deskTools = [
+  {
+    code: 'SC-01',
+    href: '/downgrade',
+    title: 'Downgrade Engine',
+    description: 'Pick your tool and plan, tick the features you actually use, and see the cheapest tier that keeps every one of them.',
+    cta: 'Find my cheaper tier',
+    event: 'CTA Click: Downgrade Engine',
+    icon: 'M19 14l-7 7m0 0l-7-7m7 7V3',
+  },
+  {
+    code: 'SC-02',
+    href: '/enterprise-tax',
+    title: 'Enterprise Tax Calculator',
+    description: 'Put a number on what one locked feature — SSO, audit logs — costs you in forced upgrades, and see how to negotiate it down or pick vendors that don\'t gate it.',
+    cta: 'Price the enterprise tax',
+    event: 'CTA Click: Enterprise Tax',
+    icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    code: 'SC-03',
+    href: '/negotiation',
+    title: 'Negotiation Script Generator',
+    description: 'Renewal emails written from real competitor pricing. State your leverage, name your number, copy, send.',
+    cta: 'Write my renewal email',
+    event: 'CTA Click: Negotiation',
+    icon: 'M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z',
+  },
+  {
+    code: 'SC-04',
+    href: '/audit',
+    title: 'Stack Auditor',
+    description: 'List your tools and get the overlaps: two products doing one job, flagged against real feature matrices. Data stays in your browser.',
+    cta: 'Audit my stack',
+    event: 'CTA Click: Stack Audit',
+    icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01',
+  },
+];
+---
+
+<Layout title="StackCut | The Audit Desk for SaaS Spend">
+  <Navbar />
+
+  <main id="main-content" role="main" class="flex-1">
+    {/* Hero */}
+    <section class="section-padding pt-16 sm:pt-24 pb-16">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="text-center lg:text-left">
+          <p class="num text-xs uppercase tracking-[0.18em] text-zinc-500 mb-6">
+            Independent audit desk · no login · no account
+          </p>
+
+          <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-zinc-100 mb-6">
+            Pay for what you use.<br />
+            Strike out <span class="strike-pen" style="--strike-delay: 0.9s">the&nbsp;rest</span>.
+          </h1>
+
+          <p class="text-lg text-zinc-400 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
+            We read every pricing page so you don't have to — {allProducts.length} tools
+            and {totalPlans.toLocaleString()} plans, verified by hand and dated. The spread
+            between cheapest and priciest tier averages
+            <span class="num font-semibold text-emerald-400">{formatCompactSavings(avgSavingsPerTool)}</span> per tool/year — that's your negotiating room.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4">
+            <a href="/downgrade" class="btn-primary text-base px-8 py-4 w-full sm:w-auto" data-plausible-event="CTA Click: Downgrade Engine">
+              Open the Downgrade Engine
+            </a>
+            <a href="/audit" class="btn-secondary text-base px-8 py-4 w-full sm:w-auto" data-plausible-event="CTA Click: Stack Audit">
+              Audit your stack
+            </a>
+          </div>
+        </div>
+
+        <AuditAnimation />
+      </div>
+    </section>
+
+    {/* Ledger totals */}
+    <section class="px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto ledger-total py-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="num text-2xl sm:text-3xl font-semibold text-zinc-100">{allProducts.length}</div>
+            <div class="num text-[11px] uppercase tracking-[0.16em] text-zinc-500 mt-2">SaaS indexed</div>
+          </div>
+          <div class="text-center">
+            <div class="num text-2xl sm:text-3xl font-semibold text-zinc-100">{totalPlans.toLocaleString()}+</div>
+            <div class="num text-[11px] uppercase tracking-[0.16em] text-zinc-500 mt-2">Plans priced</div>
+          </div>
+          <div class="text-center">
+            <div class="num text-2xl sm:text-3xl font-semibold text-emerald-400">{formatCompactSavings(totalSavings)}</div>
+            <div class="num text-[11px] uppercase tracking-[0.16em] text-zinc-500 mt-2">Price spread indexed (max−min tier)</div>
+          </div>
+          <div class="text-center">
+            <div class="num text-2xl sm:text-3xl font-semibold text-zinc-100">0</div>
+            <div class="num text-[11px] uppercase tracking-[0.16em] text-zinc-500 mt-2">Accounts required</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <SocialProof
+      client:visible
+      productsIndexed={allProducts.length}
+      plansPriced={totalPlans}
+      savingsOnBooks={formatCompactSavings(totalSavings)}
+      notionDowngradeExample={notionDowngradeExample}
+    />
+
+    {/* The audit desk: four tools, filed as forms */}
+    <section class="section-padding">
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-2xl mb-16" data-reveal>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-zinc-100 mb-4">The audit desk</h2>
+          <p class="text-zinc-400 text-lg">
+            Four tools, one job: a smaller software bill with nothing you use taken away.
+            Every one runs in your browser, free, with no sign-up.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {deskTools.map((tool, i) => (
+            <a
+              href={tool.href}
+              class="desk-card group relative card-blur rounded-lg p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus:outline-none"
+              data-plausible-event={tool.event}
+              data-reveal
+              style={`--reveal-delay: ${i * 0.08}s`}
+            >
+              <div class="flex items-start justify-between mb-6">
+                <div class="w-12 h-12 rounded-md bg-emerald-400/10 border border-emerald-400/25 flex items-center justify-center group-hover:bg-emerald-400/20 transition-colors">
+                  <svg class="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d={tool.icon} />
+                  </svg>
+                </div>
+                <span class="num text-[11px] uppercase tracking-[0.16em] text-zinc-500 border border-zinc-800 rounded px-2 py-1">Form {tool.code}</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-zinc-100 mb-2">{tool.title}</h3>
+              <p class="text-zinc-500 text-sm leading-relaxed mb-5">{tool.description}</p>
+              <span class="inline-flex items-center gap-1.5 text-emerald-400 text-sm font-semibold">
+                {tool.cta}
+                <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" /></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Fresh findings */}
+    <section class="section-padding border-t border-zinc-800">
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-2xl mb-12" data-reveal>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-zinc-100 mb-4">Fresh findings</h2>
+          <p class="text-zinc-400 text-lg">
+            The latest downgrade paths and cheaper alternatives entered in the ledger, verified against vendor pricing pages.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {allProducts.slice(0, 6).map((product, i) => {
+            const cheapest = product.plans.filter(p => p.priceMonthly !== null && p.priceMonthly > 0).sort((a, b) => (a.priceMonthly || 0) - (b.priceMonthly || 0))[0];
+            const enterprise = product.plans.filter(p => p.isEnterprise).sort((a, b) => (b.priceMonthly || 0) - (a.priceMonthly || 0))[0];
+            const savings = enterprise && cheapest ? (enterprise.priceAnnually ?? (enterprise.priceMonthly || 0) * 12) - (cheapest.priceAnnually ?? (cheapest.priceMonthly || 0) * 12) : 0;
+
+            return (
+              <a href={`/alternatives/${product.slug}-cheap`} class="group card-blur rounded-lg p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md focus:outline-none" data-reveal style={`--reveal-delay: ${(i % 3) * 0.08}s`}>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="font-display font-bold text-zinc-100">{product.name}</span>
+                  <span class="num text-[11px] uppercase tracking-wider text-zinc-500 border border-zinc-800 rounded px-2 py-0.5">{product.category}</span>
+                </div>
+                <div class="flex items-baseline gap-2 mb-2">
+                  <span class="num text-2xl font-semibold text-zinc-100" data-price-usd={cheapest?.priceMonthly || 0}>${cheapest?.priceMonthly || 0}</span>
+                  <span class="text-zinc-500 text-sm">/mo starter</span>
+                </div>
+                {savings > 0 && (
+                  <div class="text-xs text-zinc-500 mb-3">
+                    Up to <span class="num text-emerald-400 font-semibold" data-price-usd={savings} data-price-period="/yr">${savings.toLocaleString()}/yr</span> off the Enterprise rate
+                  </div>
+                )}
+                <div class="text-xs text-zinc-500 group-hover:text-emerald-400 transition-colors">
+                  View downgrade paths →
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* Closing CTA */}
+    <section class="section-padding pb-24">
+      <div class="max-w-4xl mx-auto relative card-blur glow-border rounded-xl p-10 sm:p-16 text-center" data-reveal>
+        <span class="stamp-seal strike-static absolute -top-5 right-6 sm:right-10 text-xs bg-zinc-950" style="animation: none; opacity: 1;">No login · no card</span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-zinc-100 mb-4">Open the books on your stack.</h2>
+        <p class="text-zinc-400 mb-8 max-w-lg mx-auto">
+          The average B2B team overpays for software by a third. Five minutes at the
+          audit desk tells you exactly which line items to strike.
+        </p>
+        <a href="/downgrade" class="btn-primary text-lg px-10 py-4" data-plausible-event="CTA Click: Downgrade Engine">
+          Start your audit — free
+        </a>
+        <p class="text-zinc-500 text-xs mt-6">No account. No credit card. Your data never leaves the browser.</p>
+
+        <div class="mt-10 pt-8 border-t border-zinc-800">
+          <p class="text-sm text-zinc-400 mb-4">
+            Prefer the findings to come to you? Get the weekly ledger — new downgrade paths and
+            vendor price changes, no spam.
+          </p>
+          <div class="flex justify-center">
+            <EmailCapture client:visible variant="inline" headline="" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* A red margin rule slides down the card's left edge on hover */
+  .desk-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10%;
+    bottom: 10%;
+    width: 3px;
+    border-radius: 99px;
+    background: var(--color-pen);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .desk-card:hover::before,
+  .desk-card:focus-visible::before {
+    transform: scaleY(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .desk-card::before { transition: none; }
+  }
+</style>
+
+<SchemaOrg
+  type="WebSite"
+  toolTitle="StackCut"
+  toolDescription="The audit desk for SaaS spend. Identify redundancies, calculate the enterprise tax, and downgrade plans without losing features."
+/>

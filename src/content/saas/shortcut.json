@@ -1,0 +1,135 @@
+{
+  "id": "shortcut",
+  "name": "Shortcut",
+  "slug": "shortcut",
+  "category": "Project Management",
+  "description": "Project management for software teams with stories, epics, and iterations.",
+  "websiteUrl": "https://shortcut.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 14,
+  "lastVerified": "2026-06-14",
+  "popularityScore": 60,
+  "g2Rating": 4.3,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "workflows",
+    "saml_sso",
+    "roles_permissions",
+    "custom_fields",
+    "reporting",
+    "dashboards",
+    "dependency_tracking",
+    "kanban_boards",
+    "project_timelines",
+    "gantt_charts",
+    "task_management",
+    "audit_logs",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "stories",
+      "name": "Stories",
+      "description": "Flexible work items with types, priorities, and states",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "epics",
+      "name": "Epics",
+      "description": "Group stories into larger project scopes",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "iterations",
+      "name": "Iterations",
+      "description": "Sprint-like time-boxed cycles",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "doc_hub",
+      "name": "Doc Hub",
+      "description": "Built-in documentation and knowledge base",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 10,
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "team",
+      "name": "Team",
+      "priceMonthly": 10,
+      "priceAnnually": 102,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium",
+      "priceNote": "Billed annually at $8.50/seat/mo; month-to-month is $10/seat.",
+      "sourceUrl": "https://shortcut.com/pricing",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "priceMonthly": 16,
+      "priceAnnually": 144,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "saml_sso": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium",
+      "priceNote": "Billed annually at $12/seat/mo; month-to-month is $16/seat.",
+      "sourceUrl": "https://shortcut.com/pricing",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "roles_permissions": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "pricingUrl": "https://shortcut.com/pricing"
+}

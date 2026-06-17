@@ -1,0 +1,138 @@
+{
+  "id": "microsoft-teams",
+  "name": "Microsoft Teams",
+  "slug": "microsoft-teams",
+  "category": "Communication",
+  "description": "Business communication and collaboration platform by Microsoft.",
+  "websiteUrl": "https://teams.microsoft.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 30,
+  "popularityScore": 94,
+  "g2Rating": 4.3,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "real_time_messaging",
+    "file_sharing",
+    "collaboration",
+    "channels",
+    "saml_sso"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "teams_meetings",
+      "name": "Teams Meetings",
+      "description": "HD video meetings up to 1000 participants",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "sharepoint_integration",
+      "name": "SharePoint Integration",
+      "description": "Deep Microsoft 365 integration",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "essentials",
+      "name": "Essentials",
+      "priceMonthly": 4.5,
+      "priceAnnually": 48,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true,
+        "api_access": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Billed annually at $4/seat/mo; month-to-month is $4.50/seat.",
+      "capturedAt": "2026-06-13",
+      "sourceUrl": "https://www.microsoft.com/en-us/microsoft-teams/essentials"
+    },
+    {
+      "id": "business_basic",
+      "name": "Business Basic",
+      "priceMonthly": 7.2,
+      "priceAnnually": 72,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true,
+        "api_access": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Billed annually at $6/seat/mo; month-to-month is $7.20/seat.",
+      "sourceUrl": "https://www.microsoft.com/en-us/microsoft-365/business/compare-all-microsoft-365-business-products",
+      "capturedAt": "2026-06-15"
+    },
+    {
+      "id": "business_standard",
+      "name": "Business Standard",
+      "priceMonthly": 15,
+      "priceAnnually": 150,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true,
+        "api_access": true,
+        "saml_sso": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Billed annually at $12.50/seat/mo; month-to-month is $15/seat.",
+      "sourceUrl": "https://www.microsoft.com/en-us/microsoft-365/business/compare-all-microsoft-365-business-products",
+      "capturedAt": "2026-06-15",
+      "addOns": [
+        {
+          "id": "microsoft_copilot_business",
+          "name": "Microsoft 365 Copilot Business",
+          "description": "AI assistant add-on for eligible Microsoft 365 business plans.",
+          "priceMonthly": 21,
+          "priceAnnually": 252,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "business_premium",
+      "name": "Business Premium",
+      "priceMonthly": 26.4,
+      "priceAnnually": 264,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true,
+        "api_access": true,
+        "saml_sso": true,
+        "audit_logs": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Billed annually at $22/seat/mo; month-to-month is $26.40/seat.",
+      "sourceUrl": "https://www.microsoft.com/en-us/microsoft-365/business/compare-all-microsoft-365-business-products",
+      "capturedAt": "2026-06-15",
+      "addOns": [
+        {
+          "id": "microsoft_copilot_business",
+          "name": "Microsoft 365 Copilot Business",
+          "description": "AI assistant add-on for eligible Microsoft 365 business plans.",
+          "priceMonthly": 21,
+          "priceAnnually": 252,
+          "unit": "per_user"
+        }
+      ]
+    }
+  ],
+  "lastVerified": "2026-06-15",
+  "pricingUrl": "https://www.microsoft.com/en-us/microsoft-365/business/compare-all-microsoft-365-business-products"
+}

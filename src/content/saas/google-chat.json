@@ -1,0 +1,142 @@
+{
+  "id": "google-chat",
+  "name": "Google Chat",
+  "slug": "google-chat",
+  "category": "Communication",
+  "description": "Secure team messaging as part of Google Workspace.",
+  "websiteUrl": "https://chat.google.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 14,
+  "popularityScore": 82,
+  "g2Rating": 4.2,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "real_time_messaging",
+    "file_sharing",
+    "collaboration",
+    "channels",
+    "saml_sso",
+    "audit_logs"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "spaces",
+      "name": "Spaces",
+      "description": "Topic-based threaded conversations",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "google_meet",
+      "name": "Google Meet Integration",
+      "description": "One-click video meeting launch",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "google_drive",
+      "name": "Drive Integration",
+      "description": "Deep Google Drive file sharing",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "business_starter",
+      "name": "Business Starter",
+      "priceMonthly": 7.2,
+      "priceAnnually": 72,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true,
+        "api_access": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Annual commitment $6/seat/mo ($72/yr); flexible month-to-month $7.20/seat.",
+      "sourceUrl": "https://workspace.google.com/pricing.html",
+      "capturedAt": "2026-06-15",
+      "addOns": [
+        {
+          "id": "google_voice",
+          "name": "Google Voice",
+          "description": "Cloud business phone system add-on (Standard starts at $10/user/mo).",
+          "priceMonthly": 10,
+          "priceAnnually": 120,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "business_standard",
+      "name": "Business Standard",
+      "priceMonthly": 14.4,
+      "priceAnnually": 144,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true,
+        "api_access": true,
+        "saml_sso": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Annual commitment $12/seat/mo ($144/yr); flexible month-to-month $14.40/seat.",
+      "sourceUrl": "https://workspace.google.com/pricing.html",
+      "capturedAt": "2026-06-15",
+      "addOns": [
+        {
+          "id": "google_voice",
+          "name": "Google Voice",
+          "description": "Cloud business phone system add-on (Standard starts at $10/user/mo).",
+          "priceMonthly": 10,
+          "priceAnnually": 120,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "business_plus",
+      "name": "Business Plus",
+      "priceMonthly": 21.6,
+      "priceAnnually": 216,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true,
+        "api_access": true,
+        "saml_sso": true,
+        "audit_logs": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Annual commitment $18/seat/mo ($216/yr); flexible month-to-month $21.60/seat.",
+      "sourceUrl": "https://workspace.google.com/pricing.html",
+      "capturedAt": "2026-06-15",
+      "addOns": [
+        {
+          "id": "google_voice",
+          "name": "Google Voice",
+          "description": "Cloud business phone system add-on (Standard starts at $10/user/mo).",
+          "priceMonthly": 10,
+          "priceAnnually": 120,
+          "unit": "per_user"
+        }
+      ]
+    }
+  ],
+  "lastVerified": "2026-06-15",
+  "pricingUrl": "https://workspace.google.com/pricing.html"
+}

@@ -1,0 +1,104 @@
+{
+  "id": "activecampaign",
+  "name": "ActiveCampaign",
+  "slug": "activecampaign",
+  "category": "Email Marketing",
+  "description": "Customer experience automation platform with email and CRM.",
+  "websiteUrl": "https://activecampaign.com",
+  "pricingUrl": "https://www.activecampaign.com/pricing",
+  "affiliateUrl": null,
+  "pricingModel": "custom",
+  "freeTrialDays": 14,
+  "popularityScore": 77,
+  "g2Rating": 4.5,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "reporting",
+    "email_templates",
+    "a_b_testing",
+    "email_automation",
+    "email_sequences",
+    "transactional_email",
+    "advanced_analytics"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "automation_builder",
+      "name": "Automation Builder",
+      "description": "Visual automation workflow designer",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "site_tracking",
+      "name": "Site Tracking",
+      "description": "Website visitor tracking",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "predictive_content",
+      "name": "Predictive Content",
+      "description": "AI-powered content recommendations",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "priceMonthly": 15,
+      "priceAnnually": 180,
+      "sourceUrl": "https://www.activecampaign.com/pricing",
+      "capturedAt": "2026-06-14",
+      "seatsIncluded": 1,
+      "priceNote": "Starting price for ~1,000 contacts; scales with contact list size.",
+      "features": {
+        "email_automation": true,
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "plus",
+      "name": "Plus",
+      "priceMonthly": 49,
+      "priceAnnually": 588,
+      "sourceUrl": "https://www.activecampaign.com/pricing",
+      "capturedAt": "2026-06-14",
+      "seatsIncluded": 1,
+      "priceNote": "Starting price for ~1,000 contacts; scales with contact list size.",
+      "features": {
+        "email_automation": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "professional",
+      "name": "Pro",
+      "priceMonthly": 79,
+      "priceAnnually": 948,
+      "seatsIncluded": 1,
+      "priceNote": "Pro tier (formerly 'Professional') — from $79/mo for ~1,000 contacts; scales with contact list size.",
+      "sourceUrl": "https://www.activecampaign.com/pricing",
+      "capturedAt": "2026-06-14",
+      "features": {
+        "email_automation": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "advanced_analytics": true
+      },
+      "isEnterprise": false
+    }
+  ],
+  "lastVerified": "2026-06-14"
+}

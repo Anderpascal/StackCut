@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<Layout title="Privacy Policy | StackCut" description="Our privacy policy: no tracking, no cookies, no PII.">
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy' }]} />
+  <main id="main-content" role="main" class="flex-1 section-padding">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-3xl sm:text-4xl font-bold text-zinc-100 mb-8">Privacy Policy</h1>
+      <div class="prose prose-zinc prose-invert max-w-none space-y-6 text-zinc-300 leading-relaxed">
+        <p class="text-zinc-400">Last updated: 2026-06-07</p>
+        
+        <h2 class="text-xl font-semibold text-zinc-100 mt-8">What We Don't Collect</h2>
+        <p>StackCut does NOT use tracking cookies, collect personal data (no logins, no accounts), use third-party analytics that track users across sites, or store any data on our servers.</p>
+        
+        <h2 class="text-xl font-semibold text-zinc-100 mt-8">Analytics</h2>
+        <p>We use Plausible Analytics, a privacy-first analytics tool that does not use cookies, does not collect personal data, and is fully GDPR compliant. All data is aggregated — we cannot identify individual visitors.</p>
+        
+        <h2 class="text-xl font-semibold text-zinc-100 mt-8">LocalStorage</h2>
+        <p>The Stack Auditor stores your tool list ONLY in your browser's localStorage. This data never leaves your device.</p>
+        
+        <h2 class="text-xl font-semibold text-zinc-100 mt-8">EthicalAds</h2>
+        <p>We use EthicalAds, a privacy-first ad network that does NOT use cookies, fingerprinting, or personal data for ad targeting.</p>
+        
+        <h2 class="text-xl font-semibold text-zinc-100 mt-8">Affiliate Links</h2>
+        <p>Some links on this site are affiliate links. When you click an affiliate link, the destination site may set its own cookies according to its own privacy policy. We add UTM parameters to affiliate links for conversion tracking but do not track you personally.</p>
+        
+        <h2 class="text-xl font-semibold text-zinc-100 mt-8">Newsletter</h2>
+        <p>If you subscribe to our newsletter, your email is stored with Buttondown and used ONLY for sending weekly SaaS savings tips. We never share or sell your email.</p>
+        
+        <h2 class="text-xl font-semibold text-zinc-100 mt-8">Contact</h2>
+        <p>For privacy inquiries, email privacy@stackcut.app.</p>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

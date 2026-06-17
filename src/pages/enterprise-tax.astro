@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import EnterpriseTaxCalculator from '../components/EnterpriseTaxCalculator';
+import { getAllProducts } from '../lib/saas-data';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const allProducts = await getAllProducts();
+---
+
+<Layout 
+  title="Enterprise Tax Calculator | StackCut"
+  description="Calculate how much you overpay for enterprise security features like SAML SSO and Audit Logs. Discover Open Source middleware alternatives to avoid the enterprise markup."
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Enterprise Tax' }]} />
+  <AffiliateDisclosure client:load />
+  
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-400/20 bg-emerald-400/5 text-emerald-400 text-xs font-medium mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Module 02 — The Enterprise Tax Calculator
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">The Enterprise Tax Calculator</h1>
+          <p class="text-zinc-400 max-w-2xl mx-auto">
+            Companies often upgrade to Enterprise solely for SAML or Audit Logs, paying 300% more per user. 
+            Calculate your overpayment and see how to self-host these features for free.
+          </p>
+        </div>
+        
+        <EnterpriseTaxCalculator client:visible products={allProducts} />
+
+        <div class="mt-16 max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">What is the "Enterprise Tax"?</h3>
+              <p class="text-zinc-400 text-sm">The Enterprise Tax is a colloquial term for the massive price hike vendors charge to access basic security features like SAML SSO or audit logs, often requiring you to upgrade to their most expensive tier regardless of the other features you need.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">Are open source alternatives reliable?</h3>
+              <p class="text-zinc-400 text-sm">Yes. Tools like Keycloak, Authentik, and Casbin are enterprise-grade open source projects backed by major organizations. While they require initial engineering setup, the long-term ROI is massive compared to paying a per-user tax indefinitely.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<SchemaOrg 
+  type="WebApplication"
+  toolTitle="Enterprise Tax Calculator"
+  toolDescription="Calculate how much you overpay for enterprise security features like SAML SSO and Audit Logs. Discover Open Source middleware alternatives to avoid the enterprise markup."
+/>
+
+<SchemaOrg 
+  type="FAQPage"
+  faqItems={[
+    { question: "What is the \"Enterprise Tax\"?", answer: "The Enterprise Tax is a colloquial term for the massive price hike vendors charge to access basic security features like SAML SSO or audit logs, often requiring you to upgrade to their most expensive tier regardless of the other features you need." },
+    { question: "Are open source alternatives reliable?", answer: "Yes. Tools like Keycloak, Authentik, and Casbin are enterprise-grade open source projects backed by major organizations. While they require initial engineering setup, the long-term ROI is massive compared to paying a per-user tax indefinitely." }
+  ]}
+/>

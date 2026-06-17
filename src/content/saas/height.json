@@ -1,0 +1,106 @@
+{
+  "id": "height",
+  "name": "Height",
+  "slug": "height",
+  "category": "Project Management",
+  "description": "AI-powered project management tool with autonomous task management.",
+  "websiteUrl": "https://height.app",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-13",
+  "popularityScore": 45,
+  "g2Rating": 4.8,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "workflows",
+    "custom_fields",
+    "reporting",
+    "dashboards",
+    "dependency_tracking",
+    "kanban_boards",
+    "roles_permissions",
+    "project_timelines",
+    "task_management",
+    "saml_sso",
+    "audit_logs",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "ai_tasks",
+      "name": "AI Task Management",
+      "description": "AI auto-assigns, prioritizes, and updates tasks",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "spreadsheet_view",
+      "name": "Spreadsheet View",
+      "description": "Full spreadsheet editing directly in the PM tool",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "chat_threads",
+      "name": "Chat Threads",
+      "description": "Built-in threaded discussions on tasks",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 5,
+      "features": {
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "team",
+      "name": "Team",
+      "priceMonthly": 8.5,
+      "priceAnnually": 102,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "low",
+      "priceNote": "Annual commitment per secondary sources; month-to-month option not publicly listed.",
+      "sourceUrl": "https://height.app/pricing",
+      "capturedAt": "2026-06-13"
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "roles_permissions": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "pricingUrl": "https://height.app/pricing"
+}

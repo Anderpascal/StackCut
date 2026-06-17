@@ -1,0 +1,128 @@
+{
+  "id": "canva",
+  "name": "Canva",
+  "slug": "canva",
+  "category": "Design",
+  "description": "Visual design and collaboration platform for graphics, video, whiteboards, and brand content.",
+  "websiteUrl": "https://www.canva.com",
+  "pricingUrl": "https://www.canva.com/pricing/",
+  "affiliateUrl": null,
+  "pricingModel": "per_month",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-14",
+  "popularityScore": 92,
+  "g2Rating": 4.7,
+  "featureIds": [
+    "design_prototyping",
+    "whiteboarding",
+    "collaboration",
+    "file_sharing",
+    "real_time_co_editing",
+    "video_hosting",
+    "ai_features"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "magic_studio",
+      "name": "Magic Studio",
+      "description": "Suite of AI-powered design and writing tools",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "brand_kit",
+      "name": "Brand Kit",
+      "description": "Centralized brand colors, fonts, logos, and templates",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "social_scheduler",
+      "name": "Content Scheduler",
+      "description": "Schedule and publish social media posts",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "design_prototyping": true,
+        "collaboration": true,
+        "file_sharing": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 15,
+      "priceAnnually": 120,
+      "seatsIncluded": 1,
+      "features": {
+        "design_prototyping": true,
+        "whiteboarding": true,
+        "collaboration": true,
+        "file_sharing": true,
+        "real_time_co_editing": true,
+        "video_hosting": true,
+        "ai_features": true
+      },
+      "isEnterprise": false,
+      "priceNote": "1 person. Billed annually at $120/yr; month-to-month is $15/mo.",
+      "sourceUrl": "https://www.canva.com/pricing/",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "teams",
+      "name": "Teams",
+      "priceMonthly": 30,
+      "priceAnnually": 300,
+      "seatsIncluded": 5,
+      "features": {
+        "design_prototyping": true,
+        "whiteboarding": true,
+        "collaboration": true,
+        "file_sharing": true,
+        "real_time_co_editing": true,
+        "video_hosting": true,
+        "ai_features": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Up to 5 people. Billed annually at $300/yr; month-to-month is $30/mo.",
+      "sourceUrl": "https://www.canva.com/pricing/",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "design_prototyping": true,
+        "whiteboarding": true,
+        "collaboration": true,
+        "file_sharing": true,
+        "real_time_co_editing": true,
+        "video_hosting": true,
+        "ai_features": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "priority_support": true
+      },
+      "isEnterprise": true,
+      "priceNote": "Custom per-user pricing; includes SSO, brand controls, and dedicated support.",
+      "capturedAt": "2026-06-14"
+    }
+  ]
+}

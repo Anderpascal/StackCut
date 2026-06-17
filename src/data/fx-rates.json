@@ -1,0 +1,10 @@
+{
+  "base": "USD",
+  "fetchedAt": "2026-06-13",
+  "source": "committed-fallback",
+  "rates": {
+    "USD": 1,
+    "EUR": 0.92,
+    "GBP": 0.79
+  }
+}

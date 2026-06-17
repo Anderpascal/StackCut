@@ -1,0 +1,68 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getAllProducts } from '../../lib/saas-data';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const allProducts = await getAllProducts();
+const comparisons = [];
+
+for (const p1 of allProducts) {
+  for (const p2 of allProducts) {
+    if (p1.id !== p2.id && p1.category === p2.category) {
+      comparisons.push({ p1, p2 });
+    }
+  }
+}
+---
+
+<Layout 
+  title="SaaS Cost Comparisons | StackCut"
+  description="Side-by-side cost comparisons between major SaaS tools. Find exact functional parity at the lowest possible price."
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Compare' }]} />
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">Cost Comparisons</h1>
+          <p class="text-zinc-400 max-w-2xl mx-auto">
+            Head-to-head pricing and feature analysis generated autonomously. Find the winner for your exact use case.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {comparisons.slice(0, 20).map(({ p1, p2 }) => {
+            const c1 = p1.plans.filter(p => p.priceMonthly !== null && p.priceMonthly > 0).sort((a, b) => (a.priceMonthly || 0) - (b.priceMonthly || 0))[0];
+            const c2 = p2.plans.filter(p => p.priceMonthly !== null && p.priceMonthly > 0).sort((a, b) => (a.priceMonthly || 0) - (b.priceMonthly || 0))[0];
+            const winner = (c2?.priceMonthly || 0) < (c1?.priceMonthly || 0) ? p2 : p1;
+            
+            return (
+              <a href={`/compare/${p1.slug}-vs-${p2.slug}-costs`} class="card-blur rounded-xl p-5 hover:border-emerald-400/30 transition-all group">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-2">
+                    <span class="font-semibold text-zinc-100">{p1.name}</span>
+                    <span class="text-zinc-500">vs</span>
+                    <span class="font-semibold text-zinc-100">{p2.name}</span>
+                  </div>
+                  <span class="text-[10px] text-emerald-400 border border-emerald-400/20 rounded px-1.5 py-0.5">
+                    {winner.name} wins
+                  </span>
+                </div>
+                <div class="flex items-center gap-4 text-sm">
+                  <span class="text-zinc-400">{p1.name}: <span class="text-zinc-200" data-price-usd={c1?.priceMonthly || 0}>${c1?.priceMonthly || 0}</span></span>
+                  <span class="text-zinc-700">|</span>
+                  <span class="text-zinc-400">{p2.name}: <span class="text-zinc-200" data-price-usd={c2?.priceMonthly || 0}>${c2?.priceMonthly || 0}</span></span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

@@ -1,0 +1,102 @@
+{
+  "id": "vercel",
+  "name": "Vercel",
+  "slug": "vercel",
+  "category": "Dev Tools",
+  "description": "Frontend cloud platform with serverless deployment, edge functions, and analytics.",
+  "websiteUrl": "https://vercel.com",
+  "pricingUrl": "https://vercel.com/pricing",
+  "affiliateUrl": null,
+  "pricingModel": "per_month_per_user",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-14",
+  "popularityScore": 88,
+  "g2Rating": 4.7,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "serverless_deploy",
+    "preview_deployments",
+    "edge_functions",
+    "advanced_analytics",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "isr",
+      "name": "Incremental Static Regeneration",
+      "description": "On-demand page revalidation for static content",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "analytics",
+      "name": "Web Analytics",
+      "description": "Privacy-first traffic analytics dashboard",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "hobby",
+      "name": "Hobby",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "preview_deployments": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 20,
+      "priceAnnually": 240,
+      "seatsIncluded": 1,
+      "priceNote": "$20/seat/mo (monthly billing only; no annual option on Pro). Includes usage credits; overages billed on top. Annual figure is 12× monthly.",
+      "sourceUrl": "https://vercel.com/pricing",
+      "capturedAt": "2026-06-14",
+      "features": {
+        "preview_deployments": true,
+        "edge_functions": true,
+        "isr": true,
+        "analytics": true,
+        "api_access": true,
+        "integrations": true,
+        "advanced_analytics": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "priceNote": "Custom pricing; includes SSO, audit logs and priority support.",
+      "features": {
+        "preview_deployments": true,
+        "edge_functions": true,
+        "isr": true,
+        "analytics": true,
+        "api_access": true,
+        "integrations": true,
+        "advanced_analytics": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true
+    }
+  ]
+}

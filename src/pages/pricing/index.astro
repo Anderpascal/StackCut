@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getAllProducts } from '../../lib/saas-data';
+import { CATEGORY_ORDER } from '../../lib/categories';
+
+const products = await getAllProducts();
+
+const productsByCategory = CATEGORY_ORDER.map(category => ({
+  category,
+  products: products
+    .filter(p => p.category === category)
+    .sort((a, b) => {
+      const aCheapest = a.plans.find(p => p.priceMonthly !== null && p.priceMonthly > 0);
+      const bCheapest = b.plans.find(p => p.priceMonthly !== null && p.priceMonthly > 0);
+      return (aCheapest?.priceMonthly || Infinity) - (bCheapest?.priceMonthly || Infinity);
+    }),
+})).filter(g => g.products.length > 0);
+---
+
+<Layout 
+  title="SaaS Pricing Guide 2026 | All Plans Compared"
+  description="Complete SaaS pricing guide. Compare plans, features, and find the cheapest option for every tool you use."
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Pricing' }]} />
+  
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-12">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+            SaaS <span class="text-emerald-400">Pricing Guide</span> 2026
+          </h1>
+          <p class="text-zinc-400 max-w-3xl text-lg">
+            Complete pricing breakdown for every major SaaS tool. See all plans, compare features, and find the cheapest option that covers your needs.
+          </p>
+        </div>
+
+        {productsByCategory.map(({ category, products }) => (
+          <div class="mb-12">
+            <h2 class="text-xl font-bold text-zinc-100 mb-4">{category}</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {products.map(product => {
+                const cheapest = product.plans.find(p => p.priceMonthly !== null && p.priceMonthly > 0);
+                return (
+                  <a href={`/pricing/${product.slug}`} class="card-blur rounded-lg p-5 hover:border-emerald-400/30 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-zinc-100 font-semibold group-hover:text-emerald-400 transition-colors">{product.name}</span>
+                      <span class="text-xs text-zinc-500">{product.plans.length} plans</span>
+                    </div>
+                    <div class="flex items-baseline gap-2 mb-2">
+                      {cheapest ? (
+                        <span class="text-lg font-bold text-emerald-400" data-price-usd={cheapest.priceMonthly} data-price-period="/mo">${cheapest.priceMonthly}/mo</span>
+                      ) : (
+                        <span class="text-lg font-bold text-zinc-500">Custom</span>
+                      )}
+                      <span class="text-xs text-zinc-500">starting price</span>
+                    </div>
+                    <p class="text-xs text-zinc-500 line-clamp-2">{product.description}</p>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

@@ -1,0 +1,119 @@
+{
+  "id": "github",
+  "name": "GitHub",
+  "slug": "github",
+  "category": "Dev Tools",
+  "description": "World's largest software development and version control platform.",
+  "websiteUrl": "https://github.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "popularityScore": 97,
+  "g2Rating": 4.6,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "saml_sso",
+    "audit_logs",
+    "roles_permissions",
+    "sla",
+    "version_control",
+    "code_reviews",
+    "ci_cd_pipelines"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "copilot",
+      "name": "GitHub Copilot",
+      "description": "AI-powered code completion",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "actions",
+      "name": "GitHub Actions",
+      "description": "CI/CD automation platform",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "codespaces",
+      "name": "Codespaces",
+      "description": "Cloud development environments",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "team",
+      "name": "Team",
+      "priceMonthly": 4,
+      "priceAnnually": 48,
+      "seatsIncluded": 1,
+      "priceNote": "$4/user/mo. GitHub Copilot and Advanced Security are paid add-ons.",
+      "sourceUrl": "https://github.com/pricing",
+      "capturedAt": "2026-06-14",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "saml_sso": true
+      },
+      "isEnterprise": false,
+      "addOns": [
+        {
+          "id": "copilot",
+          "name": "GitHub Copilot",
+          "description": "AI pair programmer; ~$19/user/mo billed annually. Also available as Business/Enterprise tiers.",
+          "priceMonthly": 19,
+          "priceAnnually": 228,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": 21,
+      "priceAnnually": 252,
+      "seatsIncluded": 1,
+      "priceNote": "$21/user/mo billed annually. Copilot, Advanced Security and Premium Support are add-ons.",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "roles_permissions": true,
+        "sla": true
+      },
+      "isEnterprise": true,
+      "addOns": [
+        {
+          "id": "copilot",
+          "name": "GitHub Copilot",
+          "description": "AI pair programmer; ~$19/user/mo billed annually. Also available as Business/Enterprise tiers.",
+          "priceMonthly": 19,
+          "priceAnnually": 228,
+          "unit": "per_user"
+        }
+      ]
+    }
+  ],
+  "lastVerified": "2026-06-14",
+  "pricingUrl": "https://github.com/pricing"
+}

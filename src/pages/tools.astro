@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+---
+
+<Layout 
+  title="Free SaaS Cost Optimization Tools | StackCut"
+  description="Free tools to audit your SaaS stack, calculate the enterprise tax, generate negotiation scripts, and find cheaper alternatives. No login, data stays in your browser."
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Tools' }]} />
+  
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-16">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+            The audit <span class="text-emerald-400">desk</span>
+          </h1>
+          <p class="text-zinc-400 max-w-2xl mx-auto text-lg">
+            Every StackCut tool in one place. Four engines plus two calculators, all free,
+            all running in your browser — no login, no account, your data never leaves the page.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          {/* Core Tools */}
+          <a href="/downgrade" class="group card-blur rounded-xl p-8 hover:border-emerald-400/30 transition-all duration-300 hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-6 group-hover:bg-emerald-400/20 transition-colors">
+              <svg class="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-zinc-100 mb-2">Downgrade Engine</h3>
+            <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+              Select your current SaaS and plan. Check the 3-4 features you actually use. 
+              Instantly see if you can drop to a lower tier without losing critical functionality.
+            </p>
+            <span class="text-emerald-400 text-sm font-medium group-hover:underline">Analyze downgrade path &rarr;</span>
+          </a>
+          
+          <a href="/enterprise-tax" class="group card-blur rounded-xl p-8 hover:border-emerald-400/30 transition-all duration-300 hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-6 group-hover:bg-emerald-400/20 transition-colors">
+              <svg class="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-zinc-100 mb-2">Enterprise Tax Calculator</h3>
+            <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+              Discover how much you overpay for a single security feature (SSO, Audit Logs) 
+              locked behind a 300% price hike. See Open Source middleware alternatives.
+            </p>
+            <span class="text-emerald-400 text-sm font-medium group-hover:underline">Calculate overpayment &rarr;</span>
+          </a>
+          
+          <a href="/negotiation" class="group card-blur rounded-xl p-8 hover:border-emerald-400/30 transition-all duration-300 hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-6 group-hover:bg-emerald-400/20 transition-colors">
+              <svg class="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-zinc-100 mb-2">Negotiation Script Generator</h3>
+            <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+              Generate hyper-persuasive cancellation and negotiation emails based on real competitor pricing data. 
+              Copy, paste, send. One click.
+            </p>
+            <span class="text-emerald-400 text-sm font-medium group-hover:underline">Generate script &rarr;</span>
+          </a>
+          
+          <a href="/audit" class="group card-blur rounded-xl p-8 hover:border-emerald-400/30 transition-all duration-300 hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-6 group-hover:bg-emerald-400/20 transition-colors">
+              <svg class="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-zinc-100 mb-2">SaaS Stack Auditor</h3>
+            <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+              Add your current tools. Our engine cross-references feature matrices in milliseconds
+              and identifies critical redundancies. Data stays in your browser.
+            </p>
+            <span class="text-emerald-400 text-sm font-medium group-hover:underline">Audit stack now &rarr;</span>
+          </a>
+
+          <a href="/monitor" class="group card-blur rounded-xl p-8 hover:border-emerald-400/30 transition-all duration-300 hover:-translate-y-1 md:col-span-2">
+            <div class="w-12 h-12 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mb-6 group-hover:bg-emerald-400/20 transition-colors">
+              <svg class="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-zinc-100 mb-2">Stack Monitor</h3>
+            <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+              Pick the tools you pay for and get an email the moment their published pricing changes —
+              a tier renamed, a feature pushed to enterprise, a renewal bumped. No account, no tracking.
+            </p>
+            <span class="text-emerald-400 text-sm font-medium group-hover:underline">Set up monitoring &rarr;</span>
+          </a>
+        </div>
+
+        <h2 class="text-2xl font-bold text-zinc-100 mb-6 text-center mt-16">Calculators & Utilities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <a href="/savings-calculator" class="group card-blur rounded-xl p-8 hover:border-emerald-400/30 transition-all duration-300 hover:-translate-y-1 border-l-2 border-l-emerald-400">
+            <h3 class="text-xl font-bold text-zinc-100 mb-2">SaaS Savings Calculator</h3>
+            <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+              Calculate exactly how much you can save through downgrades, consolidation, and negotiation based on your current stack.
+            </p>
+            <span class="text-emerald-400 text-sm font-medium group-hover:underline">Calculate Savings &rarr;</span>
+          </a>
+          
+          <a href="/roi" class="group card-blur rounded-xl p-8 hover:border-emerald-400/30 transition-all duration-300 hover:-translate-y-1 border-l-2 border-l-zinc-500">
+            <h3 class="text-xl font-bold text-zinc-100 mb-2">5-Year ROI Projection</h3>
+            <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+              Project your long-term cumulative savings by optimizing your software stack today.
+            </p>
+            <span class="text-emerald-400 text-sm font-medium group-hover:underline">Project ROI &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<SchemaOrg 
+  type="ItemList"
+  listName="StackCut Cost Optimization Tools"
+  items={[
+    { name: "Downgrade Engine", position: 1 },
+    { name: "Enterprise Tax Calculator", position: 2 },
+    { name: "Negotiation Script Generator", position: 3 },
+    { name: "SaaS Stack Auditor", position: 4 },
+    { name: "SaaS Savings Calculator", position: 5 },
+    { name: "5-Year ROI Projection", position: 6 }
+  ]}
+/>

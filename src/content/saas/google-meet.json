@@ -1,0 +1,122 @@
+{
+  "id": "google-meet",
+  "name": "Google Meet",
+  "slug": "google-meet",
+  "category": "Video Conferencing",
+  "description": "Secure video meetings and voice conferencing for teams of any size.",
+  "websiteUrl": "https://meet.google.com",
+  "pricingUrl": "https://workspace.google.com/pricing.html",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 14,
+  "lastVerified": "2026-06-15",
+  "popularityScore": 88,
+  "g2Rating": 4.5,
+  "featureIds": [
+    "video_conferencing",
+    "screen_sharing",
+    "recording",
+    "integrations",
+    "api_access",
+    "saml_sso",
+    "audit_logs"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "meet_live_streaming",
+      "name": "In-domain Live Streaming",
+      "description": "Live stream meetings to up to 100,000 in-domain viewers",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    },
+    {
+      "id": "noise_cancellation",
+      "name": "Noise Cancellation",
+      "description": "AI-based background noise filtering for meetings",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "attendance_tracking",
+      "name": "Attendance Tracking",
+      "description": "Track meeting attendance and engagement",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "video_conferencing": true,
+        "screen_sharing": true
+      },
+      "isEnterprise": false,
+      "priceNote": "1:1 meetings up to 24h; group meetings up to 60 min / 100 participants."
+    },
+    {
+      "id": "business_starter",
+      "name": "Business Starter",
+      "priceMonthly": 7.2,
+      "priceAnnually": 72,
+      "seatsIncluded": 1,
+      "features": {
+        "video_conferencing": true,
+        "screen_sharing": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Annual commitment $6/seat/mo ($72/yr); flexible month-to-month $7.20/seat.",
+      "sourceUrl": "https://workspace.google.com/pricing.html",
+      "capturedAt": "2026-06-15"
+    },
+    {
+      "id": "business_standard",
+      "name": "Business Standard",
+      "priceMonthly": 14.4,
+      "priceAnnually": 144,
+      "seatsIncluded": 1,
+      "features": {
+        "video_conferencing": true,
+        "screen_sharing": true,
+        "recording": true,
+        "integrations": true,
+        "api_access": true,
+        "noise_cancellation": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Annual commitment $12/seat/mo ($144/yr); flexible month-to-month $14.40/seat.",
+      "sourceUrl": "https://workspace.google.com/pricing.html",
+      "capturedAt": "2026-06-15"
+    },
+    {
+      "id": "business_plus",
+      "name": "Business Plus",
+      "priceMonthly": 21.6,
+      "priceAnnually": 216,
+      "seatsIncluded": 1,
+      "features": {
+        "video_conferencing": true,
+        "screen_sharing": true,
+        "recording": true,
+        "integrations": true,
+        "api_access": true,
+        "noise_cancellation": true,
+        "attendance_tracking": true,
+        "saml_sso": true,
+        "audit_logs": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Annual commitment $18/seat/mo ($216/yr); flexible month-to-month $21.60/seat.",
+      "sourceUrl": "https://workspace.google.com/pricing.html",
+      "capturedAt": "2026-06-15"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+﻿---
+title: "The Enterprise Tax: Why You're Paying 300% More for SSO"
+description: "Discover why companies pay a massive premium for SAML SSO and audit logs — features often locked behind enterprise plans with 300% markup. Explore open source alternatives that eliminate this tax."
+pubDate: 2026-06-01
+author: "StackCut Team"
+tags: ["enterprise-tax", "sso", "open-source", "cost-optimization"]
+category: "cost-optimization"
+heroImage: '/blog-hero.png'
+---
+
+## The Hidden Cost of Security Features
+
+If you have ever upgraded your SaaS subscription to the Enterprise tier, there is a strong chance you did it for one reason: SAML-based Single Sign-On. This single authentication feature is the most common driver of unnecessary enterprise upgrades, and it is costing companies billions every year.
+
+The pattern is consistent across the industry. A vendor offers three tiers: Starter at $15 per user per month, Professional at $40, and Enterprise at $120. The jump from Professional to Enterprise is 300 percent. What do you get for that 3x price increase? SAML SSO, audit logs, and maybe an SLA.
+
+Most teams use none of the other enterprise features. They just need single sign-on so their IT department can check a compliance box.
+
+## Why SAML SSO Is So Expensive
+
+The cynical answer is that vendors know large organizations need SSO, and they know those organizations can pay. It is pure price discrimination. The vendor bundles the one feature that enterprise buyers cannot skip — SAML authentication — into the most expensive plan tier.
+
+A more charitable view is that SAML implementations require maintenance, compliance certifications, and dedicated support. But none of those justify a 200-300 percent price premium per seat.
+
+Consider a 200-person company upgrading from HubSpot Professional at $800 per month to HubSpot Enterprise at $3,600 per month. The annual difference is $33,600. Over three years, that is over $100,000 — just for SSO and audit trails.
+
+## The Open Source Escape Hatch
+
+The good news is that you do not need your SaaS vendor to provide SAML SSO. Open source identity providers can sit in front of any application and handle authentication, authorization, and auditing independently.
+
+**Keycloak** is the most mature option. It supports SAML 2.0, OpenID Connect, and OAuth 2.0 out of the box. It has LDAP and Active Directory integration, user federation, and social login. The setup takes about 40 hours for a mid-size deployment, but the ongoing savings are permanent.
+
+**Authentik** is a newer alternative with a modern UI and simpler deployment model. It takes about 20 hours to set up and can replace most enterprise SSO requirements.
+
+**Dex** is the lightweight option. Designed for Kubernetes-native environments, it proxies authentication requests to upstream identity providers. Great if you already use OIDC internally.
+
+## Audit Logs Without the Markup
+
+Audit logs are another feature that vendors use to push enterprises toward the most expensive tier. But modern observability stacks can handle audit logging at a fraction of the cost.
+
+**Grafana Loki** ingests, indexes, and queries log data with a Prometheus-like query language. It is designed for high-cardinality log data at massive scale. Deploying Loki for audit logs takes about 30 hours and saves $25 per user per month compared to built-in enterprise audit features.
+
+**Vector** is a high-performance observability data pipeline that can ship logs from any source to any destination. Combined with Loki, it creates a complete audit trail system independent of your SaaS vendor.
+
+## Authorization: Casbin and Open Policy Agent
+
+If you need custom roles and permissions — another common enterprise-gate feature — **Casbin** provides ACL, RBAC, and ABAC support across multiple programming languages. **Open Policy Agent** (OPA) offers policy-as-code for unified authorization across your entire stack.
+
+Both are free, open source, and production-tested at companies like Netflix, Pinterest, and Goldman Sachs.
+
+## The Bottom Line
+
+A 200-person company paying $40 per user for the Professional tier and $120 for Enterprise can save $80 per user per month — or $192,000 per year — by self-hosting SSO, audit logs, and authorization middleware.
+
+The setup effort is real. You need DevOps expertise to deploy and maintain these tools. But once running, they serve all your applications, not just one vendor. That is the multiplier effect that makes the open source escape hatch so compelling: build once, save everywhere.
+
+Next time a vendor tells you SAML SSO is an enterprise feature, ask yourself: is a 300 percent markup worth it, or is there a better way?
+

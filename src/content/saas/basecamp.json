@@ -1,0 +1,93 @@
+{
+  "id": "basecamp",
+  "name": "Basecamp",
+  "slug": "basecamp",
+  "category": "Project Management",
+  "description": "All-in-one project management and team communication with flat-rate pricing.",
+  "websiteUrl": "https://basecamp.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_month",
+  "freeTrialDays": 30,
+  "lastVerified": "2026-06-14",
+  "popularityScore": 78,
+  "g2Rating": 4.1,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "project_timelines",
+    "task_management"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "message_board",
+      "name": "Message Board",
+      "description": "Long-form threaded discussions per project",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "hill_charts",
+      "name": "Hill Charts",
+      "description": "Visual progress tracking for project scopes",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "campfire",
+      "name": "Campfire",
+      "description": "Real-time group chat per project",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "card_table",
+      "name": "Card Table",
+      "description": "Kanban-style project boards",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "per-user",
+      "name": "Per User",
+      "priceMonthly": 15,
+      "priceAnnually": 180,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "project_timelines": true,
+        "task_management": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "low",
+      "priceNote": "$15/user/mo. Pro Unlimited is $299/mo billed annually for unlimited users.",
+      "sourceUrl": "https://basecamp.com/pricing",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "pro-unlimited",
+      "name": "Pro Unlimited",
+      "priceMonthly": 349,
+      "priceAnnually": 3588,
+      "seatsIncluded": 999,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "project_timelines": true,
+        "task_management": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "low",
+      "priceNote": "Unlimited users; $299/mo billed annually ($3,588/yr) or $349/mo month-to-month.",
+      "sourceUrl": "https://basecamp.com/pricing",
+      "capturedAt": "2026-06-14"
+    }
+  ],
+  "pricingUrl": "https://basecamp.com/pricing"
+}

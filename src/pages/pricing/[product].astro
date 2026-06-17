@@ -1,0 +1,331 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import SchemaOrg from '../../components/SchemaOrg.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure';
+import AffiliateLink from '../../components/AffiliateLink';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import EmailCapture from '../../components/EmailCapture';
+import { getAllProducts } from '../../lib/saas-data';
+import { getMonetizedUrl } from '../../lib/affiliates';
+import FreshnessBadge from '../../components/FreshnessBadge.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const products = await getAllProducts();
+  return products.map(product => ({
+    params: { product: product.slug },
+    props: { product },
+  }));
+};
+
+const { product } = Astro.props;
+
+const pricingUrl = product.pricingUrl ?? `${product.websiteUrl.replace(/\/$/, '')}/pricing`;
+
+const cheapestPlan = product.plans
+  .filter(p => p.priceMonthly !== null && p.priceMonthly > 0)
+  .sort((a, b) => (a.priceMonthly || 0) - (b.priceMonthly || 0))[0];
+const enterprisePlan = product.plans.find(p => p.isEnterprise);
+const maxSavings = enterprisePlan && cheapestPlan 
+  ? (enterprisePlan.priceAnnually ?? (enterprisePlan.priceMonthly || 0) * 12) - (cheapestPlan.priceAnnually ?? (cheapestPlan.priceMonthly || 0) * 12) 
+  : 0;
+
+const annualDiscounts = product.plans
+  .filter(p => p.priceMonthly !== null && p.priceAnnually !== null && p.priceMonthly > 0)
+  .map(p => ({
+    plan: p.name,
+    monthlyCost: p.priceMonthly! * 12,
+    annualCost: p.priceAnnually!,
+    discount: Math.round((1 - p.priceAnnually! / (p.priceMonthly! * 12)) * 100),
+  }))
+  .filter(d => d.discount > 0);
+
+const featuresByCategory: Record<string, string[]> = {};
+product.featureIds.forEach(fid => {
+  const name = fid.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  const category = fid.includes('sso') || fid.includes('audit') || fid.includes('roles') || fid.includes('sla') || fid.includes('priority') ? 'Security & Compliance' :
+    fid.includes('api') || fid.includes('integrations') ? 'Integrations' :
+    fid.includes('analytics') || fid.includes('reporting') || fid.includes('dashboards') ? 'Analytics' :
+    'Core Features';
+  if (!featuresByCategory[category]) featuresByCategory[category] = [];
+  featuresByCategory[category].push(name);
+});
+---
+
+<Layout 
+  title={`${product.name} Pricing 2026 | Complete Cost Breakdown`}
+  description={`${product.name} pricing breakdown: all plans, features, and hidden costs. See exactly what you pay and find the cheapest plan that covers your needs.`}
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Pricing', href: '/pricing' }, { label: product.name }]} />
+  <AffiliateDisclosure client:load />
+  
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="mb-12">
+          <div class="flex items-center gap-3 mb-4">
+            <FreshnessBadge date={product.lastVerified} />
+            <span class="text-xs text-zinc-500 border border-zinc-800 rounded px-2 py-0.5">{product.category}</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+            <span class="text-emerald-400">{product.name}</span> Pricing 2026
+          </h1>
+          <p class="text-zinc-400 max-w-3xl text-lg">
+            {product.description} Here is exactly what each plan costs and what you get.
+          </p>
+          <a
+            href={pricingUrl}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="inline-flex items-center gap-1.5 mt-4 text-sm text-zinc-500 hover:text-emerald-400 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+            Verify these prices on {product.name}’s official pricing page
+          </a>
+        </div>
+
+        <div class="card-blur rounded-xl p-6 mb-12 border border-emerald-400/10">
+          <h2 class="text-lg font-semibold text-zinc-100 mb-4">Quick Summary</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div>
+              <div class="text-xs text-zinc-500 mb-1">Starting at</div>
+              <div class="text-xl font-bold text-emerald-400">
+                {cheapestPlan ? (
+                  <span data-price-usd={cheapestPlan.priceMonthly} data-price-period="/mo">${cheapestPlan.priceMonthly}/mo</span>
+                ) : (
+                  'Free'
+                )}
+              </div>
+            </div>
+            <div>
+              <div class="text-xs text-zinc-500 mb-1">Plans available</div>
+              <div class="text-xl font-bold text-zinc-100">{product.plans.length}</div>
+            </div>
+            <div>
+              <div class="text-xs text-zinc-500 mb-1">Free plan</div>
+              <div class="text-xl font-bold text-zinc-100">
+                {product.plans.some(p => p.priceMonthly === 0) ? 'Yes' : 'No'}
+              </div>
+            </div>
+            <div>
+              <div class="text-xs text-zinc-500 mb-1">Max savings</div>
+              <div class="text-xl font-bold text-emerald-400">
+                {maxSavings > 0 ? (
+                  <span data-price-usd={maxSavings} data-price-period="/yr">${maxSavings.toLocaleString()}/yr</span>
+                ) : (
+                  'N/A'
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4 mb-12">
+          {product.plans.map((plan, i) => {
+            const isCheapest = plan === cheapestPlan;
+            const isEnterprise = plan.isEnterprise;
+            const annualSavings = plan.priceMonthly !== null && plan.priceAnnually !== null 
+              ? (plan.priceMonthly * 12) - plan.priceAnnually 
+              : 0;
+            
+            return (
+              <div class={`card-blur rounded-xl p-6 ${isCheapest ? 'border-2 border-emerald-400/30' : 'border border-zinc-800'} ${isEnterprise ? 'bg-zinc-900/50' : ''}`}>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                  <div>
+                    <div class="flex items-center gap-3 mb-1">
+                      <h3 class="text-xl font-bold text-zinc-100">{plan.name}</h3>
+                      {isCheapest && (
+                        <span class="text-xs bg-emerald-400/10 text-emerald-400 border border-emerald-400/20 rounded px-2 py-0.5">
+                          Best Value
+                        </span>
+                      )}
+                      {isEnterprise && (
+                        <span class="text-xs bg-red-400/10 text-red-400 border border-red-400/20 rounded px-2 py-0.5">
+                          Enterprise
+                        </span>
+                      )}
+                    </div>
+                    {plan.seatsIncluded && (
+                      <div class="text-xs text-zinc-500">
+                        {plan.seatsIncluded === 1 ? '1 seat included' : `${plan.seatsIncluded} seats included`}
+                      </div>
+                    )}
+                  </div>
+                  <div class="text-right">
+                    {plan.priceMonthly !== null ? (
+                      <div>
+                        <div class="text-2xl font-bold text-zinc-100">
+                          <span data-price-usd={plan.priceMonthly} data-price-period="/mo">${plan.priceMonthly}/mo</span>
+                        </div>
+                        {plan.priceAnnually !== null && (
+                          <div class="text-sm text-zinc-500">
+                            <span data-price-usd={plan.priceAnnually} data-price-period="/yr">${plan.priceAnnually}/yr</span>
+                            {annualSavings > 0 && (
+                              <span class="text-emerald-400 ml-2">Save ${annualSavings}/yr</span>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div class="text-xl font-bold text-zinc-300">Custom Pricing</div>
+                    )}
+                  </div>
+                </div>
+                
+                {plan.priceNote && (
+                  <p class="text-xs text-zinc-500 mb-4 flex items-start gap-1.5">
+                    <svg class="w-3.5 h-3.5 shrink-0 mt-0.5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    <span>{plan.priceNote}</span>
+                  </p>
+                )}
+
+                {plan.addOns && plan.addOns.length > 0 && (
+                  <div class="border-t border-zinc-800 pt-4 mb-4">
+                    <h4 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Common add-ons (not included)</h4>
+                    <div class="space-y-2">
+                      {plan.addOns.map(addon => (
+                        <div class="flex items-center justify-between text-sm">
+                          <span class="text-zinc-300">{addon.name}</span>
+                          <span class="num text-zinc-400">
+                            {addon.priceMonthly !== null ? (
+                              <span data-price-usd={addon.priceMonthly} data-price-period={addon.unit === 'per_user' ? '/user/mo' : addon.unit === 'flat' ? '/mo' : '/unit'}>
+                                ${addon.priceMonthly}{addon.unit === 'per_user' ? '/user/mo' : addon.unit === 'flat' ? '/mo' : '/unit'}
+                              </span>
+                            ) : 'Custom'}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div class="border-t border-zinc-800 pt-4">
+                  <h4 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Features included</h4>
+                  <div class="flex flex-wrap gap-2">
+                    {Object.entries(plan.features).map(([key, value]) => {
+                      if (!value) return null;
+                      const name = key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+                      return (
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs">
+                          {name}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+                
+                <div class="flex items-center gap-4 mt-4 pt-4 border-t border-zinc-800">
+                  <AffiliateLink client:load href={getMonetizedUrl(product)} productId={product.id} planId={plan.id} variant="button" class="ml-auto">
+                    Get {plan.name}
+                  </AffiliateLink>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {annualDiscounts.length > 0 && (
+          <div class="card-blur rounded-xl p-6 mb-12">
+            <h2 class="text-lg font-semibold text-zinc-100 mb-4">Annual Billing Discounts</h2>
+            <p class="text-zinc-500 text-sm mb-4">
+              {product.name} offers discounts when you pay annually. Here is how much you save:
+            </p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-zinc-800">
+                    <th class="text-left py-3 px-4 text-zinc-500 font-medium">Plan</th>
+                    <th class="text-left py-3 px-4 text-zinc-500 font-medium">Monthly Cost</th>
+                    <th class="text-left py-3 px-4 text-zinc-500 font-medium">Annual Cost</th>
+                    <th class="text-left py-3 px-4 text-zinc-500 font-medium">You Save</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {annualDiscounts.map(d => (
+                    <tr class="border-b border-zinc-800/50">
+                      <td class="py-3 px-4 text-zinc-200 font-medium">{d.plan}</td>
+                      <td class="py-3 px-4 text-zinc-300" data-price-usd={d.monthlyCost} data-price-period="/yr">${d.monthlyCost.toLocaleString()}/yr</td>
+                      <td class="py-3 px-4 text-zinc-300" data-price-usd={d.annualCost} data-price-period="/yr">${d.annualCost.toLocaleString()}/yr</td>
+                      <td class="py-3 px-4 text-emerald-400 font-medium">{d.discount}% off</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {Object.keys(featuresByCategory).length > 0 && (
+          <div class="card-blur rounded-xl p-6 mb-12">
+            <h2 class="text-lg font-semibold text-zinc-100 mb-4">Feature Comparison by Category</h2>
+            <div class="space-y-6">
+              {Object.entries(featuresByCategory).map(([category, features]) => (
+                <div>
+                  <h3 class="text-sm font-semibold text-zinc-300 mb-3">{category}</h3>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                    {features.map(feature => (
+                      <div class="flex items-center gap-2 text-sm text-zinc-400">
+                        <span class="text-emerald-400">✓</span>
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {product.proprietaryFeatures && product.proprietaryFeatures.length > 0 && (
+          <div class="card-blur rounded-xl p-6 mb-12">
+            <h2 class="text-lg font-semibold text-zinc-100 mb-4">{product.name}-Specific Features</h2>
+            <p class="text-zinc-500 text-sm mb-4">
+              These features are unique to {product.name} and not found in other tools:
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {product.proprietaryFeatures.map(feature => (
+                <div class="p-4 rounded-lg bg-zinc-900 border border-zinc-800">
+                  <h4 class="text-sm font-medium text-zinc-200 mb-1">{feature.name}</h4>
+                  <p class="text-xs text-zinc-500">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div class="card-blur rounded-xl p-8 border border-emerald-400/10 bg-emerald-400/5 mb-12">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 class="text-lg font-bold text-zinc-100 mb-1">Can you downgrade?</h3>
+              <p class="text-zinc-400 text-sm">Check if a lower {product.name} plan covers what you actually use.</p>
+            </div>
+            <a href="/downgrade" class="btn-primary shrink-0">
+              Check Downgrade Path
+            </a>
+          </div>
+        </div>
+
+        <div class="card-blur rounded-xl p-8 border border-emerald-400/10 text-center">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-3">Get notified when {product.name} changes pricing</h2>
+          <p class="text-zinc-400 mb-6 max-w-lg mx-auto">
+            We track {product.name} pricing weekly. Get notified instantly when plans change or new alternatives emerge.
+          </p>
+          <EmailCapture client:load variant="inline" headline={`${product.name} pricing alerts`} />
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<SchemaOrg 
+  type="Product"
+  productName={`${product.name} Pricing`}
+  pageDescription={`${product.name} pricing breakdown: all plans, features, and hidden costs. See exactly what you pay and find the cheapest plan that covers your needs.`}
+  offer1Name={product.name}
+  offer1Price={String(cheapestPlan?.priceMonthly ?? 0)}
+/>

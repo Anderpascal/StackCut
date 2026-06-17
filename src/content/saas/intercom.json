@@ -1,0 +1,176 @@
+{
+  "id": "intercom",
+  "name": "Intercom",
+  "slug": "intercom",
+  "category": "Customer Support",
+  "description": "Customer messaging platform for sales, marketing, and support.",
+  "websiteUrl": "https://intercom.com",
+  "pricingUrl": "https://www.intercom.com/pricing",
+  "affiliateUrl": "https://intercom.partnerstack.com/stackcut",
+  "pricingModel": "custom",
+  "freeTrialDays": 14,
+  "lastVerified": "2026-06-01",
+  "popularityScore": 85,
+  "g2Rating": 4.4,
+  "featureIds": [
+    "crm_basic",
+    "api_access",
+    "integrations",
+    "reporting",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "ticketing",
+    "knowledge_base",
+    "dashboards",
+    "in_app_chat",
+    "chatbot_builder",
+    "email_automation",
+    "workflows",
+    "advanced_analytics",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "inbox",
+      "name": "Inbox",
+      "description": "Unified team inbox",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "messenger",
+      "name": "Messenger",
+      "description": "In-app live chat widget",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "fin_ai_bot",
+      "name": "Fin AI Bot",
+      "description": "Fin AI chatbot",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "product_tours",
+      "name": "Product Tours",
+      "description": "In-app guided product tours",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    },
+    {
+      "id": "outbound_messages",
+      "name": "Outbound Messages",
+      "description": "Proactive chat/email campaigns",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "help_center",
+      "name": "Help Center",
+      "description": "Self-service knowledge base",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "essential",
+      "name": "Essential",
+      "priceMonthly": 29,
+      "priceAnnually": 348,
+      "sourceUrl": "https://www.intercom.com/pricing",
+      "capturedAt": "2026-06-01",
+      "seatsIncluded": 2,
+      "priceNote": "Per 2 seats/mo; total cost depends on AI resolutions and add-ons.",
+      "features": {
+        "crm_basic": true,
+        "email_automation": true,
+        "reporting": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "addOns": [
+        {
+          "id": "fin_ai",
+          "name": "Fin AI Agent",
+          "description": "AI-powered customer service agent billed per resolution; price varies with volume.",
+          "priceMonthly": null,
+          "priceAnnually": null,
+          "unit": "per_unit"
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "name": "Advanced",
+      "priceMonthly": 85,
+      "priceAnnually": 1020,
+      "sourceUrl": "https://www.intercom.com/pricing",
+      "capturedAt": "2026-06-01",
+      "seatsIncluded": 5,
+      "priceNote": "Per 5 seats/mo; total cost depends on AI resolutions and add-ons.",
+      "features": {
+        "crm_basic": true,
+        "email_automation": true,
+        "reporting": true,
+        "integrations": true,
+        "workflows": true,
+        "advanced_analytics": true,
+        "api_access": true
+      },
+      "isEnterprise": false,
+      "addOns": [
+        {
+          "id": "fin_ai",
+          "name": "Fin AI Agent",
+          "description": "AI-powered customer service agent billed per resolution; price varies with volume.",
+          "priceMonthly": null,
+          "priceAnnually": null,
+          "unit": "per_unit"
+        }
+      ]
+    },
+    {
+      "id": "expert",
+      "name": "Expert",
+      "priceMonthly": 132,
+      "priceAnnually": 1584,
+      "seatsIncluded": 10,
+      "priceNote": "Per 10 seats/mo; total cost depends on AI resolutions and add-ons.",
+      "features": {
+        "crm_basic": true,
+        "email_automation": true,
+        "reporting": true,
+        "integrations": true,
+        "workflows": true,
+        "advanced_analytics": true,
+        "api_access": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true,
+      "addOns": [
+        {
+          "id": "fin_ai",
+          "name": "Fin AI Agent",
+          "description": "AI-powered customer service agent billed per resolution; price varies with volume.",
+          "priceMonthly": null,
+          "priceAnnually": null,
+          "unit": "per_unit"
+        }
+      ]
+    }
+  ]
+}

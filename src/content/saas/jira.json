@@ -1,0 +1,129 @@
+{
+  "id": "jira",
+  "name": "Jira",
+  "slug": "jira",
+  "category": "Project Management",
+  "description": "Agile project management and issue tracking for software teams.",
+  "websiteUrl": "https://atlassian.com/software/jira",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 7,
+  "popularityScore": 90,
+  "g2Rating": 4.2,
+  "featureIds": [
+    "custom_fields",
+    "api_access",
+    "integrations",
+    "workflows",
+    "reporting",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "dashboards",
+    "dependency_tracking",
+    "kanban_boards",
+    "project_timelines",
+    "gantt_charts",
+    "task_management"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "scrum_boards",
+      "name": "Scrum Boards",
+      "description": "Agile scrum board management",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "sprint_planning",
+      "name": "Sprint Planning",
+      "description": "Automated sprint management",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "advanced_roadmaps",
+      "name": "Advanced Roadmaps",
+      "description": "Cross-team portfolio planning",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 10,
+      "features": {
+        "custom_fields": true,
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "standard",
+      "name": "Standard",
+      "priceMonthly": 7.53,
+      "priceAnnually": 90,
+      "seatsIncluded": 1,
+      "seatMin": 10,
+      "priceNote": "Cloud Standard list pricing starts at 10 users; per-user rate slides down as seats increase. Annual shown as 12× monthly list.",
+      "sourceUrl": "https://www.atlassian.com/software/jira/pricing",
+      "capturedAt": "2026-06-14",
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "priceMonthly": 13.53,
+      "priceAnnually": 162,
+      "seatsIncluded": 1,
+      "seatMin": 10,
+      "priceNote": "Cloud Premium list pricing starts at 10 users; per-user rate slides down as seats increase. Annual shown as 12× monthly list.",
+      "sourceUrl": "https://www.atlassian.com/software/jira/pricing",
+      "capturedAt": "2026-06-14",
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true,
+        "saml_sso": true,
+        "audit_logs": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "lastVerified": "2026-06-14",
+  "pricingUrl": "https://www.atlassian.com/software/jira/pricing"
+}

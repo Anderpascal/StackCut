@@ -1,0 +1,187 @@
+{
+  "id": "figma",
+  "name": "Figma",
+  "slug": "figma",
+  "category": "Design",
+  "description": "Collaborative interface design and prototyping platform for product teams.",
+  "websiteUrl": "https://figma.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-14",
+  "popularityScore": 90,
+  "g2Rating": 4.6,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "sla",
+    "collaboration",
+    "design_prototyping",
+    "design_handoff"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "design_collab",
+      "name": "Real-time Design Collaboration",
+      "description": "Multiplayer design and prototyping in the browser",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "dev_mode",
+      "name": "Dev Mode",
+      "description": "Developer handoff with code snippets and specs",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "figjam",
+      "name": "FigJam",
+      "description": "Online whiteboarding and diagramming tool",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "component_library",
+      "name": "Shared Component Library",
+      "description": "Cross-file reusable design components",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "branching",
+      "name": "Branching & Merging",
+      "description": "Git-style branching for design exploration",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "design_collab": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "professional",
+      "name": "Professional",
+      "priceMonthly": 20,
+      "priceAnnually": 192,
+      "seatsIncluded": 1,
+      "priceNote": "Full seat: $16/seat/mo billed annually ($20/mo monthly) under Figma's 2025 seat-based pricing. Dev Mode included in a Full seat.",
+      "sourceUrl": "https://www.figma.com/pricing/",
+      "capturedAt": "2026-06-14",
+      "features": {
+        "design_collab": true,
+        "dev_mode": true,
+        "figjam": true,
+        "component_library": true
+      },
+      "isEnterprise": false,
+      "addOns": [
+        {
+          "id": "dev_mode_seat",
+          "name": "Dev Mode seat",
+          "description": "Developer handoff seat with advanced inspection and code connect; price varies by plan tier.",
+          "priceMonthly": null,
+          "priceAnnually": null,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "organization",
+      "name": "Organization",
+      "priceMonthly": 55,
+      "priceAnnually": 660,
+      "seatsIncluded": 1,
+      "priceNote": "Full seat: $55/seat/mo, billed annually only, under Figma's 2025 seat-based pricing. Dev Mode included in a Full seat.",
+      "sourceUrl": "https://www.figma.com/pricing/",
+      "capturedAt": "2026-06-14",
+      "features": {
+        "design_collab": true,
+        "dev_mode": true,
+        "figjam": true,
+        "component_library": true,
+        "api_access": true,
+        "integrations": true,
+        "branching": true
+      },
+      "isEnterprise": false,
+      "addOns": [
+        {
+          "id": "dev_mode_seat",
+          "name": "Dev Mode seat",
+          "description": "Developer handoff seat with advanced inspection and code connect; price varies by plan tier.",
+          "priceMonthly": null,
+          "priceAnnually": null,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "priceNote": "Custom pricing; includes advanced security, SCIM and analytics.",
+      "features": {
+        "design_collab": true,
+        "dev_mode": true,
+        "figjam": true,
+        "component_library": true,
+        "api_access": true,
+        "integrations": true,
+        "branching": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true
+      },
+      "isEnterprise": true,
+      "addOns": [
+        {
+          "id": "dev_mode_seat",
+          "name": "Dev Mode seat",
+          "description": "Developer handoff seat with advanced inspection and code connect; price varies by plan tier.",
+          "priceMonthly": null,
+          "priceAnnually": null,
+          "unit": "per_user"
+        }
+      ]
+    }
+  ],
+  "openSourceAlternatives": [
+    {
+      "name": "Penpot",
+      "url": "https://penpot.app",
+      "replaces": "design_collab",
+      "setupComplexity": "low",
+      "savingsPerMonth": 12,
+      "effortHours": 10
+    },
+    {
+      "name": "Excalidraw",
+      "url": "https://excalidraw.com",
+      "replaces": "figjam",
+      "setupComplexity": "low",
+      "savingsPerMonth": 0,
+      "effortHours": 2
+    }
+  ],
+  "pricingUrl": "https://www.figma.com/pricing/"
+}

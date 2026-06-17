@@ -1,0 +1,94 @@
+{
+  "id": "todoist",
+  "name": "Todoist",
+  "slug": "todoist",
+  "category": "Productivity & Wiki",
+  "description": "Task management and productivity tool for individuals and teams.",
+  "websiteUrl": "https://todoist.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-14",
+  "popularityScore": 80,
+  "g2Rating": 4.4,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "custom_fields",
+    "task_management",
+    "roles_permissions"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "natural_language",
+      "name": "Natural Language Input",
+      "description": "Parse dates and priorities from plain text",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "karma",
+      "name": "Karma System",
+      "description": "Productivity scoring and streaks",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "ai_assist",
+      "name": "AI Task Assist",
+      "description": "AI-powered task suggestions and content",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "beginner",
+      "name": "Beginner (Free)",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 5,
+      "priceAnnually": 48,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "low",
+      "priceNote": "Billed annually at $4/seat/mo; month-to-month is $5/seat.",
+      "sourceUrl": "https://todoist.com/pricing",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "priceMonthly": 8,
+      "priceAnnually": 72,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "low",
+      "priceNote": "Billed annually at $6/seat/mo; month-to-month is $8/seat.",
+      "sourceUrl": "https://todoist.com/pricing",
+      "capturedAt": "2026-06-14"
+    }
+  ],
+  "pricingUrl": "https://todoist.com/pricing"
+}

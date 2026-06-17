@@ -1,0 +1,151 @@
+{
+  "id": "missive",
+  "name": "Missive",
+  "slug": "missive",
+  "category": "Communication",
+  "description": "Team inbox and chat for collaborative email, SMS, and social messaging.",
+  "websiteUrl": "https://missiveapp.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 30,
+  "lastVerified": "2026-06-13",
+  "popularityScore": 50,
+  "g2Rating": 4.8,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "roles_permissions",
+    "real_time_messaging",
+    "file_sharing",
+    "collaboration",
+    "email_collaboration",
+    "shared_inbox",
+    "workflows",
+    "saml_sso",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "team_inbox",
+      "name": "Team Inbox",
+      "description": "Shared email inboxes with real-time collaboration",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "live_editing",
+      "name": "Live Editing",
+      "description": "Multiple people editing the same email draft",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "internal_chat",
+      "name": "Internal Chat",
+      "description": "Built-in team messaging alongside email",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 3,
+      "features": {
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "starter",
+      "name": "Starter",
+      "priceMonthly": 17.5,
+      "priceAnnually": 168,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "low",
+      "priceNote": "Billed yearly; month-to-month is $17.50 per user.",
+      "sourceUrl": "https://missiveapp.com/pricing",
+      "capturedAt": "2026-06-13",
+      "addOns": [
+        {
+          "id": "missive_ai_credits",
+          "name": "Missive AI Credits",
+          "description": "AI automations and assistants; pay-as-you-go credits or BYOK.",
+          "priceMonthly": null,
+          "priceAnnually": null,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "productive",
+      "name": "Productive",
+      "priceMonthly": 30,
+      "priceAnnually": 288,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium",
+      "priceNote": "Billed yearly; month-to-month is $30 per user.",
+      "sourceUrl": "https://missiveapp.com/pricing",
+      "capturedAt": "2026-06-13",
+      "addOns": [
+        {
+          "id": "missive_ai_credits",
+          "name": "Missive AI Credits",
+          "description": "AI automations and assistants; pay-as-you-go credits or BYOK.",
+          "priceMonthly": null,
+          "priceAnnually": null,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "priceMonthly": 45,
+      "priceAnnually": 432,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "priority_support": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium",
+      "priceNote": "Billed yearly; month-to-month is $45 per user.",
+      "sourceUrl": "https://missiveapp.com/pricing",
+      "capturedAt": "2026-06-13",
+      "addOns": [
+        {
+          "id": "missive_ai_credits",
+          "name": "Missive AI Credits",
+          "description": "AI automations and assistants; pay-as-you-go credits or BYOK.",
+          "priceMonthly": null,
+          "priceAnnually": null,
+          "unit": "per_user"
+        }
+      ]
+    }
+  ],
+  "pricingUrl": "https://missiveapp.com/pricing"
+}

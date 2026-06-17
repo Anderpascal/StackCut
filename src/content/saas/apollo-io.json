@@ -1,0 +1,182 @@
+{
+  "id": "apollo-io",
+  "name": "Apollo.io",
+  "slug": "apollo-io",
+  "category": "CRM & Sales",
+  "description": "All-in-one sales intelligence and engagement platform with B2B data, sequencing, and AI.",
+  "websiteUrl": "https://www.apollo.io",
+  "pricingUrl": "https://www.apollo.io/pricing",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 14,
+  "lastVerified": "2026-06-14",
+  "popularityScore": 85,
+  "g2Rating": 4.7,
+  "featureIds": [
+    "crm_basic",
+    "email_sequences",
+    "lead_scoring",
+    "email_automation",
+    "advanced_analytics",
+    "reporting",
+    "api_access",
+    "integrations",
+    "ai_features"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "apollo_data",
+      "name": "Apollo Data",
+      "description": "Verified B2B contact and company database",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "chrome_extension",
+      "name": "Chrome Extension",
+      "description": "Find and add contacts while browsing LinkedIn and websites",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "apollo_dialer",
+      "name": "Apollo Dialer",
+      "description": "Built-in calling with call recording and transcripts",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "email_sequences": true,
+        "reporting": true,
+        "integrations": true,
+        "apollo_data": true,
+        "chrome_extension": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Limited credits; 1 seat after initial access period."
+    },
+    {
+      "id": "basic",
+      "name": "Basic",
+      "priceMonthly": 59,
+      "priceAnnually": 588,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "email_sequences": true,
+        "lead_scoring": true,
+        "email_automation": true,
+        "reporting": true,
+        "api_access": true,
+        "integrations": true,
+        "apollo_data": true,
+        "chrome_extension": true
+      },
+      "isEnterprise": false,
+      "priceNote": "1 user. Billed annually at $588/yr; month-to-month is $59/mo. 10K credits/yr fair-use limit.",
+      "sourceUrl": "https://www.apollo.io/pricing",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "professional",
+      "name": "Professional",
+      "priceMonthly": 99,
+      "priceAnnually": 948,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "email_sequences": true,
+        "lead_scoring": true,
+        "email_automation": true,
+        "advanced_analytics": true,
+        "reporting": true,
+        "api_access": true,
+        "integrations": true,
+        "ai_features": true,
+        "workflows": true,
+        "apollo_data": true,
+        "chrome_extension": true
+      },
+      "isEnterprise": false,
+      "priceNote": "1 user. Billed annually at $948/yr; month-to-month is $99/mo. Includes AI assistant.",
+      "sourceUrl": "https://www.apollo.io/pricing",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "organization",
+      "name": "Organization",
+      "priceMonthly": 149,
+      "priceAnnually": 1428,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "email_sequences": true,
+        "lead_scoring": true,
+        "email_automation": true,
+        "advanced_analytics": true,
+        "reporting": true,
+        "api_access": true,
+        "integrations": true,
+        "ai_features": true,
+        "workflows": true,
+        "roles_permissions": true,
+        "apollo_data": true,
+        "chrome_extension": true
+      },
+      "isEnterprise": false,
+      "priceNote": "1 user. Billed annually at $1,428/yr; month-to-month is $149/mo. Advanced governance.",
+      "sourceUrl": "https://www.apollo.io/pricing",
+      "capturedAt": "2026-06-14",
+      "addOns": [
+        {
+          "id": "additional_credits",
+          "name": "Additional Credits",
+          "description": "Extra email/mobile/export credits beyond plan limits.",
+          "priceMonthly": 0.025,
+          "priceAnnually": 0.3,
+          "unit": "per_unit"
+        }
+      ]
+    },
+    {
+      "id": "custom",
+      "name": "Custom",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "email_sequences": true,
+        "lead_scoring": true,
+        "email_automation": true,
+        "advanced_analytics": true,
+        "reporting": true,
+        "api_access": true,
+        "integrations": true,
+        "ai_features": true,
+        "workflows": true,
+        "apollo_dialer": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true,
+      "priceNote": "Enterprise/Custom pricing by quote; includes API access, SSO, and dedicated support.",
+      "capturedAt": "2026-06-14"
+    }
+  ]
+}

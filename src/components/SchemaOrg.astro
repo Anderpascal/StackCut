@@ -1,0 +1,127 @@
+---
+// SchemaOrg.astro — Reusable JSON-LD structured data component
+interface Props {
+  type: 'WebSite' | 'WebApplication' | 'Product' | 'ItemList' | 'BlogPosting' | 'BreadcrumbList' | 'FAQPage';
+  toolTitle?: string;
+  toolDescription?: string;
+  productName?: string;
+  pageDescription?: string;
+  verdictText?: string;
+  offer1Name?: string;
+  offer1Price?: string;
+  offer2Name?: string;
+  offer2Price?: string;
+  listName?: string;
+  items?: { name: string; position: number }[];
+  postTitle?: string;
+  postDescription?: string;
+  postDate?: string;
+  postAuthor?: string;
+  breadcrumbs?: { name: string; url: string }[];
+  faqItems?: { question: string; answer: string }[];
+}
+
+const { type, toolTitle, toolDescription, productName, pageDescription, verdictText, offer1Name, offer1Price, offer2Name, offer2Price, listName, items, postTitle, postDescription, postDate, postAuthor, breadcrumbs, faqItems } = Astro.props;
+
+const SITE_URL = 'https://stackcut.app';
+const BRAND = 'StackCut';
+
+let jsonLd: Record<string, unknown>;
+
+switch (type) {
+  case 'WebSite':
+    jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": BRAND,
+      "url": SITE_URL,
+      "description": "B2B software cost optimization intelligence. Cut your SaaS spend with data-driven tools.",
+      "publisher": { "@type": "Organization", "name": BRAND, "url": SITE_URL }
+    };
+    break;
+  case 'WebApplication':
+    jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": toolTitle || "StackCut Tool",
+      "url": SITE_URL,
+      "description": toolDescription || "SaaS cost optimization tool",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "provider": { "@type": "Organization", "name": BRAND, "url": SITE_URL }
+    };
+    break;
+  case 'Product':
+    jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": productName || "SaaS Comparison",
+      "description": pageDescription || "",
+      "brand": { "@type": "Brand", "name": BRAND },
+      "review": {
+        "@type": "Review",
+        "reviewBody": verdictText || "Comparison analysis",
+        "author": { "@type": "Organization", "name": BRAND }
+      },
+      "offers": [
+        { "@type": "Offer", "name": offer1Name || "", "price": offer1Price || "0", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": offer2Name || "", "price": offer2Price || "0", "priceCurrency": "USD" }
+      ]
+    };
+    break;
+  case 'ItemList':
+    jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": listName || "Alternatives",
+      "itemListElement": (items || []).map((item, i) => ({
+        "@type": "ListItem",
+        "position": item.position || i + 1,
+        "item": { "@type": "SoftwareApplication", "name": item.name }
+      }))
+    };
+    break;
+  case 'BlogPosting':
+    jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": postTitle || "",
+      "description": postDescription || "",
+      "datePublished": postDate || "",
+      "author": { "@type": "Person", "name": postAuthor || "StackCut Team" },
+      "publisher": { "@type": "Organization", "name": BRAND, "url": SITE_URL }
+    };
+    break;
+  case 'BreadcrumbList':
+    jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": (breadcrumbs || []).map((item, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": item.name,
+        "item": item.url
+      }))
+    };
+    break;
+  case 'FAQPage':
+    jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": (faqItems || []).map(item => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.answer
+        }
+      }))
+    };
+    break;
+  default:
+    jsonLd = {};
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

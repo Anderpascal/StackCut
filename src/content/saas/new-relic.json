@@ -1,0 +1,174 @@
+{
+  "id": "new-relic",
+  "name": "New Relic",
+  "slug": "new-relic",
+  "category": "Monitoring",
+  "description": "Full-stack observability platform for infrastructure, APM, logs, and AI-assisted operations.",
+  "websiteUrl": "https://newrelic.com",
+  "pricingUrl": "https://newrelic.com/pricing",
+  "affiliateUrl": null,
+  "pricingModel": "custom",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-15",
+  "popularityScore": 78,
+  "g2Rating": 4.3,
+  "featureIds": [
+    "infrastructure_monitoring",
+    "apm",
+    "alerting",
+    "advanced_analytics",
+    "reporting",
+    "dashboards",
+    "api_access",
+    "integrations",
+    "ai_features"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "synthetics",
+      "name": "Synthetic Monitoring",
+      "description": "Simulated user journey checks across global locations",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "session_replay",
+      "name": "Session Replay",
+      "description": "Replay real user sessions for debugging UX issues",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "vulnerability_management",
+      "name": "Vulnerability Management",
+      "description": "Detect and prioritize runtime application vulnerabilities",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "infrastructure_monitoring": true,
+        "apm": true,
+        "alerting": true,
+        "reporting": true,
+        "dashboards": true
+      },
+      "isEnterprise": false,
+      "priceNote": "1 full platform user + unlimited basic users; 100 GB data ingest/mo."
+    },
+    {
+      "id": "standard",
+      "name": "Standard",
+      "priceMonthly": 99,
+      "priceAnnually": 1188,
+      "seatsIncluded": 1,
+      "features": {
+        "infrastructure_monitoring": true,
+        "apm": true,
+        "alerting": true,
+        "advanced_analytics": true,
+        "reporting": true,
+        "dashboards": true,
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Full platform user $99/mo (first user $10/mo); Core users $49/mo. Data ingest $0.30/GB after 100 GB free.",
+      "sourceUrl": "https://newrelic.com/pricing",
+      "capturedAt": "2026-06-15",
+      "addOns": [
+        {
+          "id": "data_ingest",
+          "name": "Data Ingest",
+          "description": "Additional data ingest beyond the free 100 GB/mo.",
+          "priceMonthly": 0.3,
+          "priceAnnually": 3.6,
+          "unit": "per_unit"
+        },
+        {
+          "id": "core_user",
+          "name": "Core User License",
+          "description": "Core user license with extended telemetry access.",
+          "priceMonthly": 49,
+          "priceAnnually": 588,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 418.8,
+      "priceAnnually": 4188,
+      "seatsIncluded": 1,
+      "features": {
+        "infrastructure_monitoring": true,
+        "apm": true,
+        "alerting": true,
+        "advanced_analytics": true,
+        "reporting": true,
+        "dashboards": true,
+        "api_access": true,
+        "integrations": true,
+        "ai_features": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": false,
+      "priceNote": "$418.80 pay-as-you-go/mo per full platform user; $349/mo with annual commit. Data ingest $0.30/GB after 100 GB free.",
+      "sourceUrl": "https://newrelic.com/pricing",
+      "capturedAt": "2026-06-15",
+      "addOns": [
+        {
+          "id": "data_ingest_pro",
+          "name": "Data Ingest",
+          "description": "Additional data ingest beyond the free 100 GB/mo.",
+          "priceMonthly": 0.3,
+          "priceAnnually": 3.6,
+          "unit": "per_unit"
+        }
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "infrastructure_monitoring": true,
+        "apm": true,
+        "alerting": true,
+        "advanced_analytics": true,
+        "reporting": true,
+        "dashboards": true,
+        "api_access": true,
+        "integrations": true,
+        "ai_features": true,
+        "synthetics": true,
+        "session_replay": true,
+        "vulnerability_management": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true,
+      "priceNote": "Custom pricing; includes FedRAMP/HIPAA eligibility and 24/7 dedicated support.",
+      "capturedAt": "2026-06-14"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+﻿---
+title: "SaaS Stack Audit Checklist for CTOs"
+description: "A systematic checklist for auditing your SaaS stack: identify redundancies, eliminate unused seats, and optimize plan tiers for every tool your company pays for."
+pubDate: 2026-06-01
+author: "StackCut Team"
+tags: ["audit", "checklist", "cto", "cost-optimization"]
+category: "audit"
+heroImage: '/blog-hero.png'
+---
+
+## Why You Need a SaaS Audit
+
+The average mid-market company uses over 100 SaaS applications. The average enterprise uses over 300. With that volume of tools, it is mathematically guaranteed that you are paying for software you do not need.
+
+A systematic SaaS audit takes about four hours and typically identifies 20 to 35 percent in annual savings. This checklist walks through the exact process, from inventory to execution.
+
+## Phase 1: Build Your Inventory
+
+Before you can optimize, you need to know what you are paying for.
+
+### 1.1 Export All SaaS Spend
+
+Pull the last 12 months of transactions from your accounting system or corporate card statements. Categorize every recurring software charge. Do not rely on memory — you will forget at least 20 percent of what you pay for.
+
+### 1.2 Identify Shadow IT
+
+Ask each team lead what tools their team uses beyond the officially sanctioned stack. The marketing team probably has three extra design tools. Engineering has SaaS monitoring and testing tools. Sales has LinkedIn Sales Navigator and a half-dozen Chrome extensions with premium tiers.
+
+### 1.3 Build a Complete Inventory
+
+Create a spreadsheet with columns: Tool Name, Category, Monthly Cost, Billing Cycle, Number of Paid Seats, Number of Active Users, Renewal Date, Plan Tier, Owner.
+
+Be ruthless about completeness. Every dollar counts.
+
+## Phase 2: Identify Redundancies
+
+### 2.1 Map Feature Overlap
+
+For each category in your inventory, list every tool and its core features. Project management is the most common area of overlap. If you have Asana, Jira, Linear, and Monday.com, you are almost certainly duplicating capability.
+
+Use the Stack Auditor on StackCut to automatically cross-reference feature matrices across your tools.
+
+### 2.2 Calculate the Cost of Redundancy
+
+For each redundant pair, calculate the annual cost of the more expensive tool. That is your potential savings if you consolidate. Multiply across all redundant pairs for your total redundancy waste.
+
+### 2.3 Decide Which Tool Stays
+
+Consolidation decisions should consider: which tool has the highest adoption, which has the best integrations with your existing stack, which has the lower per-seat cost, and which has the shorter migration path away from it.
+
+## Phase 3: Eliminate Unused Seats
+
+### 3.1 Conduct a Seat Audit
+
+Export user lists from every SaaS tool and identify inactive accounts — users who have not logged in within 90 days. These are seats you are paying for but not using.
+
+### 3.2 Deprovision Immediately
+
+For each inactive user, determine whether the seat is needed. If not, deprovision immediately. If the user left the company, deprovision retroactively and request a credit if possible. Most vendors will not refund past months, but some offer credits for unused seats on annual contracts.
+
+### 3.3 Automate Provisioning and Deprovisioning
+
+The root cause of unused seats is manual user management. Integrate your identity provider with your SaaS tools so that deactivating an employee automatically removes their SaaS access. Okta, Azure AD, and Google Workspace all support automated provisioning.
+
+## Phase 4: Right-Size Plan Tiers
+
+### 4.1 Audit Feature Usage
+
+For each tool, identify which plan you are on and which features your team actually uses. Most teams use 20 to 40 percent of their plan's features but pay for 100 percent.
+
+### 4.2 Identify Safe Downgrades
+
+For each tool where you use less than 60 percent of plan features, run the Downgrade Engine on StackCut. It will show you exactly which lower-tier plans cover your active features and exactly what you would lose by downgrading.
+
+### 4.3 Execute Downgrades
+
+Start with the lowest-risk downgrades — tools where you lose zero features by dropping a tier. Then move to medium-risk downgrades where you lose one or two non-critical features. Save the high-risk downgrades for last.
+
+## Phase 5: Negotiate
+
+### 5.1 Arm Yourself with Competitor Data
+
+For your top 10 most expensive tools, research at least one cheaper competitor. Use the Negotiation Script Generator to build a data-backed negotiation email.
+
+### 5.2 Time Your Outreach
+
+Contact vendors 60 to 90 days before renewal. End-of-quarter timing (March, June, September, December) often yields better results.
+
+### 5.3 Ask for Specific Concessions
+
+Annual commitment discounts, seat count adjustments, plan tier changes, or bundled product rates. Be specific and data-backed.
+
+## Phase 6: Track and Repeat
+
+### 6.1 Document Your Savings
+
+Record every dollar saved through downgrades, consolidations, and negotiations. This documentation justifies the time invested and builds momentum for the next audit cycle.
+
+### 6.2 Schedule Quarterly Reviews
+
+SaaS sprawl is not a one-time problem — it is ongoing. Schedule a one-hour stack review every quarter. Add new tools, remove departed ones, check for usage changes, and scan for better alternatives.
+
+### 6.3 Build a Procurement Gate
+
+Create a lightweight process for new SaaS purchases. Every new tool request should answer: What does this replace, what is the cost, is there an existing tool that covers 80 percent of this need.
+
+## The Bottom Line
+
+A four-hour SaaS audit typically identifies 20 to 35 percent in annual savings. For a company spending $200,000 per year on SaaS, that is $40,000 to $70,000 in recovered budget — for an afternoon of spreadsheet work.
+
+Start with your inventory. The savings are there. You just need to find them.
+

@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import EmailCapture from '../components/EmailCapture';
+import DowngradeEngine from '../components/DowngradeEngine';
+import SocialProof from '../components/SocialProof';
+import { getAllProducts } from '../lib/saas-data';
+import { getDatasetStats, formatCompactSavings } from '../lib/stats';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const allProducts = await getAllProducts();
+const stats = getDatasetStats(allProducts);
+---
+
+<Layout 
+  title="Downgrade Engine | StackCut"
+  description="Interactive feature matrix optimizer. Select your SaaS, choose the features you actually use, and discover instant downgrade paths to save thousands per year."
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Downgrade Engine' }]} />
+  <AffiliateDisclosure client:load />
+  
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-400/20 bg-emerald-400/5 text-emerald-400 text-xs font-medium mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Module 01 — Feature Matrix Optimizer
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">Downgrade Engine</h1>
+          <p class="text-zinc-400 max-w-2xl mx-auto">
+            Most teams use 20% of their SaaS features but pay for 100%. 
+            Select the features you actually need. We find the cheapest plan that covers them.
+          </p>
+        </div>
+        
+        <DowngradeEngine client:visible products={allProducts} />
+        
+        <SocialProof
+          client:visible
+          productsIndexed={stats.productsIndexed}
+          plansPriced={stats.totalPlans}
+          savingsOnBooks={formatCompactSavings(stats.totalSpread)}
+        />
+        
+        <div class="mt-16 max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">Is it safe to downgrade my SaaS plan?</h3>
+              <p class="text-zinc-400 text-sm">Yes. The Downgrade Engine maps exact feature parity. If you select the features you actively use, the recommended lower-tier plans will fully support your workflow.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">Will I lose my data if I downgrade?</h3>
+              <p class="text-zinc-400 text-sm">In most cases, downgrading simply removes access to premium features rather than deleting data. However, you should always export critical data before changing subscription tiers.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-12 max-w-5xl mx-auto">
+          <div class="card-blur rounded-xl p-6 border border-emerald-400/10 text-center">
+            <EmailCapture client:load variant="inline" headline="Get weekly downgrade tips in your inbox" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<SchemaOrg 
+  type="WebApplication"
+  toolTitle="Downgrade Engine"
+  toolDescription="Interactive feature matrix optimizer. Select your SaaS, choose the features you actually use, and discover instant downgrade paths to save thousands per year."
+/>
+
+<SchemaOrg 
+  type="FAQPage"
+  faqItems={[
+    { question: "Is it safe to downgrade my SaaS plan?", answer: "Yes. The Downgrade Engine maps exact feature parity. If you select the features you actively use, the recommended lower-tier plans will fully support your workflow." },
+    { question: "Will I lose my data if I downgrade?", answer: "In most cases, downgrading simply removes access to premium features rather than deleting data. However, you should always export critical data before changing subscription tiers." }
+  ]}
+/>

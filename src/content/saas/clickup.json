@@ -1,0 +1,203 @@
+{
+  "id": "clickup",
+  "name": "ClickUp",
+  "slug": "clickup",
+  "category": "Project Management",
+  "description": "All-in-one productivity platform with docs, tasks, goals, and AI-powered work management.",
+  "websiteUrl": "https://clickup.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-13",
+  "capturedAt": "2026-06-13",
+  "popularityScore": 84,
+  "g2Rating": 4.7,
+  "featureIds": [
+    "custom_fields",
+    "api_access",
+    "integrations",
+    "workflows",
+    "reporting",
+    "saml_sso",
+    "dashboards",
+    "dependency_tracking",
+    "kanban_boards",
+    "roles_permissions",
+    "project_timelines",
+    "gantt_charts",
+    "task_management"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "task_hierarchy",
+      "name": "Task Hierarchy",
+      "description": "Nested tasks with unlimited levels",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "docs",
+      "name": "ClickUp Docs",
+      "description": "Rich document collaboration",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "time_tracking",
+      "name": "Native Time Tracking",
+      "description": "Built-in time tracking",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free Forever",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "sourceUrl": "https://clickup.com/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "custom_fields": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "unlimited",
+      "name": "Unlimited",
+      "priceMonthly": 10,
+      "priceAnnually": 84,
+      "seatsIncluded": 1,
+      "priceNote": "$7/member/mo billed annually ($10/mo monthly).",
+      "sourceUrl": "https://clickup.com/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false,
+      "addOns": [
+        {
+          "id": "clickup_brain",
+          "name": "ClickUp Brain",
+          "description": "AI assistant for tasks, docs, and chat; priced per member/month.",
+          "priceMonthly": 9,
+          "priceAnnually": 108,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "priceMonthly": 19,
+      "priceAnnually": 144,
+      "seatsIncluded": 1,
+      "priceNote": "$12/member/mo billed annually ($19/mo monthly).",
+      "sourceUrl": "https://clickup.com/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true,
+        "dashboards": true,
+        "kanban_boards": true,
+        "project_timelines": true,
+        "gantt_charts": true,
+        "task_management": true
+      },
+      "isEnterprise": false,
+      "addOns": [
+        {
+          "id": "clickup_brain",
+          "name": "ClickUp Brain",
+          "description": "AI assistant for tasks, docs, and chat; priced per member/month.",
+          "priceMonthly": 9,
+          "priceAnnually": 108,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "business_plus",
+      "name": "Business Plus",
+      "priceMonthly": 29,
+      "priceAnnually": 228,
+      "seatsIncluded": 1,
+      "priceNote": "$19/member/mo billed annually ($29/mo monthly).",
+      "sourceUrl": "https://clickup.com/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true,
+        "dashboards": true,
+        "dependency_tracking": true,
+        "kanban_boards": true,
+        "roles_permissions": true,
+        "project_timelines": true,
+        "gantt_charts": true,
+        "task_management": true
+      },
+      "isEnterprise": false,
+      "addOns": [
+        {
+          "id": "clickup_brain",
+          "name": "ClickUp Brain",
+          "description": "AI assistant for tasks, docs, and chat; priced per member/month.",
+          "priceMonthly": 9,
+          "priceAnnually": 108,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "priceNote": "Custom pricing; includes advanced security, SSO/SCIM, audit logs and dedicated success manager.",
+      "sourceUrl": "https://clickup.com/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true,
+        "saml_sso": true,
+        "dashboards": true,
+        "dependency_tracking": true,
+        "kanban_boards": true,
+        "roles_permissions": true,
+        "project_timelines": true,
+        "gantt_charts": true,
+        "task_management": true
+      },
+      "isEnterprise": true,
+      "addOns": [
+        {
+          "id": "clickup_brain",
+          "name": "ClickUp Brain",
+          "description": "AI assistant for tasks, docs, and chat; priced per member/month.",
+          "priceMonthly": 9,
+          "priceAnnually": 108,
+          "unit": "per_user"
+        }
+      ]
+    }
+  ],
+  "pricingUrl": "https://clickup.com/pricing"
+}

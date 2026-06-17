@@ -1,0 +1,399 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import SchemaOrg from '../../components/SchemaOrg.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure';
+import AffiliateLink from '../../components/AffiliateLink';
+import { getAllProducts, getProductBySlug } from '../../lib/saas-data';
+import { getMonetizedUrl } from '../../lib/affiliates';
+import FreshnessBadge from '../../components/FreshnessBadge.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const products = await getAllProducts();
+  const paths = [];
+  
+  for (const p1 of products) {
+    for (const p2 of products) {
+      if (p1.id === p2.id || p1.slug >= p2.slug) continue;
+      if (p1.category === p2.category) {
+        paths.push({
+          params: { 
+            saas1: p1.slug,
+            saas2: p2.slug,
+          },
+          props: { product1: p1, product2: p2 },
+        });
+      }
+    }
+  }
+  
+  return paths;
+};
+
+const { product1, product2 } = Astro.props;
+
+const p1Cheapest = product1.plans.find(p => p.priceMonthly !== null && p.priceMonthly > 0) ?? product1.plans[0];
+const p2Cheapest = product2.plans.find(p => p.priceMonthly !== null && p.priceMonthly > 0) ?? product2.plans[0];
+const cheaper = (p1Cheapest.priceMonthly ?? Infinity) < (p2Cheapest.priceMonthly ?? Infinity) ? product1 : product2;
+const moreExpensive = cheaper === product1 ? product2 : product1;
+
+function derivePros(product: typeof product1): string[] {
+  const pros: string[] = [];
+  const cheapest = product.plans.find(p => p.priceMonthly !== null && p.priceMonthly > 0);
+  if (cheapest && (cheapest.priceMonthly ?? Infinity) < 20) pros.push(`Low entry price for starter plan`);
+  if ((product.featureIds?.length || 0) >= 8) pros.push(`Rich feature set (${product.featureIds.length} comparable features)`);
+  const hasFreeTrial = product.freeTrialDays && product.freeTrialDays > 0;
+  if (hasFreeTrial) pros.push(`Free trial available (${product.freeTrialDays} days)`);
+  if (product.g2Rating && product.g2Rating >= 4.0) pros.push(`High user satisfaction (${product.g2Rating}/5 on G2)`);
+  if (pros.length < 3) {
+    if (!pros.some(p => p.includes('entry price'))) pros.push('Competitive pricing for the category');
+    if (!pros.some(p => p.includes('feature'))) pros.push('Solid feature set for core workflows');
+    if (!pros.some(p => p.includes('trial'))) pros.push('Well-established in its category');
+  }
+  return pros.slice(0, 3);
+}
+
+function deriveCons(product: typeof product1): string[] {
+  const cons: string[] = [];
+  const enterprisePlan = product.plans.find(p => p.isEnterprise);
+  if (enterprisePlan && (enterprisePlan.priceMonthly ?? Infinity) > 100) {
+    cons.push(`Expensive enterprise tier for advanced features`);
+  }
+  if (!product.freeTrialDays || product.freeTrialDays === 0) cons.push('No free trial available');
+  const hasSSO = product.featureIds?.includes('saml_sso');
+  if (!hasSSO) cons.push('Lacks native SAML SSO support');
+  if (cons.length < 3) {
+    if (!cons.some(c => c.includes('enterprise'))) cons.push('Enterprise features locked behind top-tier plans');
+    if (!cons.some(c => c.includes('trial'))) cons.push('Limited free tier capabilities');
+  }
+  return cons.slice(0, 3);
+}
+
+function deriveWhoBullets(product: typeof product1): string[] {
+  const bullets: string[] = [];
+  const cheapest = product.plans.find(p => p.priceMonthly !== null && p.priceMonthly > 0);
+  const cat = product.category;
+  if (cat === 'CRM & Sales') {
+    bullets.push('Sales teams needing pipeline management and deal tracking');
+    bullets.push('Marketing teams running email campaigns and lead scoring');
+    if (cheapest && (cheapest.priceMonthly ?? 0) < 50) bullets.push('Small-to-mid-size businesses starting with CRM');
+  } else if (cat === 'Communication') {
+    bullets.push('Teams that rely on real-time messaging and channels');
+    bullets.push('Organizations looking to reduce email volume');
+    bullets.push('Remote-first companies needing async communication');
+  } else if (cat === 'Customer Support') {
+    bullets.push('Support teams needing shared inbox and ticketing');
+    bullets.push('Companies prioritizing customer response times');
+    bullets.push('Teams wanting integrated chat and knowledge base');
+  } else if (cat === 'Project Management') {
+    bullets.push('Teams managing complex projects with dependencies');
+    bullets.push('Organizations needing cross-department visibility');
+    bullets.push('Teams requiring time tracking and resource planning');
+  } else if (cat === 'Video Conferencing') {
+    bullets.push('Teams running frequent video meetings and webinars');
+    bullets.push('Organizations needing reliable large-group calls');
+    bullets.push('Companies with remote training requirements');
+  } else if (cat === 'Productivity & Wiki') {
+    bullets.push('Teams centralizing documentation and knowledge bases');
+    bullets.push('Organizations wanting flexible workspaces and databases');
+    bullets.push('Companies replacing scattered docs with a single source of truth');
+  } else if (cat === 'Email Marketing') {
+    bullets.push('Marketing teams running drip campaigns and newsletters');
+    bullets.push('E-commerce businesses needing automation sequences');
+    bullets.push('Companies wanting advanced segmentation and A/B testing');
+  } else if (cat === 'Dev Tools') {
+    bullets.push('Development teams needing version control and CI/CD');
+    bullets.push('Engineering organizations managing code repositories');
+    bullets.push('Teams requiring code review and project tracking');
+  } else {
+    bullets.push('Teams needing specialized tools in this category');
+    bullets.push('Organizations looking for category-leading solutions');
+    bullets.push('Companies evaluating cost-effective alternatives');
+  }
+  const proprietaryNames = (product.proprietaryFeatures || []).slice(0, 2).map((f: { name: string }) => f.name);
+  if (proprietaryNames.length > 0) {
+    bullets.push(`Teams specifically needing ${proprietaryNames.join(' and ')}`);
+  }
+  return bullets.slice(0, 3);
+}
+
+const p1Pros = derivePros(product1);
+const p1Cons = deriveCons(product1);
+const p2Pros = derivePros(product2);
+const p2Cons = deriveCons(product2);
+const who1 = deriveWhoBullets(product1);
+const who2 = deriveWhoBullets(product2);
+
+const allFeatureIds = new Set([...((product1 as any).featureIds || []), ...((product2 as any).featureIds || [])]);
+const features = [...allFeatureIds].map(fid => {
+  const f1 = (product1 as any).featureIds?.includes(fid);
+  const f2 = (product2 as any).featureIds?.includes(fid);
+  return {
+    id: fid,
+    name: fid.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+    inP1: !!f1,
+    inP2: !!f2,
+  };
+});
+---
+
+<Layout 
+  title={`${product1.name} vs ${product2.name} Cost Comparison | StackCut`}
+  description={`Detailed cost and feature comparison between ${product1.name} and ${product2.name}. Find the cheapest plan with exact functional parity.`}
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare' }, { label: `${product1.name} vs ${product2.name}` }]} />
+  <AffiliateDisclosure client:load />
+  
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-12">
+          <FreshnessBadge
+            date={product1.lastVerified < product2.lastVerified ? product1.lastVerified : product2.lastVerified}
+            showCaveat
+            class="mb-6"
+          />
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+            <span class="text-emerald-400">{product1.name}</span> vs <span class="text-emerald-400">{product2.name}</span>
+          </h1>
+          <p class="text-zinc-400 max-w-2xl text-lg">
+            Side-by-side cost analysis. Every feature and price point compared from the same verified dataset for an exact parity calculation.
+          </p>
+        </div>
+
+        {/* Header Comparison */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div class="card-blur rounded-xl p-6 border-l-2 border-l-zinc-500">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xl font-bold text-zinc-100">{product1.name}</span>
+              <span class="text-xs text-zinc-500 border border-zinc-800 rounded px-2 py-0.5">{product1.category}</span>
+            </div>
+            <div class="text-3xl font-bold text-zinc-100 mb-1">
+              {p1Cheapest?.priceMonthly !== null ? (
+                <span data-price-usd={p1Cheapest?.priceMonthly} data-price-period="/mo">${p1Cheapest?.priceMonthly}/mo</span>
+              ) : (
+                'Custom'
+              )}
+            </div>
+            <div class="text-sm text-zinc-500 mb-4">Cheapest paid plan: {p1Cheapest?.name}</div>
+            <AffiliateLink client:load href={getMonetizedUrl(product1)} productId={product1.id} variant="button" class="text-sm w-full py-2">
+              Visit {product1.name}
+            </AffiliateLink>
+          </div>
+          
+          <div class="card-blur rounded-xl p-6 border-l-2 border-l-emerald-400">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xl font-bold text-zinc-100">{product2.name}</span>
+              <span class="text-xs text-zinc-500 border border-zinc-800 rounded px-2 py-0.5">{product2.category}</span>
+            </div>
+            <div class="text-3xl font-bold text-emerald-400 mb-1">
+              {p2Cheapest?.priceMonthly !== null ? (
+                <span data-price-usd={p2Cheapest?.priceMonthly} data-price-period="/mo">${p2Cheapest?.priceMonthly}/mo</span>
+              ) : (
+                'Custom'
+              )}
+            </div>
+            <div class="text-sm text-zinc-500 mb-4">Cheapest paid plan: {p2Cheapest?.name}</div>
+            <AffiliateLink client:load href={getMonetizedUrl(product2)} productId={product2.id} variant="button" class="text-sm w-full py-2">
+              View {product2.name}
+            </AffiliateLink>
+          </div>
+        </div>
+
+        {/* Feature Matrix */}
+        <div class="card-blur rounded-xl p-6 mb-12 overflow-x-auto">
+          <h2 class="text-lg font-semibold text-zinc-100 mb-6">Feature Parity Matrix</h2>
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-zinc-800">
+                <th class="text-left py-3 px-4 text-zinc-500 font-medium">Feature</th>
+                <th class="text-center py-3 px-4 text-zinc-500 font-medium">{product1.name}</th>
+                <th class="text-center py-3 px-4 text-zinc-500 font-medium">{product2.name}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {features.map(f => (
+                <tr class="border-b border-zinc-800/50">
+                  <td class="py-3 px-4 text-zinc-300">{f.name}</td>
+                  <td class="py-3 px-4 text-center">
+                    {f.inP1 ? (
+                      <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-400/10 text-emerald-400 text-xs">✓</span>
+                    ) : (
+                      <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-400/10 text-red-400 text-xs">✕</span>
+                    )}
+                  </td>
+                  <td class="py-3 px-4 text-center">
+                    {f.inP2 ? (
+                      <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-400/10 text-emerald-400 text-xs">✓</span>
+                    ) : (
+                      <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-400/10 text-red-400 text-xs">✕</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Pricing Table */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div class="card-blur rounded-xl p-6">
+            <h3 class="text-lg font-semibold text-zinc-100 mb-4">{product1.name} Plans</h3>
+            <div class="space-y-3">
+              {product1.plans.map(plan => (
+                <div class="flex items-center justify-between py-2 border-b border-zinc-800/50 last:border-0">
+                  <span class="text-zinc-300 text-sm">{plan.name}</span>
+                  {plan.priceMonthly !== null ? (
+                    <span class="text-zinc-100 font-mono" data-price-usd={plan.priceMonthly} data-price-period="/mo">${plan.priceMonthly}/mo</span>
+                  ) : (
+                    <span class="text-zinc-100 font-mono">Custom</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div class="card-blur rounded-xl p-6">
+            <h3 class="text-lg font-semibold text-zinc-100 mb-4">{product2.name} Plans</h3>
+            <div class="space-y-3">
+              {product2.plans.map(plan => (
+                <div class="flex items-center justify-between py-2 border-b border-zinc-800/50 last:border-0">
+                  <span class="text-zinc-300 text-sm">{plan.name}</span>
+                  {plan.priceMonthly !== null ? (
+                    <span class="text-zinc-100 font-mono" data-price-usd={plan.priceMonthly} data-price-period="/mo">${plan.priceMonthly}/mo</span>
+                  ) : (
+                    <span class="text-zinc-100 font-mono">Custom</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Verdict */}
+        <div class="card-blur rounded-xl p-8 border border-emerald-400/10 bg-emerald-400/5 mb-12">
+          <h3 class="text-xl font-bold text-zinc-100 mb-4">Agent Verdict</h3>
+          <p class="text-zinc-300 mb-6">
+            Based on feature parity and pricing analysis, <strong class="text-emerald-400">{cheaper.name}</strong> offers the lower entry point at <strong class="text-emerald-400">{cheaper === product1 ? (
+              p1Cheapest?.priceMonthly !== null ? <span data-price-usd={p1Cheapest?.priceMonthly} data-price-period="/mo">${p1Cheapest?.priceMonthly}/mo</span> : 'Custom'
+            ) : (
+              p2Cheapest?.priceMonthly !== null ? <span data-price-usd={p2Cheapest?.priceMonthly} data-price-period="/mo">${p2Cheapest?.priceMonthly}/mo</span> : 'Custom'
+            )}</strong> compared to {moreExpensive.name}'s <strong class="text-zinc-100">{moreExpensive === product1 ? (
+              p1Cheapest?.priceMonthly !== null ? <span data-price-usd={p1Cheapest?.priceMonthly} data-price-period="/mo">${p1Cheapest?.priceMonthly}/mo</span> : 'Custom'
+            ) : (
+              p2Cheapest?.priceMonthly !== null ? <span data-price-usd={p2Cheapest?.priceMonthly} data-price-period="/mo">${p2Cheapest?.priceMonthly}/mo</span> : 'Custom'
+            )}</strong>. 
+            If your workflow does not require {moreExpensive.name}-specific enterprise features, migrating could yield significant savings.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href={`/alternatives/${product1.slug}-cheap`} class="btn-secondary text-sm py-2.5 px-6">
+              More {product1.name} Alternatives
+            </a>
+            <a href="/downgrade" class="btn-primary text-sm py-2.5 px-6">
+              Test Downgrade Engine
+            </a>
+          </div>
+        </div>
+
+        {/* Pros & Cons */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div class="card-blur rounded-xl p-6">
+            <h3 class="text-lg font-semibold text-zinc-100 mb-4">Pros & Cons — {product1.name}</h3>
+            <div class="mb-4">
+              <div class="text-xs font-medium text-emerald-400 uppercase tracking-wider mb-2">Pros</div>
+              <ul class="space-y-2">
+                {p1Pros.map(pro => (
+                  <li class="flex items-start gap-2 text-sm text-zinc-300">
+                    <span class="text-emerald-400 shrink-0 mt-0.5">✓</span>
+                    {pro}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <div class="text-xs font-medium text-red-400 uppercase tracking-wider mb-2">Cons</div>
+              <ul class="space-y-2">
+                {p1Cons.map(con => (
+                  <li class="flex items-start gap-2 text-sm text-zinc-300">
+                    <span class="text-red-400 shrink-0 mt-0.5">✕</span>
+                    {con}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-blur rounded-xl p-6">
+            <h3 class="text-lg font-semibold text-zinc-100 mb-4">Pros & Cons — {product2.name}</h3>
+            <div class="mb-4">
+              <div class="text-xs font-medium text-emerald-400 uppercase tracking-wider mb-2">Pros</div>
+              <ul class="space-y-2">
+                {p2Pros.map(pro => (
+                  <li class="flex items-start gap-2 text-sm text-zinc-300">
+                    <span class="text-emerald-400 shrink-0 mt-0.5">✓</span>
+                    {pro}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <div class="text-xs font-medium text-red-400 uppercase tracking-wider mb-2">Cons</div>
+              <ul class="space-y-2">
+                {p2Cons.map(con => (
+                  <li class="flex items-start gap-2 text-sm text-zinc-300">
+                    <span class="text-red-400 shrink-0 mt-0.5">✕</span>
+                    {con}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Who Should Choose */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div class="card-blur rounded-xl p-6 border-l-2 border-l-zinc-500">
+            <h3 class="text-lg font-semibold text-zinc-100 mb-3">Who should choose {product1.name}</h3>
+            <ul class="space-y-2">
+              {who1.map(bullet => (
+                <li class="flex items-start gap-2 text-sm text-zinc-300">
+                  <span class="text-zinc-500 shrink-0 mt-0.5">•</span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="card-blur rounded-xl p-6 border-l-2 border-l-emerald-400">
+            <h3 class="text-lg font-semibold text-zinc-100 mb-3">Who should choose {product2.name}</h3>
+            <ul class="space-y-2">
+              {who2.map(bullet => (
+                <li class="flex items-start gap-2 text-sm text-zinc-300">
+                  <span class="text-zinc-500 shrink-0 mt-0.5">•</span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<SchemaOrg 
+  type="Product"
+  productName={`${product1.name} vs ${product2.name}`}
+  pageDescription={`Detailed cost and feature comparison between ${product1.name} and ${product2.name}. Find the cheapest plan with exact functional parity.`}
+  verdictText={`${cheaper.name} offers the lower entry point at $${cheaper === product1 ? (p1Cheapest?.priceMonthly ?? 'Custom') : (p2Cheapest?.priceMonthly ?? 'Custom')}/mo compared to ${moreExpensive.name}.`}
+  offer1Name={product1.name}
+  offer1Price={String(p1Cheapest?.priceMonthly ?? 0)}
+  offer2Name={product2.name}
+  offer2Price={String(p2Cheapest?.priceMonthly ?? 0)}
+/>

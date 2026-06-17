@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import StackAuditor from '../components/StackAuditor';
+import { getAllProducts } from '../lib/saas-data';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const allProducts = await getAllProducts();
+---
+
+<Layout 
+  title="SaaS Stack Auditor | StackCut"
+  description="Audit your software stack for critical redundancies. Add your tools, cross-reference feature matrices, and discover which subscriptions to cancel immediately."
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Stack Auditor' }]} />
+  <AffiliateDisclosure client:load />
+  
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-400/20 bg-emerald-400/5 text-emerald-400 text-xs font-medium mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Module 04 — Real-Time Stack Auditor
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">SaaS Stack Auditor</h1>
+          <p class="text-zinc-400 max-w-2xl mx-auto">
+            Most startups bleed money on redundant tools. Trello + ClickUp + Notion = $0 value add, $300/month burn. 
+            Add your stack and see the damage report.
+          </p>
+        </div>
+        
+        <StackAuditor client:visible products={allProducts} />
+
+        <div class="mt-16 max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">How does the Stack Auditor identify redundancies?</h3>
+              <p class="text-zinc-400 text-sm">The engine cross-references the core features of every tool you input. If two tools belong to the same functional silo and have a high feature overlap (e.g., both offer Kanban boards and time tracking), it flags the cheaper one as a potential redundancy.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">Is my tech stack data stored anywhere?</h3>
+              <p class="text-zinc-400 text-sm">No. The Stack Auditor runs entirely in your browser using local intelligence. Your stack data is never sent to our servers, ensuring complete privacy for your organization's internal tooling setup.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<SchemaOrg 
+  type="WebApplication"
+  toolTitle="SaaS Stack Auditor"
+  toolDescription="Audit your software stack for critical redundancies. Add your tools, cross-reference feature matrices, and discover which subscriptions to cancel immediately."
+/>
+
+<SchemaOrg 
+  type="FAQPage"
+  faqItems={[
+    { question: "How does the Stack Auditor identify redundancies?", answer: "The engine cross-references the core features of every tool you input. If two tools belong to the same functional silo and have a high feature overlap (e.g., both offer Kanban boards and time tracking), it flags the cheaper one as a potential redundancy." },
+    { question: "Is my tech stack data stored anywhere?", answer: "No. The Stack Auditor runs entirely in your browser using local intelligence. Your stack data is never sent to our servers, ensuring complete privacy for your organization's internal tooling setup." }
+  ]}
+/>

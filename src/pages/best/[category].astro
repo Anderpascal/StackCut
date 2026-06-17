@@ -1,0 +1,326 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import SchemaOrg from '../../components/SchemaOrg.astro';
+import AffiliateDisclosure from '../../components/AffiliateDisclosure';
+import AffiliateLink from '../../components/AffiliateLink';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import EmailCapture from '../../components/EmailCapture';
+import { getAllProducts } from '../../lib/saas-data';
+import { getMonetizedUrl } from '../../lib/affiliates';
+import FreshnessBadge from '../../components/FreshnessBadge.astro';
+import { CATEGORY_ORDER, RELATED_CATEGORIES } from '../../lib/categories';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const products = await getAllProducts();
+  const paths = CATEGORY_ORDER.map(category => {
+    const categorySlug = category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const categoryProducts = products.filter(p => p.category === category);
+    const relatedCategories = RELATED_CATEGORIES[category] || [category];
+    const alternativeProducts = products.filter(p => 
+      relatedCategories.includes(p.category) && p.category !== category
+    ).slice(0, 5);
+    
+    return {
+      params: { category: categorySlug },
+      props: { 
+        category, 
+        products: categoryProducts, 
+        alternatives: alternativeProducts,
+        relatedCategories: relatedCategories.filter(c => c !== category)
+      },
+    };
+  });
+  return paths;
+};
+
+const { category, products, alternatives, relatedCategories } = Astro.props;
+
+const sortedProducts = [...products].sort((a, b) => {
+  const aCheapest = a.plans.find(p => p.priceMonthly !== null && p.priceMonthly > 0);
+  const bCheapest = b.plans.find(p => p.priceMonthly !== null && p.priceMonthly > 0);
+  return (aCheapest?.priceMonthly || Infinity) - (bCheapest?.priceMonthly || Infinity);
+});
+
+const categoryDescriptions: Record<string, string> = {
+  'CRM & Sales': 'CRM and sales tools help teams manage leads, track deals, and automate outreach. The right CRM can increase close rates by 28% on average.',
+  'Communication': 'Team communication tools enable real-time messaging, channels, and async collaboration. Most teams use 2-3 overlapping tools in this category.',
+  'Customer Support': 'Customer support platforms handle tickets, live chat, and knowledge bases. Reducing response time by 1 hour can increase retention by 7%.',
+  'Dev Tools': 'Developer tools cover version control, CI/CD, and deployment. Open source alternatives often provide 80% of features at 0% of the cost.',
+  'Email Marketing': 'Email marketing platforms manage campaigns, automations, and subscriber lists. The average ROI is $36 for every $1 spent.',
+  'Productivity & Wiki': 'Productivity and wiki tools centralize documentation, databases, and project management. Teams waste 5.3 hours weekly searching for information.',
+  'Project Management': 'Project management tools track tasks, timelines, and dependencies. Proper tooling can reduce project overruns by 28%.',
+  'Video Conferencing': 'Video conferencing tools enable meetings, webinars, and screen sharing. Hybrid teams spend 31% of their work week in meetings.',
+  'Design': 'Design tools handle prototyping, wireframing, and handoff. Design-to-development handoff errors cost teams 12 hours per sprint on average.',
+  'Monitoring': 'Monitoring tools track infrastructure health, uptime, and performance. Proactive monitoring reduces downtime costs by 85%.',
+};
+
+const categorySEO: Record<string, { title: string; description: string }> = {
+  'CRM & Sales': { title: 'Best CRM & Sales Tools in 2026 | Compared & Ranked', description: 'Compare the best CRM and sales tools. See exact pricing, features, and find cheaper alternatives with the same functionality.' },
+  'Communication': { title: 'Best Team Communication Tools in 2026 | Cost Comparison', description: 'Find the best team communication tools. Compare Slack, Teams, Discord, and more with exact pricing and feature parity.' },
+  'Customer Support': { title: 'Best Customer Support Software in 2026 | Pricing Guide', description: 'Compare customer support platforms. See real pricing, features, and discover which tools offer the best value for your team.' },
+  'Dev Tools': { title: 'Best Developer Tools in 2026 | Open Source vs Paid', description: 'Compare developer tools including GitHub, GitLab, Bitbucket. Find open source alternatives that save thousands per year.' },
+  'Email Marketing': { title: 'Best Email Marketing Tools in 2026 | Cost Comparison', description: 'Compare email marketing platforms. See exact pricing per subscriber and find the cheapest option for your list size.' },
+  'Productivity & Wiki': { title: 'Best Productivity & Wiki Tools in 2026 | Feature Comparison', description: 'Compare Notion, Confluence, Coda, and more. See which productivity tool offers the best value for your team.' },
+  'Project Management': { title: 'Best Project Management Tools in 2026 | Pricing Guide', description: 'Compare project management tools. See exact pricing, features, and find alternatives that cost 50-80% less.' },
+  'Video Conferencing': { title: 'Best Video Conferencing Tools in 2026 | Cost Comparison', description: 'Compare Zoom, Google Meet, Microsoft Teams, and more. Find the cheapest video conferencing solution for your team.' },
+  'Design': { title: 'Best Design Tools in 2026 | Pricing & Features', description: 'Compare Figma, Sketch, Adobe XD, and more. See exact pricing and find alternatives with the same design capabilities.' },
+  'Monitoring': { title: 'Best Monitoring Tools in 2026 | Open Source vs Paid', description: 'Compare Datadog, New Relic, Grafana, and more. Find open source monitoring tools that cost 90% less.' },
+};
+
+const seo = categorySEO[category] || { title: `Best ${category} Tools in 2026`, description: `Compare the best ${category} tools with exact pricing and feature parity.` };
+
+// Most recent verification date across the tools shown — drives the freshness badge.
+const latestVerified = products
+  .map(p => p.lastVerified)
+  .filter(Boolean)
+  .sort()
+  .at(-1);
+---
+
+<Layout 
+  title={seo.title}
+  description={seo.description}
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Best Tools', href: '/best' }, { label: category }]} />
+  <AffiliateDisclosure client:load />
+  
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-20 pb-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-12">
+          <FreshnessBadge date={latestVerified} class="mb-6" />
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+            Best <span class="text-emerald-400">{category}</span> Tools in 2026
+          </h1>
+          <p class="text-zinc-400 max-w-3xl text-lg">
+            {categoryDescriptions[category] || `Compare the best ${category} tools with exact pricing and feature parity.`}
+          </p>
+        </div>
+
+        <div class="card-blur rounded-xl p-6 mb-12">
+          <h2 class="text-lg font-semibold text-zinc-100 mb-4">Quick Comparison</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-zinc-800">
+                  <th class="text-left py-3 px-4 text-zinc-500 font-medium">Tool</th>
+                  <th class="text-left py-3 px-4 text-zinc-500 font-medium">Starting Price</th>
+                  <th class="text-left py-3 px-4 text-zinc-500 font-medium">Free Plan</th>
+                  <th class="text-left py-3 px-4 text-zinc-500 font-medium">G2 Rating</th>
+                  <th class="text-right py-3 px-4 text-zinc-500 font-medium">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sortedProducts.map((product, i) => {
+                  const cheapest = product.plans.find(p => p.priceMonthly !== null && p.priceMonthly > 0);
+                  const hasFreePlan = product.plans.some(p => p.priceMonthly === 0);
+                  return (
+                    <tr class="border-b border-zinc-800/50 hover:bg-zinc-900/30 transition-colors">
+                      <td class="py-3 px-4">
+                        <div class="flex items-center gap-3">
+                          <span class="text-xs text-zinc-500 w-6">#{i + 1}</span>
+                          <span class="text-zinc-100 font-medium">{product.name}</span>
+                        </div>
+                      </td>
+                      <td class="py-3 px-4">
+                        {cheapest ? (
+                          <span class="text-emerald-400 font-mono" data-price-usd={cheapest.priceMonthly} data-price-period="/mo">${cheapest.priceMonthly}/mo</span>
+                        ) : (
+                          <span class="text-zinc-500">Custom</span>
+                        )}
+                      </td>
+                      <td class="py-3 px-4">
+                        {hasFreePlan ? (
+                          <span class="text-emerald-400 text-xs">✓ Yes</span>
+                        ) : (
+                          <span class="text-zinc-500 text-xs">No</span>
+                        )}
+                      </td>
+                      <td class="py-3 px-4">
+                        {product.g2Rating ? (
+                          <span class="text-zinc-300">{product.g2Rating}/5</span>
+                        ) : (
+                          <span class="text-zinc-500">N/A</span>
+                        )}
+                      </td>
+                      <td class="py-3 px-4 text-right">
+                        <AffiliateLink client:load href={getMonetizedUrl(product)} productId={product.id} variant="text" class="text-xs">
+                          View
+                        </AffiliateLink>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="space-y-8 mb-12">
+          {sortedProducts.map((product, i) => {
+            const cheapest = product.plans.find(p => p.priceMonthly !== null && p.priceMonthly > 0);
+            const enterprise = product.plans.find(p => p.isEnterprise);
+            const savings = enterprise && cheapest ? (enterprise.priceAnnually ?? (enterprise.priceMonthly || 0) * 12) - (cheapest.priceAnnually ?? (cheapest.priceMonthly || 0) * 12) : 0;
+            
+            return (
+              <div class="card-blur rounded-xl p-6 sm:p-8 border-l-2 border-l-emerald-400">
+                <div class="flex items-start justify-between gap-4 mb-4">
+                  <div>
+                    <div class="flex items-center gap-3 mb-2">
+                      <span class="text-xs text-zinc-500 w-8">#{i + 1}</span>
+                      <h2 class="text-xl font-bold text-zinc-100">{product.name}</h2>
+                      {product.g2Rating && (
+                        <span class="text-xs text-zinc-500 border border-zinc-800 rounded px-2 py-0.5">
+                          G2: {product.g2Rating}/5
+                        </span>
+                      )}
+                    </div>
+                    <p class="text-zinc-400 text-sm max-w-xl">{product.description}</p>
+                  </div>
+                  <div class="text-right shrink-0">
+                    <div class="text-2xl font-bold text-emerald-400">
+                      {cheapest ? (
+                        <span data-price-usd={cheapest.priceMonthly} data-price-period="/mo">${cheapest.priceMonthly}/mo</span>
+                      ) : (
+                        'Custom'
+                      )}
+                    </div>
+                    {savings > 0 && (
+                      <div class="text-xs text-zinc-500">
+                        Save up to <span class="text-emerald-400" data-price-usd={savings} data-price-period="/yr">${savings.toLocaleString()}/yr</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {(product.featureIds || []).slice(0, 8).map((fid: string) => (
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs">
+                      {fid.replace(/_/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())}
+                    </span>
+                  ))}
+                </div>
+                
+                <div class="flex items-center gap-4 pt-4 border-t border-zinc-800">
+                  <a 
+                    href={`/alternatives/${product.slug}-cheap`}
+                    class="text-sm text-zinc-400 hover:text-emerald-400 transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none rounded"
+                  >
+                    View alternatives
+                  </a>
+                  <a 
+                    href={`/compare/${product.slug}-vs-${sortedProducts[(i + 1) % sortedProducts.length]?.slug}-costs`}
+                    class="text-sm text-zinc-400 hover:text-emerald-400 transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none rounded"
+                  >
+                    Compare
+                  </a>
+                  <AffiliateLink client:load href={getMonetizedUrl(product)} productId={product.id} variant="button" class="ml-auto">
+                    Visit {product.name}
+                  </AffiliateLink>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {alternatives.length > 0 && (
+          <div class="mb-12">
+            <h2 class="text-2xl font-bold text-zinc-100 mb-6">Alternatives from Related Categories</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {alternatives.map(alt => {
+                const altCheapest = alt.plans.find(p => p.priceMonthly !== null && p.priceMonthly > 0);
+                return (
+                  <div class="card-blur rounded-lg p-5 hover:border-emerald-400/30 transition-all group">
+                    <div class="flex items-center justify-between mb-3">
+                      <span class="text-zinc-100 font-semibold">{alt.name}</span>
+                      <span class="text-xs text-zinc-500 border border-zinc-800 rounded px-2 py-0.5">{alt.category}</span>
+                    </div>
+                    <div class="flex items-baseline gap-2 mb-2">
+                      {altCheapest ? (
+                        <span class="text-xl font-bold text-emerald-400" data-price-usd={altCheapest.priceMonthly} data-price-period="/mo">${altCheapest.priceMonthly}/mo</span>
+                      ) : (
+                        <span class="text-xl font-bold text-zinc-500">Custom</span>
+                      )}
+                    </div>
+                    <p class="text-zinc-500 text-xs mb-3 line-clamp-2">{alt.description}</p>
+                    <AffiliateLink client:load href={getMonetizedUrl(alt)} productId={alt.id} variant="text" class="text-xs">
+                      View {alt.name}
+                    </AffiliateLink>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        <div class="card-blur rounded-xl p-8 border border-emerald-400/10 bg-emerald-400/5 mb-12">
+          <h2 class="text-xl font-bold text-zinc-100 mb-4">How to Choose the Right {category} Tool</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-sm font-semibold text-zinc-300 mb-2">Key Questions to Ask</h3>
+              <ul class="space-y-2 text-sm text-zinc-400">
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400 shrink-0 mt-0.5">1.</span>
+                  <span>What features do you actually use today? Most teams use 20% of their tools.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400 shrink-0 mt-0.5">2.</span>
+                  <span>How many seats do you need? Per-user pricing adds up fast.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400 shrink-0 mt-0.5">3.</span>
+                  <span>Do you need integrations? Check if the tool connects to your stack.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-400 shrink-0 mt-0.5">4.</span>
+                  <span>Is there a free tier? Many tools offer generous free plans for small teams.</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-zinc-300 mb-2">Red Flags to Watch</h3>
+              <ul class="space-y-2 text-sm text-zinc-400">
+                <li class="flex items-start gap-2">
+                  <span class="text-red-400 shrink-0 mt-0.5">!</span>
+                  <span>Enterprise-only SSO — this is the #1 driver of unnecessary upgrades.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-red-400 shrink-0 mt-0.5">!</span>
+                  <span>Annual-only billing with no monthly option — locks you in.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-red-400 shrink-0 mt-0.5">!</span>
+                  <span>Feature limits on free plans that force upgrades quickly.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-red-400 shrink-0 mt-0.5">!</span>
+                  <span>No export option — makes migration painful and expensive.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-blur rounded-xl p-8 border border-emerald-400/10 text-center">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-3">Get the full {category} pricing report</h2>
+          <p class="text-zinc-400 mb-6 max-w-lg mx-auto">
+            We track pricing changes across all {category} tools weekly. Get notified when prices drop or new alternatives emerge.
+          </p>
+          <EmailCapture client:load variant="inline" headline={`Get ${category} pricing alerts`} />
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<SchemaOrg 
+  type="ItemList"
+  listName={`Best ${category} Tools`}
+  items={sortedProducts.map((p, i) => ({ name: p.name, position: i + 1 }))}
+/>

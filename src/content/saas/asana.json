@@ -1,0 +1,122 @@
+{
+  "id": "asana",
+  "name": "Asana",
+  "slug": "asana",
+  "category": "Project Management",
+  "description": "Work management platform for team collaboration and project tracking.",
+  "websiteUrl": "https://asana.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 30,
+  "popularityScore": 88,
+  "g2Rating": 4.4,
+  "featureIds": [
+    "custom_fields",
+    "api_access",
+    "integrations",
+    "workflows",
+    "reporting",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "dashboards",
+    "dependency_tracking",
+    "kanban_boards",
+    "project_timelines",
+    "gantt_charts",
+    "task_management"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "timeline",
+      "name": "Timeline View",
+      "description": "Gantt-style project timeline",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "portfolios",
+      "name": "Portfolios",
+      "description": "Project portfolio management",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    },
+    {
+      "id": "goals",
+      "name": "Goals",
+      "description": "OKR and goal tracking",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "personal",
+      "name": "Personal",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "custom_fields": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "starter",
+      "name": "Starter",
+      "priceMonthly": 13.49,
+      "priceAnnually": 131.88,
+      "sourceUrl": "https://asana.com/pricing",
+      "capturedAt": "2026-06-13",
+      "seatsIncluded": 1,
+      "priceNote": "$10.99/user/mo billed annually ($13.49/user/mo monthly).",
+      "features": {
+        "custom_fields": true,
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "advanced",
+      "name": "Advanced",
+      "priceMonthly": 30.49,
+      "priceAnnually": 299.88,
+      "sourceUrl": "https://asana.com/pricing",
+      "capturedAt": "2026-06-13",
+      "seatsIncluded": 1,
+      "priceNote": "$24.99/user/mo billed annually ($30.49/user/mo monthly). AI Studio and Timesheets add-ons sold separately.",
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "priceNote": "Custom pricing; includes SAML, SCIM and 99.9% uptime SLA.",
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true,
+        "saml_sso": true,
+        "audit_logs": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "lastVerified": "2026-06-13",
+  "pricingUrl": "https://asana.com/pricing"
+}

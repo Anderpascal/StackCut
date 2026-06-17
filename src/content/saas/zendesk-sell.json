@@ -1,0 +1,133 @@
+{
+  "id": "zendesk-sell",
+  "name": "Zendesk Sell",
+  "slug": "zendesk-sell",
+  "category": "CRM & Sales",
+  "description": "Sales CRM by Zendesk with pipeline management, email integration, and reporting.",
+  "websiteUrl": "https://www.zendesk.com/sell/",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 14,
+  "lastVerified": "2026-06-14",
+  "popularityScore": 65,
+  "g2Rating": 4.2,
+  "featureIds": [
+    "crm_basic",
+    "api_access",
+    "integrations",
+    "reporting",
+    "custom_fields",
+    "roles_permissions",
+    "pipeline_mgmt",
+    "lead_scoring",
+    "email_automation",
+    "email_sequences",
+    "voip_telephony",
+    "workflows",
+    "saml_sso",
+    "audit_logs",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "smart_lists",
+      "name": "Smart Lists",
+      "description": "Dynamic contact lists with real-time filters",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "power_dialer",
+      "name": "Power Dialer",
+      "description": "Built-in calling with auto-dialing and recording",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "sales_engagement",
+      "name": "Sales Engagement",
+      "description": "Email sequences and task automation",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "team",
+      "name": "Sell Team",
+      "priceMonthly": 19,
+      "priceAnnually": 228,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium",
+      "priceNote": "$19/agent/mo; annual total $228/agent.",
+      "sourceUrl": "https://www.zendesk.com/sell/",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "growth",
+      "name": "Sell Growth",
+      "priceMonthly": 55,
+      "priceAnnually": 660,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium",
+      "priceNote": "$55/agent/mo; annual total $660/agent.",
+      "sourceUrl": "https://www.zendesk.com/sell/",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "professional",
+      "name": "Sell Professional",
+      "priceMonthly": 115,
+      "priceAnnually": 1380,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "saml_sso": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "high",
+      "priceNote": "$115/agent/mo; annual total $1,380/agent.",
+      "sourceUrl": "https://www.zendesk.com/sell/",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "enterprise",
+      "name": "Sell Enterprise",
+      "priceMonthly": 169,
+      "priceAnnually": 2028,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "roles_permissions": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true,
+      "priceNote": "$169/agent/mo; annual total $2,028/agent.",
+      "capturedAt": "2026-06-14"
+    }
+  ],
+  "pricingUrl": "https://www.zendesk.com/sell/"
+}

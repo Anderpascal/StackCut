@@ -1,0 +1,166 @@
+---
+import '../styles/global.css';
+import CookieConsent from '../components/CookieConsent';
+import AffiliateConversionTracker from '../components/AffiliateConversionTracker';
+import { FX_RATES } from '../lib/fx';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const { 
+  title, 
+  description = "Cut your SaaS spend. Identify redundancies, downgrade plans without losing critical features, and migrate to cheaper alternatives with exact functional parity.",
+  image = "/og-default.jpg",
+  canonicalURL,
+} = Astro.props;
+
+const siteUrl = 'https://stackcut.app';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f0f3ea" />
+    <link rel="canonical" href={canonicalURL || new URL(Astro.url.pathname, siteUrl).href} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site || siteUrl).href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL || new URL(Astro.url.pathname, siteUrl).href} />
+    <meta property="og:site_name" content="StackCut" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site || siteUrl).href} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:ital,wght@0,400..700;1,400&family=Spline+Sans+Mono:wght@400..600&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:ital,wght@0,400..700;1,400&family=Spline+Sans+Mono:wght@400..600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/print.css" media="print" />
+    <script defer data-domain="stackcut.app" src="https://plausible.io/js/script.js"></script>
+    <script>
+      // Capture clicks on elements with data-plausible-event and send to Plausible
+      document.addEventListener('click', function(e) {
+        const target = e.target.closest('[data-plausible-event]');
+        if (target && window.plausible) {
+          var eventName = target.getAttribute('data-plausible-event');
+          window.plausible(eventName);
+        }
+      });
+    </script>
+    <script is:inline define:vars={{ FX_RATES }}>
+      (function() {
+        const STORAGE_KEY = 'saas-downgrader-currency';
+        // Rates injected at build from src/data/fx-rates.json (single source of
+        // truth, refreshed by CI) — never hardcode them here.
+        const EXCHANGE_RATES = FX_RATES;
+        const CURRENCY_LOCALES = { USD: 'en-US', EUR: 'de-DE', GBP: 'en-GB' };
+
+        function getStoredCurrency() {
+          try {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            if (stored === 'USD' || stored === 'EUR' || stored === 'GBP') {
+              return stored;
+            }
+          } catch (e) {}
+          return 'USD';
+        }
+
+        function updatePrices(currency) {
+          const rate = EXCHANGE_RATES[currency] || 1;
+          const locale = CURRENCY_LOCALES[currency] || 'en-US';
+          
+          document.querySelectorAll('[data-price-usd]').forEach(el => {
+            const usdVal = parseFloat(el.getAttribute('data-price-usd'));
+            if (isNaN(usdVal)) return;
+            
+            const period = el.getAttribute('data-price-period') || '';
+            const converted = usdVal * rate;
+            
+            // If the value is 0, format it cleanly (e.g. Free/0)
+            const formatted = new Intl.NumberFormat(locale, {
+              style: 'currency',
+              currency: currency,
+              minimumFractionDigits: 0,
+              maximumFractionDigits: usdVal % 1 === 0 ? 0 : 2
+            }).format(converted);
+            
+            el.textContent = formatted + period;
+          });
+
+          // Sync selectors if they exist
+          const selector = document.getElementById('global-currency-select');
+          if (selector && selector.value !== currency) {
+            selector.value = currency;
+          }
+          const selectorMobile = document.getElementById('global-currency-select-mobile');
+          if (selectorMobile && selectorMobile.value !== currency) {
+            selectorMobile.value = currency;
+          }
+        }
+
+        // Initialize on page load
+        function init() {
+          const currency = getStoredCurrency();
+          updatePrices(currency);
+        }
+
+        window.addEventListener('DOMContentLoaded', init);
+        if (document.readyState === 'interactive' || document.readyState === 'complete') {
+          init();
+        }
+
+        // Listen for changes
+        window.addEventListener('currencyChange', function(e) {
+          if (e.detail) {
+            updatePrices(e.detail);
+          }
+        });
+      })();
+    </script>
+    <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js" onerror="console.info('EthicalAds blocked')"></script>
+    <slot name="jsonld" />
+  </head>
+  <body class="bg-grid min-h-screen flex flex-col">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-emerald-400 focus:text-zinc-950 focus:rounded focus:font-medium focus:ring-2 focus:ring-emerald-500">
+      Skip to content
+    </a>
+    {/* Ledger margin: the red rule running down the page, like accounting paper */}
+    <div class="fixed inset-y-0 left-4 sm:left-8 lg:left-12 w-px bg-red-400/30 pointer-events-none z-0" aria-hidden="true"></div>
+
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <slot />
+    </div>
+    <CookieConsent client:load />
+    <AffiliateConversionTracker client:load />
+    <script>
+      // Scroll-in reveals for [data-reveal] elements
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const targets = document.querySelectorAll('[data-reveal]');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        targets.forEach(el => el.classList.add('revealed'));
+      } else {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        targets.forEach(el => observer.observe(el));
+      }
+    </script>
+  </body>
+</html>

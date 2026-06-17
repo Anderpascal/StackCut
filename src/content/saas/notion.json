@@ -1,0 +1,180 @@
+{
+  "id": "notion",
+  "name": "Notion",
+  "slug": "notion",
+  "category": "Productivity & Wiki",
+  "description": "All-in-one workspace for notes, docs, and databases.",
+  "websiteUrl": "https://notion.so",
+  "affiliateUrl": "https://notion.grsm.io/stackcut",
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-13",
+  "popularityScore": 88,
+  "g2Rating": 4.6,
+  "featureIds": [
+    "custom_fields",
+    "api_access",
+    "integrations",
+    "roles_permissions",
+    "dashboards",
+    "collaboration",
+    "wiki_pages",
+    "real_time_co_editing",
+    "relational_database",
+    "database_views",
+    "workflows",
+    "audit_logs",
+    "saml_sso",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "databases",
+      "name": "Databases",
+      "description": "Relational databases with views",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "wikis",
+      "name": "Wikis",
+      "description": "Hierarchical wiki/documentation",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "projects",
+      "name": "Projects",
+      "description": "Project management with timelines",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "ai_blocks",
+      "name": "AI Blocks",
+      "description": "AI-powered content blocks",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "synced_databases",
+      "name": "Synced Databases",
+      "description": "Cross-page synced databases",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "automations",
+      "name": "Automations",
+      "description": "Button-trigger automations",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "custom_fields": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "plus",
+      "name": "Plus",
+      "priceMonthly": 12,
+      "priceAnnually": 120,
+      "sourceUrl": "https://www.notion.so/pricing",
+      "capturedAt": "2026-06-13",
+      "seatsIncluded": 1,
+      "priceNote": "$10/member/mo billed annually ($12/mo monthly). Notion AI is a paid add-on.",
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "addOns": [
+        {
+          "id": "notion_ai",
+          "name": "Notion AI",
+          "description": "Unlimited AI features for every member; ~$10/member/mo billed annually.",
+          "priceMonthly": 10,
+          "priceAnnually": 120,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "priceMonthly": 24,
+      "priceAnnually": 240,
+      "sourceUrl": "https://www.notion.so/pricing",
+      "capturedAt": "2026-06-13",
+      "seatsIncluded": 1,
+      "priceNote": "$20/member/mo billed annually ($24/mo monthly). Notion AI is a paid add-on.",
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "roles_permissions": true,
+        "audit_logs": true
+      },
+      "isEnterprise": false,
+      "addOns": [
+        {
+          "id": "notion_ai",
+          "name": "Notion AI",
+          "description": "Unlimited AI features for every member; ~$10/member/mo billed annually.",
+          "priceMonthly": 10,
+          "priceAnnually": 120,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "priceNote": "Custom pricing; includes SCIM, audit logs and advanced security.",
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "roles_permissions": true,
+        "audit_logs": true,
+        "saml_sso": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true,
+      "addOns": [
+        {
+          "id": "notion_ai",
+          "name": "Notion AI",
+          "description": "Unlimited AI features for every member; ~$10/member/mo billed annually.",
+          "priceMonthly": 10,
+          "priceAnnually": 120,
+          "unit": "per_user"
+        }
+      ]
+    }
+  ],
+  "pricingUrl": "https://www.notion.so/pricing"
+}

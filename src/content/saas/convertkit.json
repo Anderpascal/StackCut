@@ -1,0 +1,96 @@
+{
+  "id": "convertkit",
+  "name": "Kit",
+  "slug": "convertkit",
+  "category": "Email Marketing",
+  "description": "Email marketing platform built for creators and bloggers.",
+  "websiteUrl": "https://kit.com",
+  "pricingUrl": "https://kit.com/pricing",
+  "affiliateUrl": null,
+  "pricingModel": "custom",
+  "freeTrialDays": null,
+  "popularityScore": 71,
+  "g2Rating": 4.4,
+  "featureIds": [
+    "email_automation",
+    "api_access",
+    "integrations",
+    "reporting",
+    "email_templates",
+    "a_b_testing",
+    "email_sequences"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "visual_automations",
+      "name": "Visual Automations",
+      "description": "Visual email automation builder",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "landing_pages_ck",
+      "name": "Landing Pages",
+      "description": "No-code landing page builder",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "commerce",
+      "name": "Commerce",
+      "description": "Digital product selling tools",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "email_automation": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "creator",
+      "name": "Creator",
+      "priceMonthly": 39,
+      "priceAnnually": 396,
+      "sourceUrl": "https://kit.com/pricing",
+      "capturedAt": "2026-06-14",
+      "seatsIncluded": 1,
+      "priceNote": "Starting price for ~1,000 subscribers; scales with list size.",
+      "features": {
+        "email_automation": true,
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "creator_pro",
+      "name": "Creator Pro",
+      "priceMonthly": 79,
+      "priceAnnually": 792,
+      "sourceUrl": "https://kit.com/pricing",
+      "capturedAt": "2026-06-14",
+      "seatsIncluded": 1,
+      "priceNote": "Starting price for ~1,000 subscribers; scales with list size.",
+      "features": {
+        "email_automation": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false
+    }
+  ],
+  "lastVerified": "2026-06-14"
+}

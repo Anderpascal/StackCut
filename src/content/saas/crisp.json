@@ -1,0 +1,162 @@
+{
+  "id": "crisp",
+  "name": "Crisp",
+  "slug": "crisp",
+  "category": "Customer Support",
+  "description": "Lightweight customer messaging platform and shared inbox with flat per-workspace pricing.",
+  "websiteUrl": "https://crisp.chat",
+  "affiliateUrl": "https://crisp.chat/en/partners/?ref=stackcut",
+  "pricingModel": "per_month",
+  "freeTrialDays": 14,
+  "lastVerified": "2026-06-13",
+  "capturedAt": "2026-06-13",
+  "popularityScore": 72,
+  "g2Rating": 4.2,
+  "featureIds": [
+    "crm_basic",
+    "api_access",
+    "integrations",
+    "reporting",
+    "ticketing",
+    "knowledge_base",
+    "in_app_chat",
+    "chatbot_builder",
+    "shared_inbox",
+    "workflows",
+    "custom_fields",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "live_chat",
+      "name": "Live Chat",
+      "description": "Real-time visitor chat",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "crm_contacts",
+      "name": "CRM Contacts",
+      "description": "Lightweight contact management",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 2,
+      "sourceUrl": "https://crisp.chat/en/pricing/",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "crm_basic": true,
+        "integrations": true,
+        "live_chat": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "mini",
+      "name": "Mini",
+      "priceMonthly": 45,
+      "priceAnnually": 540,
+      "seatsIncluded": 4,
+      "priceNote": "Flat price per workspace. Additional agents $10/agent/mo. Includes ~$5 in AI credits.",
+      "sourceUrl": "https://crisp.chat/en/pricing/",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "crm_basic": true,
+        "integrations": true,
+        "api_access": true,
+        "shared_inbox": true,
+        "live_chat": true,
+        "crm_contacts": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "essentials",
+      "name": "Essentials",
+      "priceMonthly": 95,
+      "priceAnnually": 1140,
+      "seatsIncluded": 10,
+      "priceNote": "Flat price per workspace. Additional agents $10/agent/mo. Includes ~$25 in AI credits.",
+      "sourceUrl": "https://crisp.chat/en/pricing/",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "crm_basic": true,
+        "integrations": true,
+        "api_access": true,
+        "workflows": true,
+        "reporting": true,
+        "custom_fields": true,
+        "knowledge_base": true,
+        "shared_inbox": true,
+        "live_chat": true,
+        "crm_contacts": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "plus",
+      "name": "Plus",
+      "priceMonthly": 295,
+      "priceAnnually": 3540,
+      "seatsIncluded": 20,
+      "priceNote": "Flat price per workspace. Additional agents $10/agent/mo. Includes ~$75 in AI credits.",
+      "sourceUrl": "https://crisp.chat/en/pricing/",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "crm_basic": true,
+        "integrations": true,
+        "api_access": true,
+        "workflows": true,
+        "reporting": true,
+        "custom_fields": true,
+        "knowledge_base": true,
+        "shared_inbox": true,
+        "chatbot_builder": true,
+        "ticketing": true,
+        "sla": true,
+        "priority_support": true,
+        "live_chat": true,
+        "crm_contacts": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "priceNote": "Custom pricing; dedicated onboarding, personalized SLA and custom features.",
+      "sourceUrl": "https://crisp.chat/en/pricing/",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "crm_basic": true,
+        "integrations": true,
+        "api_access": true,
+        "workflows": true,
+        "reporting": true,
+        "custom_fields": true,
+        "knowledge_base": true,
+        "shared_inbox": true,
+        "chatbot_builder": true,
+        "ticketing": true,
+        "sla": true,
+        "priority_support": true,
+        "live_chat": true,
+        "crm_contacts": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "pricingUrl": "https://crisp.chat/en/pricing/"
+}

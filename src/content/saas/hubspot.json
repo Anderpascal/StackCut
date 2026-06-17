@@ -1,0 +1,160 @@
+{
+  "id": "hubspot",
+  "name": "HubSpot",
+  "slug": "hubspot",
+  "category": "CRM & Sales",
+  "description": "All-in-one CRM platform for marketing, sales, and service.",
+  "websiteUrl": "https://hubspot.com",
+  "pricingUrl": "https://www.hubspot.com/pricing/marketing",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 14,
+  "lastVerified": "2026-06-07",
+  "popularityScore": 90,
+  "g2Rating": 4.4,
+  "featureIds": [
+    "crm_basic",
+    "email_automation",
+    "custom_fields",
+    "api_access",
+    "integrations",
+    "reporting",
+    "workflows",
+    "advanced_analytics",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "ai_features",
+    "sla",
+    "priority_support",
+    "pipeline_mgmt",
+    "lead_scoring",
+    "email_sequences",
+    "voip_telephony"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "landing_pages",
+      "name": "Landing Pages",
+      "description": "Drag-and-drop landing page builder",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "blog_hosting",
+      "name": "Blog Hosting",
+      "description": "Native blog with SEO tools",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "ab_testing",
+      "name": "A/B Testing",
+      "description": "A/B testing for emails and pages",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "revenue_attribution",
+      "name": "Revenue Attribution",
+      "description": "Multi-touch revenue attribution",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    },
+    {
+      "id": "predictive_lead_scoring",
+      "name": "Predictive Lead Scoring",
+      "description": "AI-powered lead scoring",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "email_automation": true,
+        "custom_fields": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "starter",
+      "name": "Starter",
+      "priceMonthly": 20,
+      "priceAnnually": 216,
+      "sourceUrl": "https://www.hubspot.com/pricing/marketing",
+      "capturedAt": "2026-06-07",
+      "seatsIncluded": 1,
+      "priceNote": "Marketing Hub Starter per user; price scales with Marketing Contacts tier.",
+      "features": {
+        "crm_basic": true,
+        "email_automation": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "professional",
+      "name": "Professional",
+      "priceMonthly": 800,
+      "priceAnnually": 9600,
+      "sourceUrl": "https://www.hubspot.com/pricing/marketing",
+      "capturedAt": "2026-06-07",
+      "seatsIncluded": 5,
+      "seatMin": 5,
+      "priceNote": "Marketing Hub Professional flat rate includes 5 users; includes 1,000 marketing contacts.",
+      "features": {
+        "crm_basic": true,
+        "email_automation": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "advanced_analytics": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": 3600,
+      "priceAnnually": 43200,
+      "seatsIncluded": 10,
+      "seatMin": 10,
+      "priceNote": "Marketing Hub Enterprise flat rate includes 10 users; includes 10,000 marketing contacts.",
+      "features": {
+        "crm_basic": true,
+        "email_automation": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "advanced_analytics": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "ai_features": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true
+    }
+  ]
+}

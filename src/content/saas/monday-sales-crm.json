@@ -1,0 +1,132 @@
+{
+  "id": "monday-sales-crm",
+  "name": "Monday Sales CRM",
+  "slug": "monday-sales-crm",
+  "category": "CRM & Sales",
+  "description": "A flexible sales CRM built on the monday.com platform for visual pipeline management.",
+  "websiteUrl": "https://monday.com/sales-crm",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 14,
+  "popularityScore": 75,
+  "g2Rating": 4.4,
+  "featureIds": [
+    "crm_basic",
+    "api_access",
+    "integrations",
+    "email_automation",
+    "pipeline_mgmt",
+    "lead_scoring",
+    "email_sequences",
+    "voip_telephony",
+    "custom_fields",
+    "reporting",
+    "workflows",
+    "advanced_analytics"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "visual_board",
+      "name": "Visual Board",
+      "description": "Customizable visual board for deal tracking",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "automations_monday",
+      "name": "Monday Automations",
+      "description": "No-code automation recipes",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "dashboards_monday",
+      "name": "Custom Dashboards",
+      "description": "Visual dashboards with widgets",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "basic",
+      "name": "Basic",
+      "priceMonthly": 18,
+      "priceAnnually": 144,
+      "seatsIncluded": 3,
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true
+      },
+      "isEnterprise": false,
+      "seatMin": 3,
+      "priceNote": "Billed annually at $12/seat/mo; month-to-month is $18/seat.",
+      "sourceUrl": "https://monday.com/crm/pricing",
+      "capturedAt": "2026-06-13"
+    },
+    {
+      "id": "standard",
+      "name": "Standard",
+      "priceMonthly": 25,
+      "priceAnnually": 204,
+      "seatsIncluded": 3,
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false,
+      "seatMin": 3,
+      "priceNote": "Billed annually at $17/seat/mo; month-to-month is $25/seat.",
+      "sourceUrl": "https://monday.com/crm/pricing",
+      "capturedAt": "2026-06-13"
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 41,
+      "priceAnnually": 336,
+      "seatsIncluded": 3,
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true
+      },
+      "isEnterprise": false,
+      "seatMin": 3,
+      "priceNote": "Billed annually at $28/seat/mo; month-to-month is $41/seat.",
+      "sourceUrl": "https://monday.com/crm/pricing",
+      "capturedAt": "2026-06-13"
+    },
+    {
+      "id": "ultimate",
+      "name": "Ultimate",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 5,
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "advanced_analytics": true
+      },
+      "isEnterprise": true,
+      "seatMin": 5,
+      "priceNote": "Enterprise tier; contact sales for pricing.",
+      "capturedAt": "2026-06-13"
+    }
+  ],
+  "lastVerified": "2026-06-13",
+  "pricingUrl": "https://monday.com/crm/pricing"
+}

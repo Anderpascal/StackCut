@@ -1,0 +1,436 @@
+@import "tailwindcss";
+
+/* ============================================================
+   STACKCUT — "The Audit Ledger" design system
+   Pale accounting-ledger paper, green-black ink, and the
+   auditor's red pen. Two semantic inks:
+     red   = what gets cut
+     green = what you save / what's verified
+   ============================================================ */
+
+@theme {
+  --font-sans: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Public Sans', system-ui, sans-serif;
+  --font-mono: 'Spline Sans Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Core ledger palette */
+  --color-paper: #f0f3ea;        /* page — pale ledger green */
+  --color-paper-raised: #fbfcf7; /* cards / documents */
+  --color-ink: #1c2a21;          /* primary text, green-black ink */
+  --color-ink-soft: #4e5f50;     /* secondary text */
+  --color-ink-faint: #5f705f;    /* muted text */
+  --color-rule: #d6dec9;         /* hairline ledger rules */
+  --color-pen: #c03425;          /* the auditor's red pen */
+  --color-pen-deep: #a52a1d;
+  --color-save: #177245;         /* money green */
+  --color-save-deep: #0d4a2c;
+
+  /* Legacy semantic tokens (kept so older styles keep working) */
+  --color-bg-primary: #f0f3ea;
+  --color-bg-secondary: #fbfcf7;
+  --color-border-subtle: #d6dec9;
+  --color-text-primary: #1c2a21;
+  --color-text-secondary: #4e5f50;
+  --color-text-muted: #5f705f;
+  --color-accent: #177245;
+  --color-accent-hover: #115c37;
+  --color-accent-glow: rgba(23, 114, 69, 0.18);
+  --color-danger: #c03425;
+  --color-warning: #a87514;
+
+  /* ----------------------------------------------------------
+     Site-wide re-skin: the whole codebase is written in
+     zinc/emerald utilities for a dark theme. Remapping the
+     scales here flips every page to the ledger palette.
+     (zinc is intentionally inverted: dark-theme text shades
+     become ink, dark-theme surfaces become paper.)
+     ---------------------------------------------------------- */
+  --color-zinc-50:  #131b16;
+  --color-zinc-100: #1c2a21;  /* was light text  → ink */
+  --color-zinc-200: #2a3a2e;
+  --color-zinc-300: #3c4d40;
+  --color-zinc-400: #4e5f50;  /* secondary text */
+  --color-zinc-500: #5f705f;  /* muted text */
+  --color-zinc-600: #75856f;
+  --color-zinc-700: #c2cbb4;  /* light borders / knobs */
+  --color-zinc-800: #d6dec9;  /* hairlines */
+  --color-zinc-900: #e8ecdd;  /* tinted panels */
+  --color-zinc-950: #fbfcf7;  /* was page black  → raised paper */
+
+  --color-emerald-300: #2e8b57;
+  --color-emerald-400: #177245;  /* main accent: deep money green */
+  --color-emerald-500: #115c37;  /* hover / focus rings */
+  --color-emerald-600: #0d4a2c;
+  --color-emerald-700: #093b22;
+  --color-emerald-900: #dcebdd;
+  --color-emerald-950: #ecf4ea;
+
+  --color-red-300: #d04a38;
+  --color-red-400: #c03425;   /* auditor red, readable on paper */
+  --color-red-500: #a52a1d;
+  --color-red-600: #8c2317;
+
+  --color-amber-300: #b8821c;
+  --color-amber-400: #a87514; /* ochre, readable on paper */
+  --color-amber-500: #8f6310;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+    background-color: var(--color-paper);
+    font-feature-settings: 'ss01';
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  /* Prices and figures line up like a ledger column */
+  [data-price-usd],
+  .num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background-color: rgba(192, 52, 37, 0.18);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-save);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-delay: 0s !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Faint horizontal ruling, like a ledger sheet */
+  .bg-grid {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 35px,
+      rgba(28, 42, 33, 0.045) 35px,
+      rgba(28, 42, 33, 0.045) 36px
+    );
+  }
+
+  /* Document card — was a dark glass card */
+  .card-blur {
+    background: var(--color-paper-raised);
+    border: 1px solid var(--color-rule);
+    box-shadow:
+      0 1px 2px rgba(28, 42, 33, 0.05),
+      0 8px 24px -16px rgba(28, 42, 33, 0.25);
+  }
+
+  /* Emphasis document — was a green glow border */
+  .glow-border {
+    border: 1px solid rgba(23, 114, 69, 0.35);
+    box-shadow:
+      0 1px 2px rgba(28, 42, 33, 0.05),
+      0 16px 40px -24px rgba(13, 74, 44, 0.35);
+  }
+
+  .glow-text {
+    text-shadow: none;
+  }
+
+  .terminal-cursor::after {
+    content: '▍';
+    animation: blink 1s step-end infinite;
+    color: var(--color-pen);
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Stamp-press buttons: a hard offset shadow that compresses
+     when pressed, like a physical stamp meeting paper */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-semibold transition-all duration-150;
+    background-color: var(--color-save);
+    color: var(--color-paper-raised);
+    box-shadow: 0 3px 0 var(--color-save-deep);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 0 var(--color-save-deep);
+  }
+
+  .btn-primary:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--color-save-deep);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-semibold transition-all duration-150 border;
+    border-color: var(--color-ink);
+    color: var(--color-ink);
+    background: transparent;
+    box-shadow: 0 3px 0 rgba(28, 42, 33, 0.25);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(28, 42, 33, 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 0 rgba(28, 42, 33, 0.25);
+  }
+
+  .btn-secondary:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 rgba(28, 42, 33, 0.25);
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12 py-16 sm:py-24;
+  }
+
+  /* ------------------------------------------------------------
+     Signature: the auditor's red strike.
+     Add .strike-pen to a span; the line draws itself across.
+     Set --strike-delay to stagger. Static by default once drawn.
+     ------------------------------------------------------------ */
+  .strike-pen {
+    position: relative;
+  }
+
+  .strike-pen::after {
+    content: '';
+    position: absolute;
+    left: -1.5%;
+    right: -1.5%;
+    top: 54%;
+    height: 0.085em;
+    min-height: 3px;
+    border-radius: 99px;
+    background: var(--color-pen);
+    transform: translateY(-50%) rotate(-1.2deg) scaleX(0);
+    transform-origin: left center;
+    animation: strike-draw 0.5s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+    animation-delay: var(--strike-delay, 0.4s);
+  }
+
+  .strike-pen.strike-static::after {
+    animation: none;
+    transform: translateY(-50%) rotate(-1.2deg) scaleX(1);
+  }
+
+  @keyframes strike-draw {
+    to { transform: translateY(-50%) rotate(-1.2deg) scaleX(1); }
+  }
+
+  /* Rubber stamp seal */
+  .stamp-seal {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-pen);
+    border: 3px solid currentColor;
+    border-radius: 8px;
+    padding: 0.35em 0.8em;
+    transform: rotate(-7deg);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.85 0.15'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.85 0.15'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .stamp-in {
+    opacity: 0;
+    animation: stamp-thump 0.35s cubic-bezier(0.2, 1.4, 0.4, 1) forwards;
+    animation-delay: var(--stamp-delay, 2.6s);
+  }
+
+  @keyframes stamp-thump {
+    0%   { opacity: 0; transform: rotate(-7deg) scale(2.1); }
+    70%  { opacity: 1; transform: rotate(-7deg) scale(0.96); }
+    100% { opacity: 1; transform: rotate(-7deg) scale(1); }
+  }
+
+  /* Accounting total: single rule above, double rule below */
+  .ledger-total {
+    border-top: 1px solid var(--color-ink);
+    border-bottom: 3px double var(--color-ink);
+  }
+
+  /* Scroll-in reveal (activated by IntersectionObserver in Layout) */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
+    }
+    .strike-pen::after {
+      transform: translateY(-50%) rotate(-1.2deg) scaleX(1);
+    }
+    .stamp-in {
+      opacity: 1;
+    }
+  }
+}
+
+@layer components {
+  /* Blog content prose styling — the Audit Ledger theme */
+  .prose-content {
+    @apply text-ink leading-relaxed;
+  }
+
+  .prose-content > * {
+    @apply mb-6;
+  }
+
+  .prose-content p {
+    @apply text-base leading-relaxed;
+  }
+
+  .prose-content h1 {
+    @apply font-display text-4xl font-bold text-ink mt-12 mb-6 leading-tight;
+  }
+
+  .prose-content h2 {
+    @apply font-display text-2xl font-bold text-ink mt-12 mb-5 leading-tight first:mt-0;
+    scroll-margin-top: 6rem;
+  }
+
+  .prose-content h3 {
+    @apply font-display text-xl font-semibold text-ink mt-10 mb-4 leading-tight;
+    scroll-margin-top: 6rem;
+  }
+
+  .prose-content h4, .prose-content h5, .prose-content h6 {
+    @apply font-display font-semibold text-ink mt-8 mb-3 leading-tight;
+  }
+
+  .prose-content a {
+    @apply text-save font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-save focus:ring-offset-2 rounded px-0.5;
+  }
+
+  .prose-content strong {
+    @apply font-semibold text-ink;
+  }
+
+  .prose-content em {
+    @apply italic text-ink-soft;
+  }
+
+  .prose-content ul, .prose-content ol {
+    @apply my-6 ml-6;
+  }
+
+  .prose-content li {
+    @apply mb-2 text-ink leading-relaxed;
+  }
+
+  .prose-content ul li {
+    @apply list-disc;
+  }
+
+  .prose-content ol li {
+    @apply list-decimal;
+  }
+
+  .prose-content code {
+    @apply font-mono text-sm bg-paper-raised text-save px-2 py-1 rounded border border-rule;
+  }
+
+  .prose-content pre {
+    @apply bg-paper-raised border border-rule rounded-lg p-4 overflow-x-auto my-6;
+  }
+
+  .prose-content pre code {
+    @apply bg-transparent px-0 py-0 border-0 text-ink-soft;
+  }
+
+  .prose-content blockquote {
+    @apply border-l-4 border-save pl-4 py-2 my-6 italic text-ink-soft;
+  }
+
+  .prose-content table {
+    @apply w-full border-collapse my-6;
+  }
+
+  .prose-content th {
+    @apply bg-paper-raised text-ink font-semibold text-left px-4 py-2 border border-rule;
+  }
+
+  .prose-content td {
+    @apply px-4 py-2 border border-rule text-ink;
+  }
+
+  .prose-content tr:nth-child(even) {
+    @apply bg-paper-raised/50;
+  }
+
+  .prose-content hr {
+    @apply border-rule my-8;
+  }
+
+  .prose-content img {
+    @apply rounded-lg my-6 max-w-full h-auto;
+  }
+}
+
+@layer utilities {
+  /* Used across the site for the highlighted word in headings */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-save) 0%, var(--color-save-deep) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+@media print {
+  .print\:hidden { display: none !important; }
+  .print\:block { display: block !important; }
+}

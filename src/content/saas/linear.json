@@ -1,0 +1,118 @@
+{
+  "id": "linear",
+  "name": "Linear",
+  "slug": "linear",
+  "category": "Project Management",
+  "description": "Modern issue tracking and project management for software teams.",
+  "websiteUrl": "https://linear.app",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "popularityScore": 76,
+  "g2Rating": 4.8,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "workflows",
+    "saml_sso",
+    "audit_logs",
+    "custom_fields",
+    "reporting",
+    "dashboards",
+    "dependency_tracking",
+    "kanban_boards",
+    "roles_permissions",
+    "project_timelines",
+    "task_management"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "keyboard_first",
+      "name": "Keyboard-First UI",
+      "description": "Command palette-driven interface",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "cycles",
+      "name": "Cycles",
+      "description": "Time-boxed work cycles",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "roadmaps",
+      "name": "Roadmaps",
+      "description": "Visual project roadmapping",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "basic",
+      "name": "Basic",
+      "priceMonthly": 10,
+      "priceAnnually": 120,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true
+      },
+      "isEnterprise": false,
+      "priceNote": "$10 per user/month (annual shown as 12× monthly).",
+      "sourceUrl": "https://linear.app/pricing",
+      "capturedAt": "2026-06-15"
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "priceMonthly": 16,
+      "priceAnnually": 192,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "saml_sso": true
+      },
+      "isEnterprise": false,
+      "priceNote": "$16 per user/month (annual shown as 12× monthly).",
+      "sourceUrl": "https://linear.app/pricing",
+      "capturedAt": "2026-06-15"
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "saml_sso": true,
+        "audit_logs": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "lastVerified": "2026-06-15",
+  "pricingUrl": "https://linear.app/pricing"
+}

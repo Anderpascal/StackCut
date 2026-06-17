@@ -1,0 +1,178 @@
+{
+  "id": "coda",
+  "name": "Coda",
+  "slug": "coda",
+  "category": "Productivity & Wiki",
+  "description": "All-in-one doc that combines docs, spreadsheets, and apps with a Doc Maker pricing model.",
+  "websiteUrl": "https://coda.io",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-13",
+  "capturedAt": "2026-06-13",
+  "popularityScore": 70,
+  "g2Rating": 4.7,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "saml_sso",
+    "audit_logs",
+    "roles_permissions",
+    "custom_fields",
+    "collaboration",
+    "dashboards",
+    "reporting",
+    "sla",
+    "priority_support",
+    "relational_database",
+    "database_views",
+    "wiki_pages",
+    "workflows"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "doc_packs",
+      "name": "Packs",
+      "description": "Third-party integrations that bring live data into docs",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "coda_ai",
+      "name": "Coda AI",
+      "description": "AI assistant for content generation and data analysis",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "cross_doc",
+      "name": "Cross-Doc",
+      "description": "Reference data between documents in real-time",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "doc_locking",
+      "name": "Doc Locking",
+      "description": "Prevent edits to published documents",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "priceNote": "Free for unlimited viewers/commenters; Doc Makers limited to 50 objects and 1,000 rows.",
+      "sourceUrl": "https://coda.io/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 12,
+      "priceAnnually": 120,
+      "seatsIncluded": 1,
+      "priceNote": "$10/Doc Maker/mo billed annually ($12/mo monthly). Only Doc Makers are billed.",
+      "sourceUrl": "https://coda.io/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "doc_packs": true,
+        "cross_doc": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "low",
+      "addOns": [
+        {
+          "id": "coda_ai_addon",
+          "name": "Coda AI",
+          "description": "AI add-on for content generation and data analysis; priced per Doc Maker/month.",
+          "priceMonthly": 10,
+          "priceAnnually": 120,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "team",
+      "name": "Team",
+      "priceMonthly": 36,
+      "priceAnnually": 360,
+      "seatsIncluded": 1,
+      "priceNote": "$30/Doc Maker/mo billed annually ($36/mo monthly). Only Doc Makers are billed.",
+      "sourceUrl": "https://coda.io/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "roles_permissions": true,
+        "doc_packs": true,
+        "cross_doc": true,
+        "doc_locking": true,
+        "coda_ai": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium",
+      "addOns": [
+        {
+          "id": "coda_ai_addon",
+          "name": "Coda AI",
+          "description": "AI add-on for content generation and data analysis; priced per Doc Maker/month.",
+          "priceMonthly": 10,
+          "priceAnnually": 120,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "priceNote": "Custom pricing; includes SAML/SSO, audit logs, advanced security and dedicated onboarding.",
+      "sourceUrl": "https://coda.io/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "roles_permissions": true,
+        "sla": true,
+        "priority_support": true,
+        "doc_packs": true,
+        "cross_doc": true,
+        "doc_locking": true,
+        "coda_ai": true
+      },
+      "isEnterprise": true,
+      "addOns": [
+        {
+          "id": "coda_ai_addon",
+          "name": "Coda AI",
+          "description": "AI add-on for content generation and data analysis; priced per Doc Maker/month.",
+          "priceMonthly": 10,
+          "priceAnnually": 120,
+          "unit": "per_user"
+        }
+      ]
+    }
+  ],
+  "pricingUrl": "https://coda.io/pricing"
+}

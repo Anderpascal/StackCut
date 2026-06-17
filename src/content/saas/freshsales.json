@@ -1,0 +1,144 @@
+{
+  "id": "freshsales",
+  "name": "Freshsales",
+  "slug": "freshsales",
+  "category": "CRM & Sales",
+  "description": "AI-powered CRM by Freshworks with built-in phone, email, and sales sequences.",
+  "websiteUrl": "https://freshworks.com/crm/sales/",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 21,
+  "lastVerified": "2026-06-13",
+  "capturedAt": "2026-06-13",
+  "popularityScore": 70,
+  "g2Rating": 4.3,
+  "featureIds": [
+    "crm_basic",
+    "api_access",
+    "integrations",
+    "email_automation",
+    "pipeline_mgmt",
+    "lead_scoring",
+    "email_sequences",
+    "voip_telephony",
+    "custom_fields",
+    "reporting",
+    "workflows"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "freddy_ai",
+      "name": "Freddy AI",
+      "description": "AI-powered lead scoring and insights",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "built_in_phone",
+      "name": "Built-in Phone",
+      "description": "In-app calling with auto-logging",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "sales_sequences",
+      "name": "Sales Sequences",
+      "description": "Automated outreach sequences",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 3,
+      "priceNote": "Free for up to 3 users.",
+      "sourceUrl": "https://www.freshworks.com/crm/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "crm_basic": true,
+        "built_in_phone": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "growth",
+      "name": "Growth",
+      "priceMonthly": 11,
+      "priceAnnually": 108,
+      "seatsIncluded": 1,
+      "priceNote": "$9/user/mo billed annually ($11/mo monthly).",
+      "sourceUrl": "https://www.freshworks.com/crm/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "built_in_phone": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 47,
+      "priceAnnually": 468,
+      "seatsIncluded": 1,
+      "priceNote": "$39/user/mo billed annually ($47/mo monthly). Includes Freddy AI lead scoring.",
+      "sourceUrl": "https://www.freshworks.com/crm/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "crm_basic": true,
+        "email_automation": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "pipeline_mgmt": true,
+        "email_sequences": true,
+        "lead_scoring": true,
+        "voip_telephony": true,
+        "built_in_phone": true,
+        "freddy_ai": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": 71,
+      "priceAnnually": 708,
+      "seatsIncluded": 1,
+      "priceNote": "$59/user/mo billed annually ($71/mo monthly).",
+      "sourceUrl": "https://www.freshworks.com/crm/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "crm_basic": true,
+        "email_automation": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "pipeline_mgmt": true,
+        "email_sequences": true,
+        "lead_scoring": true,
+        "voip_telephony": true,
+        "built_in_phone": true,
+        "freddy_ai": true,
+        "sales_sequences": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "pricingUrl": "https://www.freshworks.com/crm/pricing"
+}

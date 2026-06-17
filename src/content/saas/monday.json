@@ -1,0 +1,129 @@
+{
+  "id": "monday",
+  "name": "Monday.com",
+  "slug": "monday",
+  "category": "Project Management",
+  "description": "Work OS for project management, CRM, and software development.",
+  "websiteUrl": "https://monday.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 14,
+  "popularityScore": 86,
+  "g2Rating": 4.5,
+  "featureIds": [
+    "custom_fields",
+    "api_access",
+    "integrations",
+    "workflows",
+    "reporting",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "dashboards",
+    "dependency_tracking",
+    "kanban_boards",
+    "project_timelines",
+    "gantt_charts",
+    "task_management"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "views_monday",
+      "name": "Multiple Views",
+      "description": "Kanban, Gantt, Calendar, Map views",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "dashboards_monday_pm",
+      "name": "Custom Dashboards",
+      "description": "Visual project dashboards",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "automations_monday_pm",
+      "name": "Automations",
+      "description": "No-code workflow automations",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "basic",
+      "name": "Basic",
+      "priceMonthly": 11,
+      "priceAnnually": 108,
+      "seatsIncluded": 1,
+      "features": {
+        "custom_fields": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "seatMin": 3,
+      "priceNote": "Billed annually at $9/seat/mo; month-to-month is $11/seat.",
+      "sourceUrl": "https://monday.com/pricing",
+      "capturedAt": "2026-06-13"
+    },
+    {
+      "id": "standard",
+      "name": "Standard",
+      "priceMonthly": 15,
+      "priceAnnually": 144,
+      "seatsIncluded": 1,
+      "features": {
+        "custom_fields": true,
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false,
+      "seatMin": 3,
+      "priceNote": "Billed annually at $12/seat/mo; month-to-month is $15/seat.",
+      "sourceUrl": "https://monday.com/pricing",
+      "capturedAt": "2026-06-13"
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 23,
+      "priceAnnually": 228,
+      "seatsIncluded": 1,
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true
+      },
+      "isEnterprise": false,
+      "seatMin": 3,
+      "priceNote": "Billed annually at $19/seat/mo; month-to-month is $23/seat.",
+      "sourceUrl": "https://monday.com/pricing",
+      "capturedAt": "2026-06-13"
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "lastVerified": "2026-06-13",
+  "pricingUrl": "https://monday.com/pricing"
+}

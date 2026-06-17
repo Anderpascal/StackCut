@@ -1,0 +1,171 @@
+{
+  "id": "pipedrive",
+  "name": "Pipedrive",
+  "slug": "pipedrive",
+  "category": "CRM & Sales",
+  "description": "Sales-focused CRM designed to help teams close more deals.",
+  "websiteUrl": "https://pipedrive.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 14,
+  "lastVerified": "2026-06-13",
+  "popularityScore": 82,
+  "g2Rating": 4.3,
+  "featureIds": [
+    "crm_basic",
+    "custom_fields",
+    "api_access",
+    "integrations",
+    "reporting",
+    "roles_permissions",
+    "email_automation",
+    "pipeline_mgmt",
+    "lead_scoring",
+    "email_sequences",
+    "voip_telephony",
+    "workflows",
+    "advanced_analytics",
+    "saml_sso",
+    "audit_logs",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "visual_pipeline",
+      "name": "Visual Pipeline",
+      "description": "Visual drag-and-drop pipeline",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "activity_tracking",
+      "name": "Activity Tracking",
+      "description": "Call/email activity tracking",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "smart_contact_data",
+      "name": "Smart Contact Data",
+      "description": "Auto-enriched contact profiles",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "revenue_forecast",
+      "name": "Revenue Forecast",
+      "description": "AI revenue forecasting",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    },
+    {
+      "id": "web_forms",
+      "name": "Web Forms",
+      "description": "Embeddable lead capture forms",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "lite",
+      "name": "Lite",
+      "priceMonthly": 24,
+      "priceAnnually": 168,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true,
+        "api_access": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Billed annually at $14/seat/mo; month-to-month is $24/seat.",
+      "sourceUrl": "https://www.pipedrive.com/en/pricing",
+      "capturedAt": "2026-06-13"
+    },
+    {
+      "id": "growth",
+      "name": "Growth",
+      "priceMonthly": 49,
+      "priceAnnually": 468,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true,
+        "email_sequences": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Billed annually at $39/seat/mo; month-to-month is $49/seat.",
+      "sourceUrl": "https://www.pipedrive.com/en/pricing",
+      "capturedAt": "2026-06-13"
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "priceMonthly": 79,
+      "priceAnnually": 708,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true,
+        "email_sequences": true,
+        "roles_permissions": true,
+        "advanced_analytics": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Billed annually at $59/seat/mo; month-to-month is $79/seat. LeadBooster & Smart Docs bundled.",
+      "sourceUrl": "https://www.pipedrive.com/en/pricing",
+      "capturedAt": "2026-06-13",
+      "addOns": [
+        {
+          "id": "web_visitors",
+          "name": "Web Visitors",
+          "description": "Identify companies visiting your website (company-level add-on).",
+          "priceMonthly": 41,
+          "priceAnnually": 492,
+          "unit": "flat"
+        }
+      ]
+    },
+    {
+      "id": "ultimate",
+      "name": "Ultimate",
+      "priceMonthly": 99,
+      "priceAnnually": 948,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true,
+        "email_sequences": true,
+        "roles_permissions": true,
+        "advanced_analytics": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true,
+      "priceNote": "Billed annually at $79/seat/mo; month-to-month is $99/seat.",
+      "capturedAt": "2026-06-13"
+    }
+  ],
+  "pricingUrl": "https://www.pipedrive.com/en/pricing"
+}

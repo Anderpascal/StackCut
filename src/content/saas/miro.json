@@ -1,0 +1,159 @@
+{
+  "id": "miro",
+  "name": "Miro",
+  "slug": "miro",
+  "category": "Design",
+  "description": "Online collaborative whiteboarding platform for distributed teams and workshops.",
+  "websiteUrl": "https://miro.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-13",
+  "popularityScore": 86,
+  "g2Rating": 4.6,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "roles_permissions",
+    "collaboration",
+    "whiteboarding",
+    "workflows",
+    "saml_sso",
+    "audit_logs",
+    "sla"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "infinite_canvas",
+      "name": "Infinite Canvas",
+      "description": "Unlimited whiteboard space with smart frameworks",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "talktrack",
+      "name": "Talktrack",
+      "description": "Async video walkthroughs embedded directly in boards",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "clustering",
+      "name": "Smart Clustering",
+      "description": "AI-powered sticky note clustering and grouping",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    },
+    {
+      "id": "templates",
+      "name": "Template Library",
+      "description": "2500+ ready-to-use board templates",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "voting",
+      "name": "Voting & Estimation",
+      "description": "Built-in voting sessions and story point estimation",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "infinite_canvas": true,
+        "templates": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "starter",
+      "name": "Starter",
+      "priceMonthly": 10,
+      "priceAnnually": 96,
+      "seatsIncluded": 1,
+      "features": {
+        "infinite_canvas": true,
+        "templates": true,
+        "talktrack": true,
+        "voting": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Annual commitment; month-to-month is $10 per member.",
+      "sourceUrl": "https://miro.com/pricing/",
+      "capturedAt": "2026-06-13"
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "priceMonthly": 25,
+      "priceAnnually": 240,
+      "seatsIncluded": 1,
+      "features": {
+        "infinite_canvas": true,
+        "templates": true,
+        "talktrack": true,
+        "voting": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Annual commitment; month-to-month is $25 per member.",
+      "sourceUrl": "https://miro.com/pricing/",
+      "capturedAt": "2026-06-13"
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "infinite_canvas": true,
+        "templates": true,
+        "talktrack": true,
+        "voting": true,
+        "clustering": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "openSourceAlternatives": [
+    {
+      "name": "Excalidraw",
+      "url": "https://excalidraw.com",
+      "replaces": "infinite_canvas",
+      "setupComplexity": "low",
+      "savingsPerMonth": 8,
+      "effortHours": 5
+    },
+    {
+      "name": "tldraw",
+      "url": "https://tldraw.com",
+      "replaces": "infinite_canvas",
+      "setupComplexity": "low",
+      "savingsPerMonth": 8,
+      "effortHours": 5
+    }
+  ],
+  "pricingUrl": "https://miro.com/pricing/"
+}

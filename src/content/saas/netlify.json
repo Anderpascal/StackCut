@@ -1,0 +1,142 @@
+{
+  "id": "netlify",
+  "name": "Netlify",
+  "slug": "netlify",
+  "category": "Dev Tools",
+  "description": "Frontend cloud platform for building, deploying, and scaling modern web projects.",
+  "websiteUrl": "https://www.netlify.com",
+  "pricingUrl": "https://www.netlify.com/pricing/",
+  "affiliateUrl": null,
+  "pricingModel": "per_month",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-15",
+  "popularityScore": 80,
+  "g2Rating": 4.7,
+  "featureIds": [
+    "serverless_deploy",
+    "preview_deployments",
+    "edge_functions",
+    "ci_cd_pipelines",
+    "version_control",
+    "api_access",
+    "integrations"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "split_testing",
+      "name": "Split Testing",
+      "description": "Deploy and A/B test multiple git branches",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "netlify_analytics",
+      "name": "Netlify Analytics",
+      "description": "Privacy-first traffic analytics for deployed sites",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "netlify_forms",
+      "name": "Netlify Forms",
+      "description": "Managed form handling without server-side code",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "serverless_deploy": true,
+        "preview_deployments": true,
+        "version_control": true
+      },
+      "isEnterprise": false,
+      "priceNote": "300 build credits; limited to personal projects."
+    },
+    {
+      "id": "personal",
+      "name": "Personal",
+      "priceMonthly": 9,
+      "priceAnnually": 108,
+      "seatsIncluded": 1,
+      "features": {
+        "serverless_deploy": true,
+        "preview_deployments": true,
+        "version_control": true,
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "priceNote": "1,000 build credits/mo; priority email support.",
+      "sourceUrl": "https://www.netlify.com/pricing/",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 20,
+      "priceAnnually": 240,
+      "seatsIncluded": 1,
+      "features": {
+        "serverless_deploy": true,
+        "preview_deployments": true,
+        "edge_functions": true,
+        "ci_cd_pipelines": true,
+        "version_control": true,
+        "api_access": true,
+        "integrations": true,
+        "split_testing": true,
+        "netlify_analytics": true
+      },
+      "isEnterprise": false,
+      "priceNote": "$20/team/mo; unlimited team members. 3,000 build credits/mo.",
+      "sourceUrl": "https://www.netlify.com/pricing/",
+      "capturedAt": "2026-06-15",
+      "addOns": [
+        {
+          "id": "credit_pack_1500",
+          "name": "Credit Pack",
+          "description": "1,500 additional build credits.",
+          "priceMonthly": 10,
+          "priceAnnually": 120,
+          "unit": "flat"
+        }
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "serverless_deploy": true,
+        "preview_deployments": true,
+        "edge_functions": true,
+        "ci_cd_pipelines": true,
+        "version_control": true,
+        "api_access": true,
+        "integrations": true,
+        "split_testing": true,
+        "netlify_analytics": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true,
+      "priceNote": "Custom pricing; includes 99.99% SLA, SSO/SCIM, and dedicated support.",
+      "capturedAt": "2026-06-14"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "id": "gorgias",
+  "name": "Gorgias",
+  "slug": "gorgias",
+  "category": "Customer Support",
+  "description": "Ecommerce helpdesk that centralizes support tickets, live chat, social, SMS, and voice.",
+  "websiteUrl": "https://www.gorgias.com",
+  "pricingUrl": "https://www.gorgias.com/pricing",
+  "affiliateUrl": null,
+  "pricingModel": "per_month",
+  "freeTrialDays": 7,
+  "lastVerified": "2026-06-15",
+  "popularityScore": 70,
+  "g2Rating": 4.6,
+  "featureIds": [
+    "shared_inbox",
+    "ticketing",
+    "in_app_chat",
+    "chatbot_builder",
+    "knowledge_base",
+    "reporting",
+    "integrations",
+    "api_access"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "ecommerce_integrations",
+      "name": "Ecommerce Integrations",
+      "description": "Deep Shopify, BigCommerce, Magento, and WooCommerce connectors",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "revenue_statistics",
+      "name": "Revenue Statistics",
+      "description": "Track support-driven revenue and conversion impact",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "ai_agent_gorgias",
+      "name": "Gorgias AI Agent",
+      "description": "Autonomous AI teammate for email and chat resolutions",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "priceMonthly": 10,
+      "priceAnnually": 100,
+      "seatsIncluded": 999,
+      "features": {
+        "shared_inbox": true,
+        "ticketing": true,
+        "in_app_chat": true,
+        "knowledge_base": true,
+        "reporting": true,
+        "integrations": true,
+        "ecommerce_integrations": true
+      },
+      "isEnterprise": false,
+      "priceNote": "50 tickets/mo; unlimited users. Annual = 2 months free.",
+      "sourceUrl": "https://www.gorgias.com/pricing",
+      "capturedAt": "2026-06-15"
+    },
+    {
+      "id": "basic",
+      "name": "Basic",
+      "priceMonthly": 50,
+      "priceAnnually": 500,
+      "seatsIncluded": 999,
+      "features": {
+        "shared_inbox": true,
+        "ticketing": true,
+        "in_app_chat": true,
+        "chatbot_builder": true,
+        "knowledge_base": true,
+        "reporting": true,
+        "integrations": true,
+        "api_access": true,
+        "ecommerce_integrations": true
+      },
+      "isEnterprise": false,
+      "priceNote": "300 tickets/mo; unlimited users. Annual = 2 months free.",
+      "sourceUrl": "https://www.gorgias.com/pricing",
+      "capturedAt": "2026-06-15"
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 300,
+      "priceAnnually": 3000,
+      "seatsIncluded": 999,
+      "features": {
+        "shared_inbox": true,
+        "ticketing": true,
+        "in_app_chat": true,
+        "chatbot_builder": true,
+        "knowledge_base": true,
+        "reporting": true,
+        "integrations": true,
+        "api_access": true,
+        "ecommerce_integrations": true,
+        "revenue_statistics": true
+      },
+      "isEnterprise": false,
+      "priceNote": "2,000 tickets/mo; unlimited users. Annual = 2 months free.",
+      "sourceUrl": "https://www.gorgias.com/pricing",
+      "capturedAt": "2026-06-15",
+      "addOns": [
+        {
+          "id": "ai_agent_resolutions",
+          "name": "AI Agent Resolutions",
+          "description": "Pay only for fully automated AI resolutions.",
+          "priceMonthly": 0.9,
+          "priceAnnually": null,
+          "unit": "per_unit"
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "name": "Advanced",
+      "priceMonthly": 750,
+      "priceAnnually": 7500,
+      "seatsIncluded": 999,
+      "features": {
+        "shared_inbox": true,
+        "ticketing": true,
+        "in_app_chat": true,
+        "chatbot_builder": true,
+        "knowledge_base": true,
+        "reporting": true,
+        "integrations": true,
+        "api_access": true,
+        "ecommerce_integrations": true,
+        "revenue_statistics": true
+      },
+      "isEnterprise": false,
+      "priceNote": "5,000 tickets/mo; dedicated email server. Annual = 2 months free.",
+      "sourceUrl": "https://www.gorgias.com/pricing",
+      "capturedAt": "2026-06-14",
+      "addOns": [
+        {
+          "id": "ai_agent_resolutions_advanced",
+          "name": "AI Agent Resolutions",
+          "description": "Pay only for fully automated AI resolutions.",
+          "priceMonthly": 0.9,
+          "priceAnnually": null,
+          "unit": "per_unit"
+        }
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 999,
+      "features": {
+        "shared_inbox": true,
+        "ticketing": true,
+        "in_app_chat": true,
+        "chatbot_builder": true,
+        "knowledge_base": true,
+        "reporting": true,
+        "integrations": true,
+        "api_access": true,
+        "ecommerce_integrations": true,
+        "revenue_statistics": true,
+        "ai_agent_gorgias": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true,
+      "priceNote": "Custom ticket volume; unlimited users.",
+      "capturedAt": "2026-06-14"
+    }
+  ]
+}

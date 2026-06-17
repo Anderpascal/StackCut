@@ -1,0 +1,139 @@
+{
+  "id": "slack",
+  "name": "Slack",
+  "slug": "slack",
+  "category": "Communication",
+  "description": "Team communication and collaboration platform.",
+  "websiteUrl": "https://slack.com",
+  "pricingUrl": "https://slack.com/pricing",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-14",
+  "popularityScore": 92,
+  "g2Rating": 4.5,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "real_time_messaging",
+    "file_sharing",
+    "collaboration",
+    "channels",
+    "custom_fields",
+    "workflows",
+    "saml_sso",
+    "audit_logs",
+    "roles_permissions",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "huddles",
+      "name": "Huddles",
+      "description": "Real-time audio/video huddles",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "canvas",
+      "name": "Canvas",
+      "description": "Persistent rich document surfaces",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "clips",
+      "name": "Clips",
+      "description": "Async video/audio messages",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "workflow_builder",
+      "name": "Workflow Builder",
+      "description": "No-code workflow automation",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "slack_connect",
+      "name": "Slack Connect",
+      "description": "Cross-org collaboration with external orgs",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 8.75,
+      "priceAnnually": 87,
+      "seatsIncluded": 1,
+      "priceNote": "$8.75/user billed monthly; drops to $7.25/user when billed annually. Core AI features now included (Slack AI add-on retired Aug 2025).",
+      "sourceUrl": "https://slack.com/pricing/pro",
+      "capturedAt": "2026-06-14",
+      "features": {
+        "integrations": true,
+        "api_access": true,
+        "custom_fields": true,
+        "workflows": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "business",
+      "name": "Business+",
+      "priceMonthly": 18,
+      "priceAnnually": 180,
+      "seatsIncluded": 1,
+      "priceNote": "$18/user billed monthly; $15/user billed annually (raised from $12.50 in June 2025). SAML SSO and compliance exports start at this tier.",
+      "sourceUrl": "https://slack.com/pricing/businessplus",
+      "capturedAt": "2026-06-14",
+      "features": {
+        "integrations": true,
+        "api_access": true,
+        "custom_fields": true,
+        "workflows": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise+",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true,
+        "api_access": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "roles_permissions": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "id": "gitlab",
+  "name": "GitLab",
+  "slug": "gitlab",
+  "category": "Dev Tools",
+  "description": "Complete DevSecOps platform for software development.",
+  "websiteUrl": "https://gitlab.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "popularityScore": 83,
+  "g2Rating": 4.4,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "saml_sso",
+    "audit_logs",
+    "roles_permissions",
+    "sla",
+    "version_control",
+    "code_reviews",
+    "ci_cd_pipelines"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "ci_cd",
+      "name": "CI/CD Pipeline",
+      "description": "Integrated CI/CD platform",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "container_registry",
+      "name": "Container Registry",
+      "description": "Built-in Docker container registry",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "security_scanning",
+      "name": "Security Scanning",
+      "description": "SAST/DAST security testing",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "priceMonthly": 29,
+      "priceAnnually": 348,
+      "sourceUrl": "https://about.gitlab.com/pricing/",
+      "capturedAt": "2026-06-14",
+      "seatsIncluded": 1,
+      "priceNote": "$29/user/mo billed annually. GitLab Duo credits, compute minutes and storage are add-ons.",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "saml_sso": true,
+        "audit_logs": true
+      },
+      "isEnterprise": false,
+      "addOns": [
+        {
+          "id": "gitlab_duo_credits",
+          "name": "GitLab Duo Credits",
+          "description": "Credits for GitLab Duo Agent Platform and AI features; price varies by usage.",
+          "priceMonthly": null,
+          "priceAnnually": null,
+          "unit": "per_unit"
+        }
+      ]
+    },
+    {
+      "id": "ultimate",
+      "name": "Ultimate",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "priceNote": "Custom pricing; includes advanced security, compliance and 50,000 compute minutes.",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "roles_permissions": true,
+        "sla": true
+      },
+      "isEnterprise": true,
+      "addOns": [
+        {
+          "id": "gitlab_duo_credits",
+          "name": "GitLab Duo Credits",
+          "description": "Credits for GitLab Duo Agent Platform and AI features; price varies by usage.",
+          "priceMonthly": null,
+          "priceAnnually": null,
+          "unit": "per_unit"
+        }
+      ]
+    }
+  ],
+  "lastVerified": "2026-06-14",
+  "pricingUrl": "https://about.gitlab.com/pricing/"
+}

@@ -1,0 +1,100 @@
+{
+  "id": "bitbucket",
+  "name": "Bitbucket",
+  "slug": "bitbucket",
+  "category": "Dev Tools",
+  "description": "Git-based source code repository hosting with CI/CD.",
+  "websiteUrl": "https://bitbucket.org",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "popularityScore": 73,
+  "g2Rating": 4.2,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "saml_sso",
+    "audit_logs",
+    "roles_permissions",
+    "version_control",
+    "code_reviews",
+    "ci_cd_pipelines"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "pipelines",
+      "name": "Pipelines",
+      "description": "Integrated CI/CD pipelines",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "code_review",
+      "name": "Code Review",
+      "description": "Pull request-based code review",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "deployments",
+      "name": "Deployments",
+      "description": "Environment-based deployment tracking",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 5,
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "standard",
+      "name": "Standard",
+      "priceMonthly": 3.65,
+      "priceAnnually": 43.8,
+      "seatsIncluded": 1,
+      "priceNote": "$3.65/user/mo list price on Atlassian site. Annual total assumes 12x unless an annual discount is offered; verify billing cadence on checkout.",
+      "sourceUrl": "https://www.atlassian.com/software/bitbucket/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "saml_sso": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "priceMonthly": 7.25,
+      "priceAnnually": 87,
+      "seatsIncluded": 1,
+      "priceNote": "$7.25/user/mo list price on Atlassian site. Annual total assumes 12x unless an annual discount is offered; verify billing cadence on checkout.",
+      "sourceUrl": "https://www.atlassian.com/software/bitbucket/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": false
+    }
+  ],
+  "lastVerified": "2026-06-13",
+  "capturedAt": "2026-06-13",
+  "pricingUrl": "https://www.atlassian.com/software/bitbucket/pricing"
+}

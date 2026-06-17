@@ -1,0 +1,99 @@
+{
+  "id": "discord",
+  "name": "Discord",
+  "slug": "discord",
+  "category": "Communication",
+  "description": "Voice, video, and text chat platform with community servers and Nitro perks.",
+  "websiteUrl": "https://discord.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-13",
+  "capturedAt": "2026-06-13",
+  "popularityScore": 80,
+  "g2Rating": 4.5,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "roles_permissions",
+    "real_time_messaging",
+    "file_sharing",
+    "collaboration",
+    "channels",
+    "voice_channels"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "server_roles",
+      "name": "Server Roles",
+      "description": "Granular role-based permissions",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "stage_channels",
+      "name": "Stage Channels",
+      "description": "Broadcast-style audio events",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "sourceUrl": "https://discord.com/nitro",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "integrations": true,
+        "real_time_messaging": true,
+        "channels": true,
+        "voice_channels": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "nitro_basic",
+      "name": "Nitro Basic",
+      "priceMonthly": 2.99,
+      "priceAnnually": 29.99,
+      "seatsIncluded": 1,
+      "priceNote": "$2.99/mo monthly; $29.99/yr when billed annually.",
+      "sourceUrl": "https://discord.com/nitro",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "integrations": true,
+        "real_time_messaging": true,
+        "file_sharing": true,
+        "channels": true,
+        "voice_channels": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "nitro",
+      "name": "Nitro",
+      "priceMonthly": 9.99,
+      "priceAnnually": 99.99,
+      "seatsIncluded": 1,
+      "priceNote": "$9.99/mo monthly; $99.99/yr when billed annually.",
+      "sourceUrl": "https://discord.com/nitro",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "integrations": true,
+        "api_access": true,
+        "real_time_messaging": true,
+        "file_sharing": true,
+        "channels": true,
+        "voice_channels": true
+      },
+      "isEnterprise": false
+    }
+  ],
+  "pricingUrl": "https://discord.com/nitro"
+}

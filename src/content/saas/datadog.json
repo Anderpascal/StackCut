@@ -1,0 +1,131 @@
+{
+  "id": "datadog",
+  "name": "Datadog",
+  "slug": "datadog",
+  "category": "Monitoring",
+  "description": "Cloud-scale monitoring and security platform for infrastructure, APM, and log management.",
+  "websiteUrl": "https://datadoghq.com",
+  "pricingUrl": "https://www.datadoghq.com/pricing/",
+  "affiliateUrl": null,
+  "pricingModel": "custom",
+  "freeTrialDays": 14,
+  "lastVerified": "2026-06-01",
+  "popularityScore": 87,
+  "g2Rating": 4.4,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "advanced_analytics",
+    "reporting",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "sla",
+    "priority_support",
+    "ai_features",
+    "alerting",
+    "dashboards",
+    "apm",
+    "infrastructure_monitoring"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "infra_monitor",
+      "name": "Infrastructure Monitoring",
+      "description": "400+ integrations for host, container, and cloud monitoring",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "log_mgmt",
+      "name": "Log Management",
+      "description": "Centralized log ingestion, search, and analysis",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "rum",
+      "name": "Real User Monitoring",
+      "description": "Frontend performance tracking from real user sessions",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "security_monitor",
+      "name": "Security Monitoring",
+      "description": "Threat detection and security signal analysis",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "infra_monitor": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 15,
+      "priceAnnually": 180,
+      "sourceUrl": "https://www.datadoghq.com/pricing/",
+      "capturedAt": "2026-06-01",
+      "seatsIncluded": 1,
+      "priceNote": "Per host/mo for Infrastructure Monitoring; APM, Logs, RUM and Security are priced separately.",
+      "features": {
+        "infra_monitor": true,
+        "apm": true,
+        "log_mgmt": true,
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": 23,
+      "priceAnnually": 276,
+      "seatsIncluded": 1,
+      "priceNote": "Per host/mo for Infrastructure Monitoring; APM, Logs, RUM and Security are priced separately.",
+      "features": {
+        "infra_monitor": true,
+        "apm": true,
+        "log_mgmt": true,
+        "rum": true,
+        "security_monitor": true,
+        "api_access": true,
+        "integrations": true,
+        "advanced_analytics": true,
+        "reporting": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true,
+        "ai_features": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "openSourceAlternatives": [
+    {
+      "name": "Grafana",
+      "url": "https://grafana.com",
+      "replaces": "infra_monitor",
+      "setupComplexity": "medium",
+      "savingsPerMonth": 15,
+      "effortHours": 30
+    }
+  ]
+}

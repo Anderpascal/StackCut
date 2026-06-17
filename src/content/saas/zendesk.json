@@ -1,0 +1,152 @@
+{
+  "id": "zendesk",
+  "name": "Zendesk",
+  "slug": "zendesk",
+  "category": "Customer Support",
+  "description": "Omnichannel customer service and support ticketing platform.",
+  "websiteUrl": "https://zendesk.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 14,
+  "popularityScore": 87,
+  "g2Rating": 4.3,
+  "featureIds": [
+    "crm_basic",
+    "api_access",
+    "integrations",
+    "reporting",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "sla",
+    "priority_support",
+    "ticketing",
+    "knowledge_base",
+    "dashboards",
+    "in_app_chat",
+    "chatbot_builder",
+    "shared_inbox",
+    "workflows"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "help_center_zendesk",
+      "name": "Help Center",
+      "description": "Branded self-service portal",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "answer_bot",
+      "name": "Answer Bot",
+      "description": "AI-powered auto-responder",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "support_team",
+      "name": "Support Team",
+      "priceMonthly": null,
+      "priceAnnually": 228,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false,
+      "priceNote": "$19/agent/mo billed annually ($228/yr). Month-to-month pricing not published.",
+      "sourceUrl": "https://www.zendesk.com/pricing/",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "suite_team",
+      "name": "Suite Team",
+      "priceMonthly": 69,
+      "priceAnnually": 660,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "ticketing": true,
+        "knowledge_base": true,
+        "in_app_chat": true,
+        "chatbot_builder": true
+      },
+      "isEnterprise": false,
+      "priceNote": "$55/agent/mo billed annually ($660/yr); month-to-month is $69/agent.",
+      "sourceUrl": "https://www.zendesk.com/pricing/",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "suite_professional",
+      "name": "Suite Professional",
+      "priceMonthly": 149,
+      "priceAnnually": 1380,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "ticketing": true,
+        "knowledge_base": true,
+        "in_app_chat": true,
+        "chatbot_builder": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": false,
+      "priceNote": "$115/agent/mo billed annually ($1,380/yr); month-to-month is $149/agent.",
+      "sourceUrl": "https://www.zendesk.com/pricing/",
+      "capturedAt": "2026-06-14",
+      "addOns": [
+        {
+          "id": "zendesk_copilot",
+          "name": "Zendesk Copilot",
+          "description": "AI assistant add-on for agents on Suite Team or Professional.",
+          "priceMonthly": 50,
+          "priceAnnually": 600,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "suite_enterprise",
+      "name": "Suite Enterprise + Copilot",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "ticketing": true,
+        "knowledge_base": true,
+        "in_app_chat": true,
+        "chatbot_builder": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true,
+        "roles_permissions": true,
+        "priority_support": true
+      },
+      "isEnterprise": true,
+      "priceNote": "Enterprise tier with Copilot included; contact sales for pricing.",
+      "capturedAt": "2026-06-14"
+    }
+  ],
+  "lastVerified": "2026-06-14",
+  "pricingUrl": "https://www.zendesk.com/pricing/"
+}

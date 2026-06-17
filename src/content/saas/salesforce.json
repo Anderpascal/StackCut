@@ -1,0 +1,150 @@
+{
+  "id": "salesforce",
+  "name": "Salesforce",
+  "slug": "salesforce",
+  "category": "CRM & Sales",
+  "description": "The world's #1 CRM platform for enterprise sales teams.",
+  "websiteUrl": "https://salesforce.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 30,
+  "lastVerified": "2026-06-13",
+  "popularityScore": 95,
+  "g2Rating": 4.3,
+  "featureIds": [
+    "crm_basic",
+    "custom_fields",
+    "api_access",
+    "integrations",
+    "reporting",
+    "workflows",
+    "advanced_analytics",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "ai_features",
+    "sla",
+    "priority_support",
+    "email_automation",
+    "pipeline_mgmt",
+    "lead_scoring",
+    "email_sequences",
+    "voip_telephony"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "pipeline_management",
+      "name": "Pipeline Management",
+      "description": "Visual sales pipeline with Kanban",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "territory_management",
+      "name": "Territory Management",
+      "description": "Geographic territory assignment",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    },
+    {
+      "id": "einstein_ai",
+      "name": "Einstein AI",
+      "description": "Einstein AI predictions and recommendations",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    },
+    {
+      "id": "appexchange",
+      "name": "AppExchange",
+      "description": "Third-party app marketplace",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "flow_automation",
+      "name": "Flow Automation",
+      "description": "Low-code process automation",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "sandbox_environments",
+      "name": "Sandbox Environments",
+      "description": "Full/partial copy sandboxes",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "starter_suite",
+      "name": "Starter Suite",
+      "priceMonthly": 25,
+      "priceAnnually": 300,
+      "sourceUrl": "https://www.salesforce.com/products/sales-cloud/pricing/",
+      "capturedAt": "2026-06-13",
+      "seatsIncluded": 1,
+      "priceNote": "$25/user/mo billed monthly or annually. Einstein AI add-on sold separately.",
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "pro_suite",
+      "name": "Pro Suite",
+      "priceMonthly": 100,
+      "priceAnnually": 1200,
+      "sourceUrl": "https://www.salesforce.com/products/sales-cloud/pricing/",
+      "capturedAt": "2026-06-13",
+      "seatsIncluded": 1,
+      "priceNote": "$100/user/mo billed annually. Einstein AI add-on sold separately.",
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true,
+        "roles_permissions": true,
+        "pipeline_mgmt": true,
+        "lead_scoring": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": 175,
+      "priceAnnually": 2100,
+      "seatsIncluded": 1,
+      "priceNote": "$175/user/mo billed annually. Includes advanced analytics and Einstein AI predictions.",
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "reporting": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "advanced_analytics": true,
+        "ai_features": true,
+        "pipeline_mgmt": true,
+        "lead_scoring": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "pricingUrl": "https://www.salesforce.com/products/sales-cloud/pricing/"
+}

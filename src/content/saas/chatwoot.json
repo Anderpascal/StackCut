@@ -1,0 +1,149 @@
+{
+  "id": "chatwoot",
+  "name": "Chatwoot",
+  "slug": "chatwoot",
+  "category": "Customer Support",
+  "description": "Open-source customer engagement platform with live chat, email, and social channels.",
+  "websiteUrl": "https://www.chatwoot.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 15,
+  "lastVerified": "2026-06-14",
+  "popularityScore": 55,
+  "g2Rating": 4.5,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "ticketing",
+    "knowledge_base",
+    "reporting",
+    "dashboards",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "sla",
+    "priority_support",
+    "in_app_chat",
+    "chatbot_builder",
+    "shared_inbox",
+    "workflows"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "live_chat",
+      "name": "Live Chat Widget",
+      "description": "Embeddable website chat widget",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "canned_responses",
+      "name": "Canned Responses",
+      "description": "Pre-written response templates",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "omnichannel",
+      "name": "Omnichannel",
+      "description": "WhatsApp, Facebook, Twitter, SMS in one inbox",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "openSourceAlternatives": [
+    {
+      "name": "Chatwoot Self-Hosted",
+      "url": "https://github.com/chatwoot/chatwoot",
+      "replaces": "shared_inbox",
+      "setupComplexity": "medium",
+      "savingsPerMonth": 19,
+      "effortHours": 4
+    }
+  ],
+  "plans": [
+    {
+      "id": "hacker",
+      "name": "Hacker (Free)",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 2,
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "startups",
+      "name": "Startups",
+      "priceMonthly": 19,
+      "priceAnnually": 228,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "low",
+      "priceNote": "$19/agent/mo billed annually ($228/yr). Includes 300 Captain AI credits/mo.",
+      "sourceUrl": "https://www.chatwoot.com/pricing",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "priceMonthly": 39,
+      "priceAnnually": 468,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "roles_permissions": true,
+        "priority_support": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium",
+      "priceNote": "$39/agent/mo billed annually ($468/yr). Includes 500 Captain AI credits/mo.",
+      "sourceUrl": "https://www.chatwoot.com/pricing",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": 99,
+      "priceAnnually": 1188,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "roles_permissions": true,
+        "priority_support": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true
+      },
+      "isEnterprise": true,
+      "migrationComplexity": "high",
+      "priceNote": "$99/agent/mo billed annually ($1,188/yr). Includes 800 Captain AI credits/mo.",
+      "capturedAt": "2026-06-14",
+      "addOns": [
+        {
+          "id": "captain_ai_credits",
+          "name": "Captain AI Credits",
+          "description": "Additional Captain AI credits at $20 per 1,000 credits.",
+          "priceMonthly": 20,
+          "priceAnnually": 240,
+          "unit": "flat"
+        }
+      ]
+    }
+  ],
+  "pricingUrl": "https://www.chatwoot.com/pricing"
+}

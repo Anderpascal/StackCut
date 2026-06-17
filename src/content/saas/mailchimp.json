@@ -1,0 +1,116 @@
+{
+  "id": "mailchimp",
+  "name": "Mailchimp",
+  "slug": "mailchimp",
+  "category": "Email Marketing",
+  "description": "All-in-one marketing automation and email marketing platform.",
+  "websiteUrl": "https://mailchimp.com",
+  "pricingUrl": "https://mailchimp.com/pricing/",
+  "affiliateUrl": null,
+  "pricingModel": "custom",
+  "freeTrialDays": null,
+  "popularityScore": 91,
+  "g2Rating": 4.3,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "reporting",
+    "email_templates",
+    "a_b_testing",
+    "email_automation",
+    "email_sequences",
+    "transactional_email",
+    "advanced_analytics"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "email_builder",
+      "name": "Email Builder",
+      "description": "Drag-and-drop email designer",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "journey_builder",
+      "name": "Customer Journey",
+      "description": "Visual automation journey builder",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    },
+    {
+      "id": "content_studio",
+      "name": "Content Studio",
+      "description": "AI-powered creative assistant",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "email_automation": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "essentials",
+      "name": "Essentials",
+      "priceMonthly": 13,
+      "priceAnnually": 156,
+      "sourceUrl": "https://mailchimp.com/pricing/",
+      "capturedAt": "2026-06-15",
+      "seatsIncluded": 1,
+      "priceNote": "Starting price for ~500 contacts; scales with contact list size.",
+      "features": {
+        "email_automation": true,
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "standard",
+      "name": "Standard",
+      "priceMonthly": 20,
+      "priceAnnually": 192,
+      "sourceUrl": "https://mailchimp.com/pricing/",
+      "capturedAt": "2026-06-15",
+      "seatsIncluded": 1,
+      "priceNote": "Starting price for ~500 contacts; scales with contact list size.",
+      "features": {
+        "email_automation": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "priceMonthly": 350,
+      "priceAnnually": 3360,
+      "sourceUrl": "https://mailchimp.com/pricing/",
+      "capturedAt": "2026-06-15",
+      "seatsIncluded": 1,
+      "priceNote": "Starting price for ~10,000 contacts; scales with contact list size.",
+      "features": {
+        "email_automation": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "advanced_analytics": true
+      },
+      "isEnterprise": false
+    }
+  ],
+  "lastVerified": "2026-06-15"
+}

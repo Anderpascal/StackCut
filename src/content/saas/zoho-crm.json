@@ -1,0 +1,136 @@
+{
+  "id": "zoho-crm",
+  "name": "Zoho CRM",
+  "slug": "zoho-crm",
+  "category": "CRM & Sales",
+  "description": "Omnichannel CRM with AI assistant and extensive customization.",
+  "websiteUrl": "https://zoho.com/crm/",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 15,
+  "popularityScore": 78,
+  "lastVerified": "2026-06-14",
+  "g2Rating": 4.2,
+  "featureIds": [
+    "crm_basic",
+    "api_access",
+    "integrations",
+    "reporting",
+    "custom_fields",
+    "email_automation",
+    "email_sequences",
+    "voip_telephony",
+    "workflows",
+    "advanced_analytics",
+    "roles_permissions"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "zoho_ai",
+      "name": "Zia AI",
+      "description": "Conversational AI sales assistant",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "canvas_designer",
+      "name": "Canvas Designer",
+      "description": "Drag-and-drop layout designer",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "blueprint",
+      "name": "Blueprint",
+      "description": "Process modeling and enforcement",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "standard",
+      "name": "Standard",
+      "priceMonthly": 20,
+      "priceAnnually": 168,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true,
+        "reporting": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Billed annually at $14/seat/mo ($168/yr); month-to-month is $20/seat.",
+      "sourceUrl": "https://www.zoho.com/crm/pricing.html",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "professional",
+      "name": "Professional",
+      "priceMonthly": 35,
+      "priceAnnually": 276,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Billed annually at $23/seat/mo ($276/yr); month-to-month is $35/seat.",
+      "sourceUrl": "https://www.zoho.com/crm/pricing.html",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": 50,
+      "priceAnnually": 480,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "email_automation": true,
+        "email_sequences": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "advanced_analytics": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": false,
+      "priceNote": "Billed annually at $40/seat/mo ($480/yr); month-to-month is $50/seat.",
+      "sourceUrl": "https://www.zoho.com/crm/pricing.html",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "ultimate",
+      "name": "Ultimate",
+      "priceMonthly": 65,
+      "priceAnnually": 624,
+      "seatsIncluded": 1,
+      "features": {
+        "crm_basic": true,
+        "email_automation": true,
+        "email_sequences": true,
+        "custom_fields": true,
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "advanced_analytics": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": true,
+      "priceNote": "Billed annually at $52/seat/mo ($624/yr); month-to-month is $65/seat. Includes enhanced limits and consulting.",
+      "capturedAt": "2026-06-14"
+    }
+  ],
+  "pricingUrl": "https://www.zoho.com/crm/pricing.html"
+}

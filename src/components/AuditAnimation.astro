@@ -1,0 +1,136 @@
+---
+// The hero artifact: a sample renewal invoice being audited in real time.
+// Pure CSS animation + a tiny rAF counter. Replaces the old terminal animation.
+
+const rows = [
+  { tool: 'Figma',  oldPlan: 'Organization', oldPrice: '$9,000',  newPlan: 'Professional', newPrice: '$3,600', cut: true,  d: 0.9 },
+  { tool: 'Slack',  oldPlan: 'Business+',    oldPrice: '$4,500',  newPlan: 'Pro',          newPrice: '$2,700', cut: true,  d: 1.35 },
+  { tool: 'Notion', oldPlan: 'Enterprise',   oldPrice: '$5,520',  newPlan: 'Business',     newPrice: '$2,880', cut: true,  d: 1.8 },
+  { tool: 'Zoom',   oldPlan: 'Pro',          oldPrice: '$1,596',  newPlan: null,           newPrice: null,     cut: false, d: 2.2 },
+];
+---
+
+<div
+  class="audit-doc card-blur rounded-lg w-full max-w-xl mx-auto text-left"
+  role="img"
+  aria-label="Sample audit: a software renewal invoice of $20,616 per year is reviewed line by line and reduced to $10,776 — saving $9,840 without losing any feature in use."
+>
+  <div aria-hidden="true">
+    <div class="flex items-baseline justify-between px-5 sm:px-7 pt-5 border-b border-zinc-800 pb-3">
+      <span class="font-display font-bold text-sm tracking-[0.12em] uppercase text-zinc-100">Renewal invoice</span>
+      <span class="num text-[11px] text-zinc-500 uppercase tracking-wider">Sample audit · 4 line items</span>
+    </div>
+
+    <div class="px-5 sm:px-7 py-2 divide-y divide-zinc-800/70">
+      {rows.map((row) => (
+        <div class="audit-row py-3 grid grid-cols-[1fr_auto] gap-x-3 gap-y-0.5 items-baseline" style={`--row-delay: ${row.d - 0.7}s`}>
+          <div class="min-w-0">
+            <span class="font-semibold text-xs sm:text-sm text-zinc-100">{row.tool}</span>
+            {row.cut ? (
+              <span class="strike-pen text-xs sm:text-sm text-zinc-500 ml-1.5" style={`--strike-delay: ${row.d}s`}>{row.oldPlan}</span>
+            ) : (
+              <span class="text-xs sm:text-sm text-zinc-500 ml-1.5">{row.oldPlan}</span>
+            )}
+            {row.cut && (
+              <span class="audit-fix text-xs sm:text-sm font-semibold text-emerald-400 ml-1.5" style={`--fix-delay: ${row.d + 0.3}s`}>→ {row.newPlan}</span>
+            )}
+          </div>
+          <div class="text-right min-w-0">
+            {row.cut ? (
+              <>
+                <span class="strike-pen num text-xs sm:text-sm text-zinc-500" style={`--strike-delay: ${row.d + 0.1}s`}>{row.oldPrice}</span>
+                <span class="audit-fix num text-xs sm:text-sm font-semibold text-emerald-400 ml-1.5" style={`--fix-delay: ${row.d + 0.35}s`}>{row.newPrice}</span>
+              </>
+            ) : (
+              <>
+                <span class="num text-xs sm:text-sm text-zinc-300">{row.oldPrice}</span>
+                <span class="audit-fix text-xs sm:text-sm font-semibold text-emerald-400 ml-1.5" style={`--fix-delay: ${row.d + 0.2}s`}>
+                  <svg class="inline w-3.5 h-3.5 -mt-0.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path class="audit-check" d="M3 8.5 6.5 12 13 4.5" style={`--check-delay: ${row.d + 0.25}s`} /></svg>
+                  keep
+                </span>
+              </>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="relative ledger-total mx-5 sm:mx-7 mb-6 mt-1 py-3 flex items-baseline justify-between gap-3">
+      <span class="font-display font-bold text-xs sm:text-sm uppercase tracking-[0.12em] text-zinc-100">Total / year</span>
+      <span class="text-right">
+        <span class="strike-pen num text-xs sm:text-sm text-zinc-500" style="--strike-delay: 2.5s">$20,616</span>
+        <span class="num text-base sm:text-lg font-semibold text-emerald-400 ml-2 sm:ml-3" id="audit-total" data-from="20616" data-to="10776" data-start="2600">$20,616</span>
+      </span>
+      <span class="stamp-seal stamp-in absolute -top-9 right-0 text-xs sm:text-sm bg-zinc-950/80" style="--stamp-delay: 3.5s">Audited · $9,840 saved</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .audit-row {
+    opacity: 0;
+    transform: translateY(6px);
+    animation: audit-row-in 0.45s ease forwards;
+    animation-delay: var(--row-delay, 0s);
+  }
+
+  @keyframes audit-row-in {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .audit-fix {
+    opacity: 0;
+    animation: audit-fix-in 0.35s ease forwards;
+    animation-delay: var(--fix-delay, 1s);
+  }
+
+  @keyframes audit-fix-in {
+    from { opacity: 0; transform: translateX(-4px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .audit-check {
+    stroke-dasharray: 16;
+    stroke-dashoffset: 16;
+    animation: audit-check-draw 0.3s ease-out forwards;
+    animation-delay: var(--check-delay, 1.2s);
+  }
+
+  @keyframes audit-check-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .audit-row { opacity: 1; transform: none; }
+    .audit-fix { opacity: 1; }
+    .audit-check { stroke-dashoffset: 0; }
+  }
+</style>
+
+<script>
+  // Counts the invoice total down once the strikes have landed
+  const el = document.getElementById('audit-total');
+  if (el) {
+    const from = Number(el.dataset.from);
+    const to = Number(el.dataset.to);
+    const startDelay = Number(el.dataset.start);
+    const fmt = (n: number) => '$' + Math.round(n).toLocaleString('en-US');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+      el.textContent = fmt(to);
+    } else {
+      setTimeout(() => {
+        const duration = 800;
+        const t0 = performance.now();
+        const tick = (now: number) => {
+          const p = Math.min((now - t0) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = fmt(from + (to - from) * eased);
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }, startDelay);
+    }
+  }
+</script>

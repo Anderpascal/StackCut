@@ -1,0 +1,80 @@
+---
+import EmailCapture from './EmailCapture';
+import { getAllProducts } from '../lib/saas-data';
+
+const products = await getAllProducts();
+const latestVerification = products.reduce((latest, p) =>
+  (p.lastVerified || '') > latest ? (p.lastVerified || '') : latest
+, '2026-06-01');
+---
+
+<footer class="ledger-total mt-auto bg-zinc-950/60" role="contentinfo">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div class="md:col-span-2">
+        <a href="/" class="inline-flex items-baseline mb-4 focus:outline-none rounded" aria-label="StackCut home">
+          <span class="font-display font-extrabold text-lg tracking-tight text-zinc-100">
+            Stack<span class="relative inline-block text-emerald-400">Cut<span class="footer-strike" aria-hidden="true"></span></span>
+          </span>
+        </a>
+        <p class="text-zinc-400 text-sm max-w-md leading-relaxed mb-6">
+          An independent audit desk for software spend. No logins, no tracking,
+          zero friction. Just verified pricing data and instant savings.
+        </p>
+        <EmailCapture client:load variant="footer" />
+      </div>
+
+      <div>
+        <h4 class="text-zinc-100 font-display font-bold text-xs uppercase tracking-[0.14em] mb-4">Tools</h4>
+        <ul class="space-y-2">
+          <li><a href="/downgrade" class="text-zinc-400 hover:text-emerald-400 text-sm transition-colors focus:outline-none rounded">Downgrade Engine</a></li>
+          <li><a href="/enterprise-tax" class="text-zinc-400 hover:text-emerald-400 text-sm transition-colors focus:outline-none rounded">Enterprise Tax</a></li>
+          <li><a href="/negotiation" class="text-zinc-400 hover:text-emerald-400 text-sm transition-colors focus:outline-none rounded">Negotiation Scripts</a></li>
+          <li><a href="/audit" class="text-zinc-400 hover:text-emerald-400 text-sm transition-colors focus:outline-none rounded">Stack Auditor</a></li>
+          <li><a href="/roi" class="text-zinc-400 hover:text-emerald-400 text-sm transition-colors focus:outline-none rounded">ROI Calculator</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-zinc-100 font-display font-bold text-xs uppercase tracking-[0.14em] mb-4">Resources</h4>
+        <ul class="space-y-2">
+          <li><a href="/alternatives" class="text-zinc-400 hover:text-emerald-400 text-sm transition-colors focus:outline-none rounded">All Alternatives</a></li>
+          <li><a href="/compare" class="text-zinc-400 hover:text-emerald-400 text-sm transition-colors focus:outline-none rounded">Comparisons</a></li>
+          <li><a href="/blog" class="text-zinc-400 hover:text-emerald-400 text-sm transition-colors focus:outline-none rounded">Blog</a></li>
+          <li><a href="/about" class="text-zinc-400 hover:text-emerald-400 text-sm transition-colors focus:outline-none rounded">About</a></li>
+          <li>
+            <span class="text-zinc-500 text-xs num">Books last balanced: <span id="last-updated">{latestVerification}</span></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-zinc-800 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <p class="text-zinc-500 text-xs">
+        © {new Date().getFullYear()} StackCut. No user accounts. No cookies required.
+      </p>
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+        <a href="/privacy" class="text-zinc-500 hover:text-emerald-400 text-xs transition-colors focus:outline-none rounded">Privacy</a>
+        <a href="/terms" class="text-zinc-500 hover:text-emerald-400 text-xs transition-colors focus:outline-none rounded">Terms</a>
+        <p class="text-zinc-500 text-xs max-w-md">
+          Pricing data manually verified — last updated {latestVerification}. E&amp;OE: always confirm on the vendor's official site.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-strike {
+    position: absolute;
+    left: -4%;
+    right: -6%;
+    top: 56%;
+    height: 0.09em;
+    min-height: 2px;
+    border-radius: 99px;
+    background: var(--color-pen);
+    transform: translateY(-50%) rotate(-3deg);
+    pointer-events: none;
+  }
+</style>

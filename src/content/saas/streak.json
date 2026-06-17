@@ -1,0 +1,149 @@
+{
+  "id": "streak",
+  "name": "Streak",
+  "slug": "streak",
+  "category": "CRM & Sales",
+  "description": "CRM built directly inside Gmail for managing pipelines without leaving your inbox.",
+  "websiteUrl": "https://www.streak.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 14,
+  "lastVerified": "2026-06-14",
+  "popularityScore": 62,
+  "g2Rating": 4.5,
+  "featureIds": [
+    "crm_basic",
+    "api_access",
+    "integrations",
+    "email_automation",
+    "pipeline_mgmt",
+    "lead_scoring",
+    "email_sequences",
+    "workflows",
+    "roles_permissions",
+    "saml_sso",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "gmail_native",
+      "name": "Gmail Native",
+      "description": "CRM runs entirely within Gmail interface",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "email_tracking",
+      "name": "Email Tracking",
+      "description": "Read receipts and open tracking for emails",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "mail_merge",
+      "name": "Mail Merge",
+      "description": "Bulk personalized email sending from Gmail",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "ai_copilot",
+      "name": "AI Co-Pilot",
+      "description": "AI-powered deal insights and email drafting",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 59,
+      "priceAnnually": 588,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "low",
+      "priceNote": "Billed annually at $49/seat/mo; month-to-month is $59/seat. Includes 20 AI credits/user/mo.",
+      "sourceUrl": "https://www.streak.com/pricing",
+      "capturedAt": "2026-06-14"
+    },
+    {
+      "id": "pro-plus",
+      "name": "Pro+",
+      "priceMonthly": 89,
+      "priceAnnually": 828,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "low",
+      "priceNote": "Billed annually at $69/seat/mo; month-to-month is $89/seat. Includes 150 AI credits/user/mo.",
+      "sourceUrl": "https://www.streak.com/pricing",
+      "capturedAt": "2026-06-14",
+      "addOns": [
+        {
+          "id": "streak_ai_credits",
+          "name": "Extra AI Credits",
+          "description": "Top-up credits for Streak AI features (1000 credits / mo).",
+          "priceMonthly": 100,
+          "priceAnnually": 1200,
+          "unit": "flat"
+        }
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": 159,
+      "priceAnnually": 1548,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "saml_sso": true,
+        "roles_permissions": true,
+        "priority_support": true
+      },
+      "isEnterprise": true,
+      "migrationComplexity": "medium",
+      "priceNote": "Billed annually at $129/seat/mo; month-to-month is $159/seat. Includes 500 AI credits/user/mo.",
+      "capturedAt": "2026-06-14",
+      "addOns": [
+        {
+          "id": "streak_ai_credits",
+          "name": "Extra AI Credits",
+          "description": "Top-up credits for Streak AI features (1000 credits / mo).",
+          "priceMonthly": 100,
+          "priceAnnually": 1200,
+          "unit": "flat"
+        }
+      ]
+    }
+  ],
+  "pricingUrl": "https://www.streak.com/pricing"
+}

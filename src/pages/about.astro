@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import { getAllProducts } from '../lib/saas-data';
+
+const products = await getAllProducts();
+const totalPlans = products.reduce((sum, p) => sum + p.plans.length, 0);
+
+const faqItems = [
+  { question: "Is StackCut really free?", answer: "Yes. All tools — Downgrade Engine, Enterprise Tax Calculator, Negotiation Scripts, Stack Auditor, and ROI Calculator — are 100% free to use. No account required, no credit card, no hidden paywalls." },
+  { question: "How does StackCut make money?", answer: "We earn affiliate commissions when you click through to a SaaS vendor and sign up. This costs you nothing extra. We also display privacy-first ads via EthicalAds. We never sell data because we never collect it." },
+  { question: "How do you verify pricing data?", answer: "Every price point is manually verified against the vendor's official pricing page. We check and update data regularly. Each product page shows the date of last verification. If you find an error, please contact us." },
+  { question: "Do you track users?", answer: "No. We use Plausible Analytics (privacy-first, no cookies, GDPR compliant). We do not collect personal data, create user accounts, or use tracking cookies. Your tool lists stay in your browser's localStorage and never leave your device." },
+  { question: "Can I trust the downgrade recommendations?", answer: "Our Downgrade Engine is deterministic — it matches features you actually use against lower-tier plans and shows exactly what you would lose. There is no AI guessing. The data comes directly from vendor pricing pages. Always verify on the vendor's site before making changes." },
+  { question: "How is StackCut different from G2 or Capterra?", answer: "G2 and Capterra are review aggregators funded by vendor advertising. StackCut is a cost optimization toolkit. We don't rank vendors by review score — we compare them by exact feature parity and price. Our tools help you downgrade, switch, or negotiate, not just browse." }
+];
+---
+
+<Layout 
+  title="About StackCut | B2B SaaS Cost Optimization"
+  description="Learn how StackCut helps B2B teams cut SaaS spend with free, data-driven tools. Our methodology, mission, and the team behind the platform."
+>
+  <Navbar />
+  <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
+  
+  <main id="main-content" role="main" class="flex-1">
+    <section class="section-padding pt-4 pb-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-12">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-6">
+            About <span class="text-emerald-400">StackCut</span>
+          </h1>
+          <p class="text-zinc-400 text-lg leading-relaxed max-w-3xl">
+            StackCut is a free, open toolkit for B2B software cost optimization. We help engineering leaders, 
+            finance teams, and founders cut SaaS spend by identifying downgrades, redundancies, and cheaper alternatives 
+            — all backed by real, manually verified pricing data.
+          </p>
+        </div>
+
+        <!-- Mission -->
+        <div class="card-blur rounded-xl p-8 mb-8 border border-emerald-400/10">
+          <h2 class="text-xl font-bold text-zinc-100 mb-4">Our Mission</h2>
+          <p class="text-zinc-300 leading-relaxed mb-4">
+            The average B2B company overpays for software by 20-35%. Most of that waste comes from three sources: 
+            paying for enterprise features you don't use, keeping redundant tools with overlapping functionality, 
+            and never negotiating renewals because you lack competitive pricing data.
+          </p>
+          <p class="text-zinc-300 leading-relaxed">
+            StackCut exists to solve all three. Our tools are free because we believe every team should have 
+            access to the same pricing intelligence that Fortune 500 procurement departments use. We make money 
+            through affiliate commissions and privacy-first ads — never by selling your data.
+          </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div class="card-blur rounded-xl p-5 text-center">
+            <div class="text-2xl font-bold text-emerald-400">{products.length}</div>
+            <div class="text-xs text-zinc-500 mt-1">SaaS Products Indexed</div>
+          </div>
+          <div class="card-blur rounded-xl p-5 text-center">
+            <div class="text-2xl font-bold text-emerald-400">{totalPlans}+</div>
+            <div class="text-xs text-zinc-500 mt-1">Pricing Plans Mapped</div>
+          </div>
+          <div class="card-blur rounded-xl p-5 text-center">
+            <div class="text-2xl font-bold text-emerald-400">5</div>
+            <div class="text-xs text-zinc-500 mt-1">Free Tools</div>
+          </div>
+          <div class="card-blur rounded-xl p-5 text-center">
+            <div class="text-2xl font-bold text-emerald-400">0</div>
+            <div class="text-xs text-zinc-500 mt-1">Cookies Used</div>
+          </div>
+        </div>
+
+        <!-- Methodology -->
+        <div class="card-blur rounded-xl p-8 mb-8">
+          <h2 class="text-xl font-bold text-zinc-100 mb-4">Our Methodology</h2>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center shrink-0 mt-0.5">
+                <span class="text-emerald-400 font-bold text-sm">1</span>
+              </div>
+              <div>
+                <h3 class="text-zinc-100 font-semibold mb-1">Manual Price Verification</h3>
+                <p class="text-zinc-400 text-sm leading-relaxed">Every price point is verified against the vendor's official pricing page. We document the date of each verification and flag data that may be stale.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center shrink-0 mt-0.5">
+                <span class="text-emerald-400 font-bold text-sm">2</span>
+              </div>
+              <div>
+                <h3 class="text-zinc-100 font-semibold mb-1">Feature Matrix Standardization</h3>
+                <p class="text-zinc-400 text-sm leading-relaxed">We map every product's features to a standardized registry of comparable capabilities (API access, SSO, audit logs, etc.), enabling true apples-to-apples comparison across vendors.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center shrink-0 mt-0.5">
+                <span class="text-emerald-400 font-bold text-sm">3</span>
+              </div>
+              <div>
+                <h3 class="text-zinc-100 font-semibold mb-1">Deterministic Analysis</h3>
+                <p class="text-zinc-400 text-sm leading-relaxed">Our tools use deterministic algorithms, not AI guessing. When the Downgrade Engine says a lower tier covers your needs, it's based on exact feature-to-plan mapping — not probabilistic scoring.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center shrink-0 mt-0.5">
+                <span class="text-emerald-400 font-bold text-sm">4</span>
+              </div>
+              <div>
+                <h3 class="text-zinc-100 font-semibold mb-1">Transparent Monetization</h3>
+                <p class="text-zinc-400 text-sm leading-relaxed">We clearly disclose affiliate relationships on every page. Our recommendations are based on feature parity and pricing data, not on which vendor pays the highest commission.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About the Team -->
+        <div class="card-blur rounded-xl p-8 mb-8">
+          <h2 class="text-xl font-bold text-zinc-100 mb-4">The Team</h2>
+          <div class="flex items-start gap-6">
+            <div class="w-16 h-16 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center shrink-0">
+              <span class="text-emerald-400 text-2xl font-bold">SC</span>
+            </div>
+            <div>
+              <h3 class="text-zinc-100 font-semibold text-lg">StackCut Team</h3>
+              <p class="text-emerald-400 text-sm mb-3">B2B Software Consultants</p>
+              <p class="text-zinc-400 text-sm leading-relaxed">
+                We've spent years working with B2B SaaS tools and saw firsthand how companies bleed money on 
+                over-provisioned plans and redundant subscriptions. StackCut was built to give every team — from 
+                startups to enterprises — the data they need to make smarter purchasing decisions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="card-blur rounded-xl p-8 mb-8">
+          <h2 class="text-xl font-bold text-zinc-100 mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-6">
+            {faqItems.map(item => (
+              <div class="border-b border-zinc-800 pb-6 last:border-0 last:pb-0">
+                <h3 class="text-zinc-100 font-semibold mb-2">{item.question}</h3>
+                <p class="text-zinc-400 text-sm leading-relaxed">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="card-blur rounded-xl p-8 border border-emerald-400/10 bg-emerald-400/5 text-center">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-3">Ready to cut your SaaS spend?</h2>
+          <p class="text-zinc-400 mb-6 max-w-lg mx-auto">
+            Start with the Downgrade Engine — select your current tools, check the features you use, 
+            and see instant savings opportunities.
+          </p>
+          <a href="/downgrade" class="btn-primary text-base px-8 py-4">
+            Launch Downgrade Engine — Free
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<SchemaOrg 
+  type="FAQPage"
+  faqItems={faqItems}
+/>

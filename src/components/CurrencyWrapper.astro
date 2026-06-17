@@ -1,0 +1,8 @@
+---
+import { CurrencyProvider } from './CurrencyProvider';
+import CurrencySelector from './CurrencySelector';
+---
+<CurrencyProvider client:load>
+  <CurrencySelector />
+  <slot />
+</CurrencyProvider>

@@ -1,0 +1,158 @@
+{
+  "id": "front",
+  "name": "Front",
+  "slug": "front",
+  "category": "Customer Support",
+  "description": "Shared inbox and customer operations platform for team collaboration with AI add-ons.",
+  "websiteUrl": "https://front.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 7,
+  "lastVerified": "2026-06-13",
+  "capturedAt": "2026-06-13",
+  "popularityScore": 72,
+  "g2Rating": 4.7,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "roles_permissions",
+    "email_collaboration",
+    "shared_inbox",
+    "workflows",
+    "saml_sso",
+    "audit_logs",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "omnichannel",
+      "name": "Omnichannel",
+      "description": "Email, SMS, social, chat in one inbox",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "ai_copilot",
+      "name": "AI Copilot",
+      "description": "AI-powered response suggestions and summarization",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    },
+    {
+      "id": "smart_qa",
+      "name": "Smart QA",
+      "description": "Automated quality assurance on agent responses",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "priceMonthly": 25,
+      "priceAnnually": 300,
+      "seatsIncluded": 1,
+      "priceNote": "$25/seat/mo billed annually (save 24% vs month-to-month). Up to 10 seats.",
+      "sourceUrl": "https://front.com/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "shared_inbox": true,
+        "email_collaboration": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium",
+      "addOns": [
+        {
+          "id": "front_ai_copilot",
+          "name": "AI Copilot",
+          "description": "Real-time AI assistant for drafting replies and summaries; $20/seat/mo add-on.",
+          "priceMonthly": 20,
+          "priceAnnually": 240,
+          "unit": "per_user"
+        },
+        {
+          "id": "front_smart_qa",
+          "name": "Smart QA",
+          "description": "Automated QA scorecards; $20/seat/mo add-on.",
+          "priceMonthly": 20,
+          "priceAnnually": 240,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "professional",
+      "name": "Professional",
+      "priceMonthly": 65,
+      "priceAnnually": 780,
+      "seatsIncluded": 1,
+      "priceNote": "$65/seat/mo billed annually (save 24% vs month-to-month). Up to 50 seats.",
+      "sourceUrl": "https://front.com/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "shared_inbox": true,
+        "workflows": true,
+        "saml_sso": true,
+        "email_collaboration": true,
+        "omnichannel": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium",
+      "addOns": [
+        {
+          "id": "front_ai_copilot",
+          "name": "AI Copilot",
+          "description": "Real-time AI assistant for drafting replies and summaries; $20/seat/mo add-on.",
+          "priceMonthly": 20,
+          "priceAnnually": 240,
+          "unit": "per_user"
+        },
+        {
+          "id": "front_smart_qa",
+          "name": "Smart QA",
+          "description": "Automated QA scorecards; $20/seat/mo add-on.",
+          "priceMonthly": 20,
+          "priceAnnually": 240,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": 105,
+      "priceAnnually": 1260,
+      "seatsIncluded": 1,
+      "priceNote": "$105/seat/mo billed annually (save 24% vs month-to-month). Unlimited seats; AI Copilot, Smart QA and Smart CSAT included.",
+      "sourceUrl": "https://front.com/pricing",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "shared_inbox": true,
+        "workflows": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "roles_permissions": true,
+        "sla": true,
+        "priority_support": true,
+        "email_collaboration": true,
+        "omnichannel": true,
+        "ai_copilot": true,
+        "smart_qa": true
+      },
+      "isEnterprise": true,
+      "migrationComplexity": "high"
+    }
+  ],
+  "pricingUrl": "https://front.com/pricing"
+}

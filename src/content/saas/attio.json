@@ -1,0 +1,128 @@
+{
+  "id": "attio",
+  "name": "Attio",
+  "slug": "attio",
+  "category": "CRM & Sales",
+  "description": "Modern CRM with real-time data enrichment and flexible data modeling.",
+  "websiteUrl": "https://attio.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 14,
+  "lastVerified": "2026-06-13",
+  "capturedAt": "2026-06-13",
+  "popularityScore": 65,
+  "g2Rating": 4.7,
+  "featureIds": [
+    "crm_basic",
+    "api_access",
+    "integrations",
+    "email_automation",
+    "pipeline_mgmt",
+    "lead_scoring",
+    "email_sequences",
+    "voip_telephony",
+    "workflows",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "sla",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "data_enrichment",
+      "name": "Data Enrichment",
+      "description": "Auto-enrich contacts and companies with public data",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "relationship_intel",
+      "name": "Relationship Intelligence",
+      "description": "Auto-detect relationships from email and calendar",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "flexible_objects",
+      "name": "Flexible Objects",
+      "description": "Custom CRM objects beyond contacts and deals",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 3,
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "plus",
+      "name": "Plus",
+      "priceMonthly": 36,
+      "priceAnnually": 348,
+      "seatsIncluded": 1,
+      "priceNote": "$29/seat/mo billed annually ($36/mo monthly).",
+      "sourceUrl": "https://attio.com",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium"
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 86,
+      "priceAnnually": 828,
+      "seatsIncluded": 1,
+      "priceNote": "$69/seat/mo billed annually ($86/mo monthly).",
+      "sourceUrl": "https://attio.com",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium"
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "priceNote": "Custom pricing; includes SSO/SAML, audit logs, custom data residency and SLA.",
+      "sourceUrl": "https://attio.com",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "roles_permissions": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "pricingUrl": "https://attio.com/pricing"
+}

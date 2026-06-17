@@ -1,0 +1,104 @@
+{
+  "id": "drip",
+  "name": "Drip",
+  "slug": "drip",
+  "category": "Email Marketing",
+  "description": "E-commerce marketing automation platform with email, SMS, and onsite personalization.",
+  "websiteUrl": "https://www.drip.com",
+  "pricingUrl": "https://www.drip.com/pricing",
+  "affiliateUrl": null,
+  "pricingModel": "custom",
+  "freeTrialDays": 14,
+  "lastVerified": "2026-06-15",
+  "popularityScore": 58,
+  "g2Rating": 4.4,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "email_automation",
+    "email_templates",
+    "a_b_testing",
+    "reporting",
+    "email_sequences",
+    "transactional_email"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "visual_builder",
+      "name": "Visual Email Builder",
+      "description": "Drag-and-drop email design with dynamic content",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "ecommerce_crm",
+      "name": "E-commerce CRM",
+      "description": "Revenue attribution and customer lifecycle tracking",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "onsite_popups",
+      "name": "Onsite Popups",
+      "description": "Forms, popups, and sidebars for lead capture",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "2500",
+      "name": "2,500 Contacts",
+      "priceMonthly": 39,
+      "priceAnnually": 468,
+      "sourceUrl": "https://www.drip.com/pricing",
+      "capturedAt": "2026-06-15",
+      "seatsIncluded": 1,
+      "priceNote": "Price for 2,500 contacts; scales with contact tier.",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "email_automation": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium"
+    },
+    {
+      "id": "5000",
+      "name": "5,000 Contacts",
+      "priceMonthly": 89,
+      "priceAnnually": 1068,
+      "sourceUrl": "https://www.drip.com/pricing",
+      "capturedAt": "2026-06-15",
+      "seatsIncluded": 1,
+      "priceNote": "Price for 5,000 contacts; scales with contact tier.",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "email_automation": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium"
+    },
+    {
+      "id": "10000",
+      "name": "10,000 Contacts",
+      "priceMonthly": 154,
+      "priceAnnually": 1848,
+      "sourceUrl": "https://www.drip.com/pricing",
+      "capturedAt": "2026-06-15",
+      "seatsIncluded": 1,
+      "priceNote": "Price for 10,000 contacts; scales with contact tier.",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "email_automation": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium"
+    }
+  ]
+}

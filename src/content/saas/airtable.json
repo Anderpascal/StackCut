@@ -1,0 +1,160 @@
+{
+  "id": "airtable",
+  "name": "Airtable",
+  "slug": "airtable",
+  "category": "Productivity & Wiki",
+  "description": "Spreadsheet-database hybrid with collaboration, automation, and custom app interfaces.",
+  "websiteUrl": "https://airtable.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-13",
+  "popularityScore": 85,
+  "g2Rating": 4.6,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "advanced_analytics",
+    "reporting",
+    "roles_permissions",
+    "saml_sso",
+    "audit_logs",
+    "sla",
+    "priority_support",
+    "custom_fields",
+    "collaboration",
+    "dashboards",
+    "relational_database",
+    "database_views",
+    "workflows"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "interface_designer",
+      "name": "Interface Designer",
+      "description": "Build custom app interfaces on top of your data",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "sync",
+      "name": "Airtable Sync",
+      "description": "Two-way data synchronization across bases",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "extensions",
+      "name": "Extensions",
+      "description": "Scripting, charts, and custom marketplace apps",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "linked_records",
+      "name": "Linked Records",
+      "description": "Relational data across multiple tables",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "views",
+      "name": "Multiple Views",
+      "description": "Grid, calendar, kanban, gallery, and Gantt views",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "linked_records": true,
+        "views": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "team",
+      "name": "Team",
+      "priceMonthly": 24,
+      "priceAnnually": 240,
+      "sourceUrl": "https://www.airtable.com/pricing",
+      "capturedAt": "2026-06-13",
+      "seatsIncluded": 1,
+      "priceNote": "$20/seat/mo billed annually ($24/mo monthly). Record and AI add-ons sold separately.",
+      "features": {
+        "linked_records": true,
+        "views": true,
+        "extensions": true,
+        "interface_designer": true,
+        "sync": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "advanced_analytics": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "priceMonthly": 54,
+      "priceAnnually": 540,
+      "sourceUrl": "https://www.airtable.com/pricing",
+      "capturedAt": "2026-06-13",
+      "seatsIncluded": 1,
+      "priceNote": "$45/seat/mo billed annually ($54/mo monthly). Record and AI add-ons sold separately.",
+      "features": {
+        "linked_records": true,
+        "views": true,
+        "extensions": true,
+        "interface_designer": true,
+        "sync": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "advanced_analytics": true,
+        "reporting": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise Scale",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "priceNote": "Custom pricing; includes advanced governance, security and scalable record limits.",
+      "features": {
+        "linked_records": true,
+        "views": true,
+        "extensions": true,
+        "interface_designer": true,
+        "sync": true,
+        "api_access": true,
+        "integrations": true,
+        "workflows": true,
+        "advanced_analytics": true,
+        "reporting": true,
+        "roles_permissions": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "sla": true,
+        "priority_support": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "pricingUrl": "https://www.airtable.com/pricing"
+}

@@ -1,0 +1,154 @@
+{
+  "id": "freshdesk",
+  "name": "Freshdesk",
+  "slug": "freshdesk",
+  "category": "Customer Support",
+  "description": "Cloud-based customer support helpdesk software by Freshworks with AI-assisted ticketing.",
+  "websiteUrl": "https://freshworks.com/freshdesk/",
+  "pricingUrl": "https://www.freshworks.com/freshdesk/pricing/",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": 21,
+  "lastVerified": "2026-06-13",
+  "capturedAt": "2026-06-13",
+  "popularityScore": 74,
+  "g2Rating": 4.4,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "reporting",
+    "sla",
+    "ticketing",
+    "knowledge_base",
+    "custom_fields",
+    "in_app_chat",
+    "chatbot_builder",
+    "workflows"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "ticket_field_suggester",
+      "name": "Field Suggester",
+      "description": "AI-powered ticket field suggestions",
+      "category": "proprietary",
+      "isEnterpriseLocked": true,
+      "comparable": false
+    },
+    {
+      "id": "omni_chat",
+      "name": "Omnichannel Chat",
+      "description": "Unified chat across channels",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "automation_rules",
+      "name": "Automation Rules",
+      "description": "Event-triggered ticket automations",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 10,
+      "priceNote": "Free for up to 10 agents.",
+      "sourceUrl": "https://www.freshworks.com/freshdesk/pricing/",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "integrations": true,
+        "ticketing": true,
+        "knowledge_base": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "growth",
+      "name": "Growth",
+      "priceMonthly": 23,
+      "priceAnnually": 228,
+      "seatsIncluded": 1,
+      "priceNote": "$19/agent/mo billed annually ($23/agent/mo monthly).",
+      "sourceUrl": "https://www.freshworks.com/freshdesk/pricing/",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "integrations": true,
+        "reporting": true,
+        "ticketing": true,
+        "knowledge_base": true,
+        "custom_fields": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 66,
+      "priceAnnually": 660,
+      "seatsIncluded": 1,
+      "priceNote": "$55/agent/mo billed annually ($66/agent/mo monthly).",
+      "sourceUrl": "https://www.freshworks.com/freshdesk/pricing/",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "ticketing": true,
+        "knowledge_base": true,
+        "custom_fields": true,
+        "automation_rules": true
+      },
+      "isEnterprise": false,
+      "addOns": [
+        {
+          "id": "freddy_ai_copilot",
+          "name": "Freddy AI Copilot",
+          "description": "AI agent-assist add-on for agents; starting at $29/agent/mo.",
+          "priceMonthly": 29,
+          "priceAnnually": 348,
+          "unit": "per_user"
+        }
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": 95,
+      "priceAnnually": 1068,
+      "seatsIncluded": 1,
+      "priceNote": "$89/agent/mo billed annually ($95/agent/mo monthly estimate).",
+      "sourceUrl": "https://www.freshworks.com/freshdesk/pricing/",
+      "capturedAt": "2026-06-13",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "reporting": true,
+        "workflows": true,
+        "sla": true,
+        "ticketing": true,
+        "knowledge_base": true,
+        "custom_fields": true,
+        "automation_rules": true,
+        "ticket_field_suggester": true
+      },
+      "isEnterprise": true,
+      "addOns": [
+        {
+          "id": "freddy_ai_copilot",
+          "name": "Freddy AI Copilot",
+          "description": "AI agent-assist add-on for agents; starting at $29/agent/mo.",
+          "priceMonthly": 29,
+          "priceAnnually": 348,
+          "unit": "per_user"
+        }
+      ]
+    }
+  ]
+}

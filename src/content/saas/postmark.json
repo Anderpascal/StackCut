@@ -1,0 +1,111 @@
+{
+  "id": "postmark",
+  "name": "Postmark",
+  "slug": "postmark",
+  "category": "Email Marketing",
+  "description": "Transactional email service focused on delivery speed and reliability.",
+  "websiteUrl": "https://postmarkapp.com",
+  "pricingUrl": "https://postmarkapp.com/pricing",
+  "affiliateUrl": null,
+  "pricingModel": "custom",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-15",
+  "popularityScore": 60,
+  "g2Rating": 4.6,
+  "featureIds": [
+    "api_access",
+    "integrations",
+    "reporting",
+    "email_templates",
+    "transactional_email",
+    "priority_support"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "message_streams",
+      "name": "Message Streams",
+      "description": "Separate transactional and broadcast email streams",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "inbound_email",
+      "name": "Inbound Processing",
+      "description": "Parse incoming emails via webhooks",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "templates",
+      "name": "Email Templates",
+      "description": "Server-side email template rendering",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "basic",
+      "name": "Basic",
+      "priceMonthly": 15,
+      "priceAnnually": 180,
+      "sourceUrl": "https://postmarkapp.com/pricing",
+      "capturedAt": "2026-06-15",
+      "seatsIncluded": 1,
+      "priceNote": "$15/mo base (10k emails included); overage $1.80/1k. 45-day retention, 5 sending domains.",
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium"
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceMonthly": 16.5,
+      "priceAnnually": 198,
+      "sourceUrl": "https://postmarkapp.com/pricing",
+      "capturedAt": "2026-06-15",
+      "seatsIncluded": 1,
+      "priceNote": "$16.50/mo base (10k emails included); overage $1.30/1k. Adds inbound processing, retention up to 365 days, 10 sending domains.",
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium"
+    },
+    {
+      "id": "platform",
+      "name": "Platform",
+      "priceMonthly": 18,
+      "priceAnnually": 216,
+      "sourceUrl": "https://postmarkapp.com/pricing",
+      "capturedAt": "2026-06-15",
+      "seatsIncluded": 1,
+      "priceNote": "$18/mo base (10k emails included); overage $1.20/1k. Adds unlimited sending domains.",
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "priority_support": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "medium"
+    }
+  ]
+}

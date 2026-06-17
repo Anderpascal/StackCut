@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { getAllProducts } from '../lib/saas-data';
+
+const products = await getAllProducts();
+const productList = products.map(p => ({ name: p.name, slug: p.slug, category: p.category }));
+---
+
+<Layout title="404 — Page Not Found | StackCut">
+  <Navbar />
+  <main id="main-content" role="main" class="flex-1 flex items-center justify-center px-4">
+    <div class="max-w-lg w-full text-center py-20">
+      <div class="card-blur rounded-lg border border-zinc-800 overflow-hidden mb-8">
+        <div class="flex items-center gap-2 px-4 py-3 border-b border-zinc-800 bg-zinc-900/50">
+          <div class="w-3 h-3 rounded-full bg-zinc-700" />
+          <div class="w-3 h-3 rounded-full bg-zinc-700" />
+          <div class="w-3 h-3 rounded-full bg-zinc-700" />
+          <span class="ml-2 text-xs text-zinc-500 font-mono">404 — terminal</span>
+        </div>
+        <div class="p-6 font-mono text-sm text-left">
+          <p class="text-red-400 mb-2">Error 404: Route not found.</p>
+          <p class="text-zinc-500 mb-4">Unlike your SaaS savings, this page does not exist.</p>
+          <p class="text-zinc-500 mb-1"><span class="text-emerald-400">$</span> wasted: $0.00</p>
+          <p class="text-zinc-500"><span class="text-emerald-400">&rarr;</span> Try searching for a tool:</p>
+        </div>
+      </div>
+      <div class="relative">
+        <input type="text" id="search-404" placeholder="Search SaaS products..."
+               class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-100 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500" />
+        <div id="search-results" class="mt-2 text-left hidden"></div>
+      </div>
+      <div class="mt-8 space-x-4">
+        <a href="/" class="text-sm text-zinc-400 hover:text-emerald-400">Home</a>
+        <a href="/downgrade" class="text-sm text-zinc-400 hover:text-emerald-400">Downgrade Engine</a>
+        <a href="/audit" class="text-sm text-zinc-400 hover:text-emerald-400">Stack Audit</a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<script is:inline define:vars={{ productList }}>
+  const input = document.getElementById('search-404');
+  const results = document.getElementById('search-results');
+  let timeout;
+  input?.addEventListener('input', (e) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      const query = e.target.value.toLowerCase();
+      const matches = productList.filter((p) => p.name.toLowerCase().includes(query) || p.slug.includes(query));
+      if (matches.length > 0) {
+        results.innerHTML = matches.slice(0, 5).map((p) => 
+          `<a href="/alternatives/${p.slug}-cheap" class="block px-4 py-2 hover:bg-zinc-900 text-zinc-300 text-sm hover:text-emerald-400">${p.name} &mdash; ${p.category}</a>`
+        ).join('');
+        results.classList.remove('hidden');
+      } else {
+        results.classList.add('hidden');
+      }
+    }, 200);
+  });
+</script>

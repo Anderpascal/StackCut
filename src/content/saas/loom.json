@@ -1,0 +1,119 @@
+{
+  "id": "loom",
+  "name": "Loom",
+  "slug": "loom",
+  "category": "Communication",
+  "description": "Async video messaging platform for team communication and walkthroughs.",
+  "websiteUrl": "https://www.loom.com",
+  "affiliateUrl": null,
+  "pricingModel": "per_user",
+  "freeTrialDays": null,
+  "lastVerified": "2026-06-13",
+  "popularityScore": 82,
+  "g2Rating": 4.7,
+  "featureIds": [
+    "recording",
+    "video_recording",
+    "async_video",
+    "integrations",
+    "api_access",
+    "saml_sso",
+    "audit_logs",
+    "roles_permissions"
+  ],
+  "proprietaryFeatures": [
+    {
+      "id": "screen_recording",
+      "name": "Screen Recording",
+      "description": "Record screen, camera, or both with instant link",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "ai_summaries",
+      "name": "AI Summaries",
+      "description": "Auto-generated titles, chapters, and summaries",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "custom_branding",
+      "name": "Custom Branding",
+      "description": "Brand your video player with company logo and colors",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    },
+    {
+      "id": "video_analytics",
+      "name": "Video Analytics",
+      "description": "View-by-view engagement tracking",
+      "category": "proprietary",
+      "isEnterpriseLocked": false,
+      "comparable": false
+    }
+  ],
+  "plans": [
+    {
+      "id": "starter",
+      "name": "Starter (Free)",
+      "priceMonthly": 0,
+      "priceAnnually": 0,
+      "seatsIncluded": 1,
+      "features": {
+        "integrations": true
+      },
+      "isEnterprise": false
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "priceMonthly": 18,
+      "priceAnnually": 180,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "low",
+      "priceNote": "Annual billing saves ~17%; month-to-month is $18/user.",
+      "sourceUrl": "https://www.loom.com/pricing",
+      "capturedAt": "2026-06-13"
+    },
+    {
+      "id": "business-ai",
+      "name": "Business + AI",
+      "priceMonthly": 24,
+      "priceAnnually": 240,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true
+      },
+      "isEnterprise": false,
+      "migrationComplexity": "low",
+      "priceNote": "Annual billing saves ~17%; month-to-month is $24/user.",
+      "sourceUrl": "https://www.loom.com/pricing",
+      "capturedAt": "2026-06-13"
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "priceMonthly": null,
+      "priceAnnually": null,
+      "seatsIncluded": 1,
+      "features": {
+        "api_access": true,
+        "integrations": true,
+        "saml_sso": true,
+        "audit_logs": true,
+        "roles_permissions": true
+      },
+      "isEnterprise": true
+    }
+  ],
+  "pricingUrl": "https://www.loom.com/pricing"
+}
