@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import CookieConsent from '../components/CookieConsent';
 import AffiliateConversionTracker from '../components/AffiliateConversionTracker';
+import Analytics from '@vercel/analytics/astro';
 import { FX_RATES } from '../lib/fx';
 
 interface Props {
@@ -144,6 +145,7 @@ const siteUrl = 'https://stackcut.app';
     </div>
     <CookieConsent client:load />
     <AffiliateConversionTracker client:load />
+    <Analytics />
     <script>
       // Scroll-in reveals for [data-reveal] elements
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
