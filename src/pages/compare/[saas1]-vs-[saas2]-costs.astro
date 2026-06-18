@@ -138,6 +138,23 @@ const features = [...allFeatureIds].map(fid => {
     inP2: !!f2,
   };
 });
+
+const cheaperPrice = (cheaper === product1 ? p1Cheapest : p2Cheapest)?.priceMonthly;
+const dearerPrice = (moreExpensive === product1 ? p1Cheapest : p2Cheapest)?.priceMonthly;
+const compareFaqs = [
+  {
+    question: `Is ${product1.name} or ${product2.name} cheaper?`,
+    answer: `${cheaper.name} offers the lower entry price${cheaperPrice != null ? ` at $${cheaperPrice}/mo` : ''}, compared with ${moreExpensive.name}${dearerPrice != null ? ` at $${dearerPrice}/mo` : ''}. The best value depends on which features you actually need.`,
+  },
+  {
+    question: `What is the difference between ${product1.name} and ${product2.name}?`,
+    answer: `${product1.category === product2.category ? `Both are ${product1.category} tools.` : 'They serve overlapping needs.'} This comparison maps their pricing tiers and feature parity side by side so you can see exactly where they diverge.`,
+  },
+  {
+    question: `Can I switch from ${moreExpensive.name} to ${cheaper.name} without losing features?`,
+    answer: `Check the feature parity matrix above. If ${cheaper.name} covers the features you rely on, switching can cut costs. Use StackCut's Downgrade Engine to verify parity before you migrate.`,
+  },
+];
 ---
 
 <Layout 
@@ -380,20 +397,22 @@ const features = [...allFeatureIds].map(fid => {
             </ul>
           </div>
         </div>
+        <div class="mt-16 max-w-4xl">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            {compareFaqs.map(faq => (
+              <div class="card-blur rounded-xl p-6">
+                <h3 class="text-lg font-medium text-zinc-100 mb-2">{faq.question}</h3>
+                <p class="text-zinc-400 text-sm">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   </main>
-  
+
   <Footer />
 </Layout>
 
-<SchemaOrg 
-  type="Product"
-  productName={`${product1.name} vs ${product2.name}`}
-  pageDescription={`Detailed cost and feature comparison between ${product1.name} and ${product2.name}. Find the cheapest plan with exact functional parity.`}
-  verdictText={`${cheaper.name} offers the lower entry point at $${cheaper === product1 ? (p1Cheapest?.priceMonthly ?? 'Custom') : (p2Cheapest?.priceMonthly ?? 'Custom')}/mo compared to ${moreExpensive.name}.`}
-  offer1Name={product1.name}
-  offer1Price={String(p1Cheapest?.priceMonthly ?? 0)}
-  offer2Name={product2.name}
-  offer2Price={String(p2Cheapest?.priceMonthly ?? 0)}
-/>
+<SchemaOrg type="FAQPage" faqItems={compareFaqs} />

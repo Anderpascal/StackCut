@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getAllProducts } from '../../lib/saas-data';
 import { CATEGORY_ORDER } from '../../lib/categories';
+import SchemaOrg from '../../components/SchemaOrg.astro';
 
 const products = await getAllProducts();
 
@@ -20,9 +21,9 @@ const productsByCategory = CATEGORY_ORDER.map(category => ({
 })).filter(g => g.products.length > 0);
 ---
 
-<Layout 
-  title="SaaS Pricing Guide 2026 | All Plans Compared"
-  description="Complete SaaS pricing guide. Compare plans, features, and find the cheapest option for every tool you use."
+<Layout
+  title="SaaS Pricing Guide 2026: All Plans Compared | StackCut"
+  description="The complete SaaS pricing guide for 2026. Compare every plan across all major tools, see true costs, and find the cheapest option that fits your team's needs."
 >
   <Navbar />
   <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Pricing' }]} />
@@ -66,9 +67,41 @@ const productsByCategory = CATEGORY_ORDER.map(category => ({
             </div>
           </div>
         ))}
+
+        <div class="mt-16 max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">Why do SaaS prices vary so much between plans?</h3>
+              <p class="text-zinc-400 text-sm">Most SaaS vendors use feature gating to push customers toward higher tiers. Common triggers include seat counts, storage limits, automation workflows, and enterprise-only features like SSO or audit logs.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">Is annual billing always cheaper than monthly?</h3>
+              <p class="text-zinc-400 text-sm">Annual plans typically save 15–20% compared to monthly, but they also lock you in. StackCut shows both pricing options where available so you can weigh the discount against the commitment risk.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">What is the most effective way to reduce SaaS spend?</h3>
+              <p class="text-zinc-400 text-sm">Audit which features you actually use, then compare your current plan against lower tiers or competing tools that cover only those features. Most teams pay for at least one tier above what they need.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">Does StackCut track free SaaS tiers too?</h3>
+              <p class="text-zinc-400 text-sm">Yes. Free plans are included in every pricing breakdown. If a tool offers a genuine free tier, it appears at the top of the plan list so you can evaluate it before committing to a paid option.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
-  
+
   <Footer />
 </Layout>
+
+<SchemaOrg
+  type="FAQPage"
+  faqItems={[
+    { question: "Why do SaaS prices vary so much between plans?", answer: "Most SaaS vendors use feature gating to push customers toward higher tiers. Common triggers include seat counts, storage limits, automation workflows, and enterprise-only features like SSO or audit logs." },
+    { question: "Is annual billing always cheaper than monthly?", answer: "Annual plans typically save 15–20% compared to monthly, but they also lock you in. StackCut shows both pricing options where available so you can weigh the discount against the commitment risk." },
+    { question: "What is the most effective way to reduce SaaS spend?", answer: "Audit which features you actually use, then compare your current plan against lower tiers or competing tools that cover only those features. Most teams pay for at least one tier above what they need." },
+    { question: "Does StackCut track free SaaS tiers too?", answer: "Yes. Free plans are included in every pricing breakdown. If a tool offers a genuine free tier, it appears at the top of the plan list so you can evaluate it before committing to a paid option." },
+  ]}
+/>

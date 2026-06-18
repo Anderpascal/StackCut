@@ -16,8 +16,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const { post } = Astro.props;
-const { title, description, pubDate, author, tags, category } = post.data;
+const { title, description, pubDate, updatedDate, author, tags, category, heroImage } = post.data;
 const { Content } = await render(post);
+
+const SITE = 'https://stackcut.app';
+const postUrlAbs = new URL(`/blog/${post.id}/`, SITE).href;
+const heroAbs = heroImage ? new URL(heroImage, SITE).href : undefined;
+const publishedISO = pubDate.toISOString();
+const modifiedISO = (updatedDate ?? pubDate).toISOString();
 
 // Extract TOC from raw body
 const headingRegex = /^(#{2,3})\s+(.+)$/gm;
@@ -45,10 +51,14 @@ const relatedPosts = allPosts
   .slice(0, 3);
 ---
 
-<Layout 
+<Layout
   title={`${title} | StackCut Blog`}
   description={description}
-  canonicalURL={new URL(`/blog/${post.id}`, 'https://stackcut.app').href}
+  canonicalURL={postUrlAbs}
+  type="article"
+  publishedTime={publishedISO}
+  modifiedTime={modifiedISO}
+  imageAlt={title}
 >
   <Navbar />
   <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Blog', href: '/blog' }, { label: title }]} />
@@ -56,6 +66,16 @@ const relatedPosts = allPosts
     <article class="section-padding pt-20 pb-8">
       <div class="max-w-4xl mx-auto">
         <header class="mb-10">
+          {heroImage && (
+            <img
+              src={heroImage}
+              alt={title}
+              width="960"
+              height="960"
+              loading="eager"
+              class="w-full h-56 sm:h-72 object-cover rounded-xl border border-rule mb-8"
+            />
+          )}
           <div class="flex items-center gap-3 mb-4">
             <span class="text-[10px] text-save border border-save/20 rounded px-2 py-0.5 uppercase font-semibold">
               {category}
@@ -179,10 +199,13 @@ const relatedPosts = allPosts
   <Footer />
 </Layout>
 
-<SchemaOrg 
+<SchemaOrg
   type="BlogPosting"
   postTitle={title}
   postDescription={description}
-  postDate={pubDate.toISOString()}
+  postDate={publishedISO}
+  postModified={modifiedISO}
+  postImage={heroAbs}
+  postUrl={postUrlAbs}
   postAuthor={author}
 />

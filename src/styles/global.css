@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* Self-hosted variable fonts (woff2). Replaces the render-blocking Google
+   Fonts <link> in the document head — faster LCP, no third-party request, and
+   no privacy/CSP dependency on fonts.googleapis.com. */
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/public-sans';
+@import '@fontsource-variable/public-sans/wght-italic.css';
+@import '@fontsource-variable/spline-sans-mono';
+
 /* ============================================================
    STACKCUT — "The Audit Ledger" design system
    Pale accounting-ledger paper, green-black ink, and the
@@ -9,9 +17,9 @@
    ============================================================ */
 
 @theme {
-  --font-sans: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-display: 'Bricolage Grotesque', 'Public Sans', system-ui, sans-serif;
-  --font-mono: 'Spline Sans Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-sans: 'Public Sans Variable', 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', 'Public Sans Variable', system-ui, sans-serif;
+  --font-mono: 'Spline Sans Mono Variable', 'Spline Sans Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* Core ledger palette */
   --color-paper: #f0f3ea;        /* page — pale ledger green */

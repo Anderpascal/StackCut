@@ -167,11 +167,9 @@ const annualCost = plan.priceAnnually ?? (plan.priceMonthly || 0) * 12;
   <Footer />
 </Layout>
 
-<SchemaOrg 
-  type="Product"
+<SchemaOrg
+  type="SoftwareApplication"
   productName={`${product.name} ${plan.name}`}
   pageDescription={`Should you downgrade from ${product.name} ${plan.name}? Analyze exact feature loss and savings before you downgrade.`}
-  verdictText={`Current plan: ${plan.name} at $${plan.priceMonthly}/mo. Explore downgrade options to save.`}
-  offer1Name={plan.name}
   offer1Price={String(plan.priceMonthly ?? 0)}
 />
