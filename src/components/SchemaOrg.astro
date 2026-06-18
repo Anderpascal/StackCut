@@ -1,5 +1,6 @@
 ---
 // SchemaOrg.astro — Reusable JSON-LD structured data component
+import { safeJsonLd } from '../lib/jsonld';
 interface Props {
   type: 'WebSite' | 'WebApplication' | 'Product' | 'SoftwareApplication' | 'ItemList' | 'BlogPosting' | 'BreadcrumbList' | 'FAQPage';
   toolTitle?: string;
@@ -151,4 +152,4 @@ switch (type) {
 }
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+<script type="application/ld+json" set:html={safeJsonLd(jsonLd)} />

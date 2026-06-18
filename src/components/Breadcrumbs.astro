@@ -1,4 +1,5 @@
 ---
+import { safeJsonLd } from '../lib/jsonld';
 interface Props {
   items: { label: string; href?: string }[];
 }
@@ -37,4 +38,4 @@ const breadcrumbSchema = {
   </ol>
 </nav>
 
-<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+<script type="application/ld+json" set:html={safeJsonLd(breadcrumbSchema)} />

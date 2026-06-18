@@ -21,12 +21,29 @@ export function getClientIp(req) {
 export function isAllowedOrigin(req) {
   const origin = req.headers.origin;
   if (!origin) return true; // server-to-server / curl; rate limiter + honeypot still apply
-  const allowed = [process.env.PUBLIC_SITE_ORIGIN || 'https://stackcut.app'];
+
+  // Allowlist = canonical site + THIS project's own Vercel deploys only.
+  // VERCEL_URL is the current deployment host (e.g. stackcut-abc.vercel.app);
+  // VERCEL_PROJECT_PRODUCTION_URL is the project's production host. Both are
+  // auto-injected by Vercel, so we no longer trust every *.vercel.app subdomain
+  // (which would let any stranger's preview deploy POST to these endpoints).
+  const allowedHosts = new Set();
+  for (const raw of [
+    process.env.PUBLIC_SITE_ORIGIN || 'https://stackcut.app',
+    process.env.VERCEL_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL,
+    process.env.VERCEL_BRANCH_URL,
+  ]) {
+    if (!raw) continue;
+    try {
+      allowedHosts.add(new URL(raw.startsWith('http') ? raw : `https://${raw}`).host);
+    } catch {
+      /* ignore malformed env value */
+    }
+  }
+
   try {
-    const host = new URL(origin).host;
-    if (allowed.some((a) => new URL(a).host === host)) return true;
-    if (host.endsWith('.vercel.app')) return true;
-    return false;
+    return allowedHosts.has(new URL(origin).host);
   } catch {
     return false;
   }

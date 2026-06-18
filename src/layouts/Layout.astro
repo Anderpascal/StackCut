@@ -4,6 +4,7 @@ import CookieConsent from '../components/CookieConsent';
 import AffiliateConversionTracker from '../components/AffiliateConversionTracker';
 import Analytics from '@vercel/analytics/astro';
 import { FX_RATES } from '../lib/fx';
+import { safeJsonLd } from '../lib/jsonld';
 
 interface Props {
   title: string;
@@ -162,7 +163,7 @@ const organizationSchema = {
       })();
     </script>
     <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js" onerror="console.info('EthicalAds blocked')"></script>
-    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={safeJsonLd(organizationSchema)} />
     <slot name="jsonld" />
   </head>
   <body class="bg-grid min-h-screen flex flex-col">
