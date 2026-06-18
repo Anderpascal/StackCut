@@ -1,0 +1,97 @@
+---
+title: "Shadow IT: Finding the SaaS You Didn't Know You Paid For"
+description: "Shadow IT eats 30-40% of the average SaaS budget. Here is how to find, audit, and eliminate the subscriptions nobody approved and the tools nobody tracks."
+pubDate: 2026-06-09
+author: "StackCut Team"
+tags: ["shadow-it", "saas-sprawl", "audit", "security"]
+category: "audit"
+heroImage: '/blog-hero.png'
+---
+
+## The Subscriptions Running on Your Card Right Now
+
+Somewhere in your company, a marketer signed up for a B2B contact data tool on a corporate card and forgot about it. A developer is running a premium CI/CD add-on they stopped using after switching pipelines. An account executive expense-reported a sales intelligence platform that the company already pays for centrally.
+
+This is shadow IT — the SaaS ecosystem that exists outside of official procurement, without IT or finance visibility, and often without any active use. Industry estimates consistently put shadow IT at 30 to 40 percent of total SaaS spend for mid-market companies. At 100 employees spending the benchmark $5,500 per person per year, that is $165,000 to $220,000 running under the radar annually.
+
+Shadow IT is not just a cost problem. It is a security and compliance problem. Every unmanaged SaaS tool is a potential data breach, a compliance gap, and a vendor relationship that nobody is managing.
+
+## Why Shadow IT Compounds So Quickly
+
+Three structural forces drive shadow IT accumulation:
+
+**1. Credit card autonomy.** Most companies give expense card access to team leads, managers, and senior individual contributors. With a Brex or Ramp card and a $500 monthly limit, any employee can spin up a SaaS subscription without any approval workflow.
+
+**2. Free-to-paid conversion.** SaaS companies are extremely good at free tier-to-paid conversion. An employee starts using a free tool, hits a limit, upgrades with their corporate card, and never mentions it to finance. The first signal finance gets is a $89 charge in next month's statement.
+
+**3. Employee turnover.** When an employee leaves, their tools rarely leave with them. The subscription continues billing, the account credentials disappear into an unmonitored email inbox, and nobody knows the tool exists until the annual audit — if there even is one.
+
+## The Four Sources of Shadow IT
+
+Shadow IT hides in four distinct places. You need to check all four.
+
+### 1. Corporate Card and Expense Data
+
+Pull the last 12 months of transactions from every corporate card and expense management platform (Concur, Expensify, Ramp, Brex). Filter for recurring charges from software vendors. Look for merchant names you do not recognize, amounts that repeat on a predictable cycle, and charges from the same vendor appearing on multiple cards (a classic sign that you are paying for the same tool through multiple individual accounts instead of a single centralized license).
+
+### 2. Email Inboxes — Especially Departed Employees
+
+Billing confirmations and renewal notices go to the email address associated with the account. If that employee left, you are still being charged but nobody is reading the renewal emails.
+
+For active employees: ask your IT team to do a keyword search in corporate email for phrases like "Your subscription has renewed," "Your free trial ends," and "Your invoice." In most companies, this search surfaces 15 to 30 previously unknown recurring charges within an hour.
+
+For departed employees: check whether their email aliases are still active and have a forwarder, or whether they were fully deprovisioned. Fully deprovisioned email accounts mean renewal notices are going nowhere.
+
+### 3. SSO and OAuth Connections
+
+Your identity provider (Okta, Azure AD, Google Workspace, JumpCloud) has a list of every application that has been authorized via SSO or OAuth login in the last 12 months. Pull this list. Every app in it is a tool someone in your company has authenticated with using their corporate identity.
+
+Not all of these are paid subscriptions — many will be free tools or one-off logins. But any app on this list that is not on your official SaaS inventory is a shadow IT candidate worth investigating.
+
+Run the [StackCut audit tool](/audit) to cross-reference your SSO connections against your accounting records and surface the gaps automatically.
+
+### 4. Browser Extensions and Desktop Apps
+
+This is the hardest category to surface, but increasingly important. Many SaaS products have Freemium browser extension products that employees install and upgrade to paid tiers without triggering a purchase in the accounting system (because payment goes through an App Store or a personal card). Ask your IT team to pull a list of installed browser extensions across managed devices and cross-reference against known SaaS vendors.
+
+## How to Build a Shadow IT Elimination Workflow
+
+Discovery is the first step. Elimination requires a process.
+
+### Phase 1: The 30-Day Sprint
+
+In the first 30 days, focus purely on inventory. Do not try to shut anything down yet — you will create friction before you understand the scope. Use the four sources above to build a complete shadow IT registry: tool name, who authorized it, monthly cost, last active use, and which team it serves.
+
+### Phase 2: Triage Into Three Buckets
+
+Once you have the inventory, sort every shadow IT tool into one of three categories:
+
+**Adopt:** The tool serves a real business need, has active users, and should be brought under official procurement. Negotiate a proper contract, consolidate individual licenses into a company account, and add it to your renewal calendar.
+
+**Replace:** The tool duplicates functionality you already pay for centrally. Kill the shadow version, migrate users to the approved tool. Classic example: a team running its own Zoom account when the company already has Google Meet or Microsoft Teams.
+
+**Cut:** The tool has no active users, serves a dead project, or was adopted by an employee who left. Cancel immediately and recover any prorated spend you can claim.
+
+Compare tools against your existing stack using the [compare tool](/compare) before deciding to adopt versus replace.
+
+### Phase 3: Close the Procurement Gap
+
+Shadow IT keeps coming back if you do not address the root cause. The root cause is almost always friction in official procurement — teams buy shadow tools because the official process is slow or unclear.
+
+Fix it with two lightweight controls:
+
+**A 48-hour SaaS intake process.** When an employee wants a new SaaS tool, they fill out a five-field form (tool name, use case, monthly cost, requester, department). Finance and IT review and respond within 48 hours. Not a three-week approval gauntlet — 48 hours. If the process is fast, people will use it.
+
+**A blanket policy with clear thresholds.** Any SaaS purchase under $50/month requires manager approval only. Any purchase over $50/month requires finance sign-off. Any purchase over $500/month requires a formal procurement review. Clear thresholds reduce ambiguity and reduce the incentive to route around the system.
+
+## The Security Angle You Cannot Ignore
+
+Shadow IT is not just a budget problem. Every unmanaged SaaS tool is a potential data exfiltration point. When an employee connects a shadow CRM or a data enrichment tool to your customer database, they are sharing customer data with a vendor that has not been through your security review, has not signed your DPA, and may not be compliant with GDPR, SOC 2, or whatever framework governs your industry.
+
+The liability here is real. GDPR fines for data processor mismanagement can reach 4% of global annual turnover. A shadow data tool with access to customer PII is a direct exposure.
+
+Every tool in your shadow IT inventory should go through a minimum security checklist: Does it have SSO? Does it encrypt data at rest? Has it completed a SOC 2 audit? What data does it actually access? Tools that fail this checklist and cannot be replaced should be cut regardless of their business value, because the risk cost exceeds the utility.
+
+## The Bottom Line
+
+Shadow IT is not a sign of a dysfunctional company — it is a sign of a fast-moving one that outgrew its procurement process. The goal is not to lock everything down until teams cannot move. The goal is visibility: knowing every tool, who owns it, what it costs, and what data it touches. Once you have visibility, the cuts and consolidations become obvious. Start with the four sources, build the intake process, and run the audit quarterly. The money you recover will cover the time you invest, many times over.

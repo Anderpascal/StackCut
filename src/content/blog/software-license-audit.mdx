@@ -1,0 +1,125 @@
+---
+title: "How to Run a Software License Audit (Step by Step)"
+description: "A step-by-step guide to running a software license audit: discover every tool in use, verify compliance, eliminate waste, and build a clean software inventory."
+pubDate: 2026-06-16
+author: "StackCut Team"
+tags: ["license-audit","compliance","seats","audit"]
+category: "audit"
+heroImage: '/blog-hero.png'
+---
+
+## Why Most Software Inventories Are Wrong Before You Start
+
+Ask any IT or finance leader for a list of their company's software licenses. They will hand you a spreadsheet. Ask them when it was last updated. The honest answer is usually "at contract renewal" or "when something broke."
+
+That spreadsheet is not a software inventory. It is a historical document, and it is almost certainly missing 30–50% of the tools your team is actually using. The average company with 50–200 employees runs between 40 and 100 SaaS applications. Most of them were not approved through IT — they were spun up by individuals using a work credit card or a personal account.
+
+A software license audit is the process of closing that gap: discovering every tool in use, verifying that licenses match actual usage, identifying compliance risks, and eliminating spend on unused or redundant software. This guide walks through the complete process, step by step.
+
+## Step 1: Define Scope and Stakeholders
+
+Before you pull any data, get alignment on what the audit covers and who is responsible for each area.
+
+**Scope decisions to make upfront:**
+- Are you auditing all software (desktop, cloud, infrastructure) or SaaS only?
+- Does the scope include developer tools, individual subscriptions, and department-level tools — or only enterprise-wide contracts?
+- What is the time window? Auditing the last 12 months of usage is standard; going back 24 months is only necessary if you have compliance concerns.
+
+**Who needs to be involved:**
+- IT or DevOps: for SSO logs, MDM data, and infrastructure tooling
+- Finance: for payment records, P-card transactions, and vendor invoice history
+- Department heads: for shadow IT surfacing (tools their team uses that IT does not know about)
+- Legal or compliance: if the audit is driven by a vendor audit notice, an M&A process, or regulatory requirement
+
+Assigning a single owner for the audit output is non-negotiable. Audits that touch multiple owners without a single accountable person produce partial lists that nobody acts on.
+
+## Step 2: Pull Every Payment Record
+
+The most reliable source of SaaS discovery is not your IT asset management system — it is your bank and card statements. Software vendors charge money. Follow the money.
+
+**Sources to pull:**
+- Corporate credit card transactions (P-card and expense reports) for the last 12 months
+- Accounts payable records filtered by vendor type or G/L code for software
+- Employee expense reimbursements — a significant source of individually-purchased tools
+- AWS, Azure, and GCP billing consoles — many SaaS tools are purchased through cloud marketplaces and appear in infrastructure bills rather than software line items
+- PayPal and other payment processors if your team uses them for vendor payments
+
+Export everything to a single spreadsheet. Deduplicate by vendor name, being careful with variations (e.g., "Atlassian," "Atlassian Pty Ltd," "Atlassian Network Services" may all appear for the same vendor). Tag each line with the department that made the purchase.
+
+The output of this step: a raw transaction list, likely 100–400 rows for a 50-person company, that represents your actual software spend — not your approved software spend.
+
+## Step 3: Cross-Reference Your SSO and Identity Provider
+
+Payment records tell you what you are paying for. Your identity provider (Okta, Azure AD, Google Workspace, JumpCloud) tells you what people are actually logging into.
+
+Pull the following from your IdP:
+- Application roster: every app connected to SSO
+- User counts per application: how many provisioned users per tool
+- Last login date per user per application: the key metric for identifying inactive users
+
+This cross-reference will surface two categories of problems:
+
+**Tools in SSO but not in payment records:** Either the bill is going somewhere you have not found yet (a department budget, a personal card), or the vendor is providing access without a current contract (a free tier or an expired trial that was never cleaned up — worth verifying before you extend it further).
+
+**Tools in payment records but not in SSO:** These are either desktop software, tools purchased but never deployed, or shadow apps where users authenticate with email/password rather than SSO — a compliance risk regardless of the spend.
+
+## Step 4: Surface Shadow IT
+
+Payment records and SSO data will not catch everything. Employees use tools that do not appear on either list: browser extensions, free-tier apps, locally installed software, and tools accessed through personal accounts.
+
+**Methods to surface shadow IT:**
+- **Browser extension audits:** Use your MDM (Jamf, Intune, Kandji) to pull a list of installed browser extensions across the fleet. Extensions are frequently overlooked vectors for both shadow IT and security risk.
+- **Network traffic analysis:** If you have a corporate VPN or DNS filtering tool, query DNS logs for software vendor domains over the last 90 days. Tools like Cloudflare Gateway or Zscaler produce per-domain request counts that reveal what your team is actually accessing.
+- **Team surveys:** A 5-question survey sent to department heads asking what tools their team uses that "might not be in IT's system" consistently surfaces 10–20 additional tools. People know what they are using; they just were not asked.
+- **App marketplace review:** Check the Slack App Directory, Google Workspace Marketplace, and Microsoft AppSource for apps authorized by users outside of IT approval.
+
+## Step 5: Classify Every Tool by Status
+
+Now you have a near-complete inventory. Classify each tool into one of four buckets:
+
+- **Active and licensed correctly:** Usage matches the license tier. Keep as-is, note the renewal date.
+- **Active but over-licensed:** You are paying for more seats or a higher tier than usage requires. Flag for downgrade or renegotiation.
+- **Active and under-licensed:** Usage exceeds the license terms. A compliance risk — address before a vendor audit finds it first.
+- **Inactive or redundant:** No meaningful usage in the last 90 days, or duplicates functionality covered by another tool. Flag for cancellation.
+
+The over-licensed and inactive categories are where the immediate savings live. Industry benchmarks suggest 20–30% of SaaS spend falls into one of these two buckets at any given company. On a $500,000 annual software bill, that is $100,000–$150,000 in recoverable spend.
+
+Use [StackCut's audit tool](/audit) to automate the classification step — it pulls usage data directly from your IdP and maps it against your contract terms to identify over-licensed seats without manual cross-referencing.
+
+## Step 6: Validate License Compliance
+
+For any tool where usage may exceed license terms, validate before you act. The compliance risk runs in both directions:
+
+**Under-usage:** Not a compliance risk, but a cost inefficiency. Actionable immediately.
+
+**Over-usage:** A compliance risk that can trigger vendor audit notices, true-up invoices, or contract renegotiation at unfavorable terms. Vendors in the analytics, infrastructure, and design categories are most aggressive about license enforcement.
+
+For enterprise software (Microsoft, Oracle, SAP, Adobe), license compliance is a specialized area. True-up clauses, concurrent usage counting, and processor-based licensing create exposure that requires careful review. If you have enterprise agreements in any of these categories, involve a software asset management specialist for that portion of the audit.
+
+For standard SaaS, compliance validation is simpler: compare the number of provisioned users (or API calls, or data volume) against the contracted limit. If you are over, either reduce usage or purchase additional licenses before the next vendor audit cycle.
+
+## Step 7: Build Your Action List and Assign Owners
+
+A completed audit without an action list is a document, not a project. Build a prioritized list of actions:
+
+1. **Cancel immediately:** Tools with zero active users in 90 days. No negotiation needed — just cancel, note the next billing date to avoid one more cycle.
+2. **Downgrade at renewal:** Tools where current tier is above actual usage. Calendar the negotiation 60 days before renewal.
+3. **Consolidate:** Tools where two or more vendors are covering overlapping functionality. Pick one, migrate, cancel the other.
+4. **Remediate compliance gaps:** Over-licensed tools — either true-up or reduce usage before the vendor's audit window.
+5. **Move to SSO and inventory:** Shadow IT tools that are legitimate business tools but not yet in your managed stack.
+
+Assign a named owner and a due date to each action. Review progress monthly until the list is closed. The full [StackCut audit workflow](/audit) includes a built-in action tracker tied to renewal dates so items do not fall through.
+
+## Step 8: Set Up Continuous Monitoring
+
+A point-in-time audit decays. New tools get added, employees leave without deprovisioning, and free trials convert to paid plans without approval. The goal after the initial audit is a lightweight, continuous process that keeps the inventory current.
+
+Minimum viable controls:
+- A procurement approval step for any new SaaS tool above a spend threshold (typically $500/year)
+- Monthly deprovisioning sweep: remove SSO access for employees who left in the prior month
+- Quarterly review of AP transactions against the approved software list
+- Annual full audit — shorter than the first one, since you now have a baseline
+
+## Bottom Line
+
+A software license audit is not a one-time exercise in admin pain. Done properly, it pays for itself in the first quarter — typically returning 20–35% of your annual software budget to the P&L. The companies that skip it are funding the ones that do not.

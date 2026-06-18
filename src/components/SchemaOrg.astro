@@ -1,7 +1,7 @@
 ---
 // SchemaOrg.astro — Reusable JSON-LD structured data component
 interface Props {
-  type: 'WebSite' | 'WebApplication' | 'Product' | 'ItemList' | 'BlogPosting' | 'BreadcrumbList' | 'FAQPage';
+  type: 'WebSite' | 'WebApplication' | 'Product' | 'SoftwareApplication' | 'ItemList' | 'BlogPosting' | 'BreadcrumbList' | 'FAQPage';
   toolTitle?: string;
   toolDescription?: string;
   productName?: string;
@@ -16,12 +16,16 @@ interface Props {
   postTitle?: string;
   postDescription?: string;
   postDate?: string;
+  postModified?: string;
+  postImage?: string;
+  postUrl?: string;
   postAuthor?: string;
+  appCategory?: string;
   breadcrumbs?: { name: string; url: string }[];
   faqItems?: { question: string; answer: string }[];
 }
 
-const { type, toolTitle, toolDescription, productName, pageDescription, verdictText, offer1Name, offer1Price, offer2Name, offer2Price, listName, items, postTitle, postDescription, postDate, postAuthor, breadcrumbs, faqItems } = Astro.props;
+const { type, toolTitle, toolDescription, productName, pageDescription, verdictText, offer1Name, offer1Price, offer2Name, offer2Price, listName, items, postTitle, postDescription, postDate, postModified, postImage, postUrl, postAuthor, appCategory, breadcrumbs, faqItems } = Astro.props;
 
 const SITE_URL = 'https://stackcut.app';
 const BRAND = 'StackCut';
@@ -70,6 +74,21 @@ switch (type) {
       ]
     };
     break;
+  case 'SoftwareApplication':
+    jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": productName || "SaaS Tool",
+      "description": pageDescription || "",
+      "applicationCategory": appCategory || "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": offer1Price || "0",
+        "priceCurrency": "USD"
+      }
+    };
+    break;
   case 'ItemList':
     jsonLd = {
       "@context": "https://schema.org",
@@ -89,8 +108,16 @@ switch (type) {
       "headline": postTitle || "",
       "description": postDescription || "",
       "datePublished": postDate || "",
+      ...(postModified ? { "dateModified": postModified } : {}),
+      ...(postImage ? { "image": postImage } : {}),
+      ...(postUrl ? { "mainEntityOfPage": { "@type": "WebPage", "@id": postUrl } } : {}),
       "author": { "@type": "Person", "name": postAuthor || "StackCut Team" },
-      "publisher": { "@type": "Organization", "name": BRAND, "url": SITE_URL }
+      "publisher": {
+        "@type": "Organization",
+        "name": BRAND,
+        "url": SITE_URL,
+        "logo": { "@type": "ImageObject", "url": `${SITE_URL}/icon-512.png` }
+      }
     };
     break;
   case 'BreadcrumbList':

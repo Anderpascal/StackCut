@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { CATEGORY_ORDER } from '../../lib/categories';
 import { getAllProducts } from '../../lib/saas-data';
+import SchemaOrg from '../../components/SchemaOrg.astro';
 
 const products = await getAllProducts();
 
@@ -24,9 +25,9 @@ const categoryData = CATEGORY_ORDER.map(category => {
 });
 ---
 
-<Layout 
-  title="Best SaaS Tools in 2026 | Category Comparisons"
-  description="Compare the best SaaS tools by category. See exact pricing, features, and find cheaper alternatives with the same functionality."
+<Layout
+  title="Best SaaS Software by Category in 2026 | StackCut"
+  description="Find the best SaaS software in every category. Compare exact pricing, features, and discover cheaper alternatives that deliver the same functionality for less."
 >
   <Navbar />
   <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Best Tools' }]} />
@@ -67,9 +68,41 @@ const categoryData = CATEGORY_ORDER.map(category => {
             </a>
           ))}
         </div>
+
+        <div class="mt-16 max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">Which SaaS category should I look at first to reduce costs?</h3>
+              <p class="text-zinc-400 text-sm">Start with your highest per-seat tools — CRM, project management, and customer support are typically the biggest budget lines. StackCut shows the cheapest starting price in each category so you can prioritize quickly.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">How do I know if a cheaper tool covers all the features I need?</h3>
+              <p class="text-zinc-400 text-sm">Each category page lists feature tags for every tool. Click through to a specific product's alternatives page to see a feature-for-feature comparison that highlights any gaps between your current tool and a cheaper option.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">Do free SaaS plans work for growing businesses?</h3>
+              <p class="text-zinc-400 text-sm">Many free tiers are viable for teams under 10 people, but they often restrict storage, automation, or advanced integrations. StackCut flags which tools have a meaningful free tier so you can test before committing.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">How often do SaaS tool prices change?</h3>
+              <p class="text-zinc-400 text-sm">Pricing changes more often than most people realize — vendors quietly raise prices, add per-feature charges, or drop free tiers. StackCut re-verifies pricing weekly and shows a freshness badge on every page.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
-  
+
   <Footer />
 </Layout>
+
+<SchemaOrg
+  type="FAQPage"
+  faqItems={[
+    { question: "Which SaaS category should I look at first to reduce costs?", answer: "Start with your highest per-seat tools — CRM, project management, and customer support are typically the biggest budget lines. StackCut shows the cheapest starting price in each category so you can prioritize quickly." },
+    { question: "How do I know if a cheaper tool covers all the features I need?", answer: "Each category page lists feature tags for every tool. Click through to a specific product's alternatives page to see a feature-for-feature comparison that highlights any gaps between your current tool and a cheaper option." },
+    { question: "Do free SaaS plans work for growing businesses?", answer: "Many free tiers are viable for teams under 10 people, but they often restrict storage, automation, or advanced integrations. StackCut flags which tools have a meaningful free tier so you can test before committing." },
+    { question: "How often do SaaS tool prices change?", answer: "Pricing changes more often than most people realize — vendors quietly raise prices, add per-feature charges, or drop free tiers. StackCut re-verifies pricing weekly and shows a freshness badge on every page." },
+  ]}
+/>

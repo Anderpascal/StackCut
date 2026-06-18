@@ -5,13 +5,14 @@ import Footer from '../../components/Footer.astro';
 import EmailCapture from '../../components/EmailCapture';
 import { getAllProducts } from '../../lib/saas-data';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SchemaOrg from '../../components/SchemaOrg.astro';
 
 const allProducts = await getAllProducts();
 ---
 
-<Layout 
-  title="All SaaS Alternatives | StackCut"
-  description="Browse cheap alternatives to every major SaaS tool. Autonomous pricing agents map exact feature parity so you never overpay."
+<Layout
+  title="Cheap SaaS Alternatives to Every Major Tool | StackCut"
+  description="Browse verified cheap alternatives to every major SaaS tool. Our pricing agents map exact feature parity so you never overpay for software you barely use."
 >
   <Navbar />
   <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'All Alternatives' }]} />
@@ -51,9 +52,41 @@ const allProducts = await getAllProducts();
             <EmailCapture client:load variant="sidebar" headline="Get weekly SaaS savings tips" />
           </div>
         </div>
+
+        <div class="mt-16 max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">What are SaaS alternatives?</h3>
+              <p class="text-zinc-400 text-sm">SaaS alternatives are competing tools in the same category that offer similar or identical features at a lower price. StackCut maps feature parity so you know exactly what you gain or lose when switching.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">How does StackCut find cheaper SaaS alternatives?</h3>
+              <p class="text-zinc-400 text-sm">Autonomous pricing agents continuously crawl vendor pricing pages and match features across tools in the same category. Every alternative is ranked by how closely it mirrors the original tool's capabilities.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">Can I switch tools without losing key features?</h3>
+              <p class="text-zinc-400 text-sm">In most cases, yes. StackCut highlights feature-for-feature parity so you can see exactly which capabilities carry over. Any gaps — especially for niche enterprise features — are flagged before you commit.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">How often is the alternatives data updated?</h3>
+              <p class="text-zinc-400 text-sm">Pricing and feature data is re-verified on a rolling basis, typically every week or when a vendor announces a change. Each page shows a freshness badge so you always know how current the data is.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
-  
+
   <Footer />
 </Layout>
+
+<SchemaOrg
+  type="FAQPage"
+  faqItems={[
+    { question: "What are SaaS alternatives?", answer: "SaaS alternatives are competing tools in the same category that offer similar or identical features at a lower price. StackCut maps feature parity so you know exactly what you gain or lose when switching." },
+    { question: "How does StackCut find cheaper SaaS alternatives?", answer: "Autonomous pricing agents continuously crawl vendor pricing pages and match features across tools in the same category. Every alternative is ranked by how closely it mirrors the original tool's capabilities." },
+    { question: "Can I switch tools without losing key features?", answer: "In most cases, yes. StackCut highlights feature-for-feature parity so you can see exactly which capabilities carry over. Any gaps — especially for niche enterprise features — are flagged before you commit." },
+    { question: "How often is the alternatives data updated?", answer: "Pricing and feature data is re-verified on a rolling basis, typically every week or when a vendor announces a change. Each page shows a freshness badge so you always know how current the data is." },
+  ]}
+/>

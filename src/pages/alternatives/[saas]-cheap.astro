@@ -32,8 +32,8 @@ const enterprisePlan = product.plans.find(p => p.isEnterprise);
 ---
 
 <Layout 
-  title={`Cheap ${product.name} Alternatives | StackCut`}
-  description={`Discover cheaper alternatives to ${product.name} with exact functional parity. Save up to ${enterprisePlan && cheapestPlan ? (enterprisePlan.priceAnnually ?? (enterprisePlan.priceMonthly || 0) * 12) - (cheapestPlan.priceAnnually ?? (cheapestPlan.priceMonthly || 0) * 12) : 0}/year by downgrading or switching.`}
+  title={`Best Cheap ${product.name} Alternatives in 2026 | StackCut`}
+  description={`Discover cheaper alternatives to ${product.name} with exact feature parity. Save up to $${(enterprisePlan && cheapestPlan ? (enterprisePlan.priceAnnually ?? (enterprisePlan.priceMonthly || 0) * 12) - (cheapestPlan.priceAnnually ?? (cheapestPlan.priceMonthly || 0) * 12) : 0).toLocaleString()}/year by switching tools without losing functionality.`}
 >
   <Navbar />
   <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Alternatives', href: '/alternatives' }, { label: product.name }]} />
@@ -174,18 +174,50 @@ const enterprisePlan = product.plans.find(p => p.isEnterprise);
             </a>
           </div>
         </div>
+
+        <div class="mt-16 max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">What is the cheapest {product.name} alternative?</h3>
+              <p class="text-zinc-400 text-sm">The cheapest alternative depends on which {product.name} features you actively use. StackCut ranks alternatives by starting price and highlights any feature gaps so you can find the lowest-cost option without losing the workflows you rely on.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">Do {product.name} alternatives offer the same features?</h3>
+              <p class="text-zinc-400 text-sm">Most alternatives in the same category share 70–90% of core features. StackCut maps shared feature IDs to show exactly which capabilities carry over and flags any gaps — especially enterprise-only features like SSO or advanced reporting.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">How much can I save by switching from {product.name}?</h3>
+              <p class="text-zinc-400 text-sm">Savings depend on your current plan and the alternative you choose. Each alternative card on this page shows an estimated annual saving based on verified pricing data, so you can compare options at a glance.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">Is it difficult to migrate away from {product.name}?</h3>
+              <p class="text-zinc-400 text-sm">Migration complexity varies by tool, but most modern SaaS products support CSV export or direct integration with common alternatives. StackCut links to each alternative's site so you can check their import guides before committing.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
-  
+
   <Footer />
 </Layout>
 
-<SchemaOrg 
+<SchemaOrg
   type="ItemList"
   listName={`${product.name} Alternatives`}
   items={[
     { name: product.name, position: 1 },
     ...alternatives.map((alt, i) => ({ name: alt.name, position: i + 2 })),
+  ]}
+/>
+
+<SchemaOrg
+  type="FAQPage"
+  faqItems={[
+    { question: `What is the cheapest ${product.name} alternative?`, answer: `The cheapest alternative depends on which ${product.name} features you actively use. StackCut ranks alternatives by starting price and highlights any feature gaps so you can find the lowest-cost option without losing the workflows you rely on.` },
+    { question: `Do ${product.name} alternatives offer the same features?`, answer: `Most alternatives in the same category share 70–90% of core features. StackCut maps shared feature IDs to show exactly which capabilities carry over and flags any gaps — especially enterprise-only features like SSO or advanced reporting.` },
+    { question: `How much can I save by switching from ${product.name}?`, answer: `Savings depend on your current plan and the alternative you choose. Each alternative card on this page shows an estimated annual saving based on verified pricing data, so you can compare options at a glance.` },
+    { question: `Is it difficult to migrate away from ${product.name}?`, answer: `Migration complexity varies by tool, but most modern SaaS products support CSV export or direct integration with common alternatives. StackCut links to each alternative's site so you can check their import guides before committing.` },
   ]}
 />

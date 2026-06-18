@@ -22,6 +22,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const { product } = Astro.props;
 
+// Year shown in the title/H1 is derived from the verification date so it never
+// goes stale on its own — it tracks the data, not the build clock.
+const priceYear = new Date(product.lastVerified).getFullYear();
+
 const pricingUrl = product.pricingUrl ?? `${product.websiteUrl.replace(/\/$/, '')}/pricing`;
 
 const cheapestPlan = product.plans
@@ -42,6 +46,26 @@ const annualDiscounts = product.plans
   }))
   .filter(d => d.discount > 0);
 
+const hasFreePlan = product.plans.some(p => p.priceMonthly === 0);
+const pricingFaqs = [
+  {
+    question: `How much does ${product.name} cost?`,
+    answer: cheapestPlan
+      ? `${product.name} pricing starts at $${cheapestPlan.priceMonthly}/mo on the ${cheapestPlan.name} plan, with ${product.plans.length} plans in total billed monthly or annually.`
+      : `${product.name} offers ${product.plans.length} plans, including custom enterprise pricing — contact their sales team for a quote.`,
+  },
+  {
+    question: `Does ${product.name} offer a free plan?`,
+    answer: hasFreePlan
+      ? `Yes, ${product.name} has a free plan with limited features. Paid tiers unlock advanced capabilities and higher usage limits.`
+      : `No, ${product.name} does not offer a permanently free plan, though it may provide a time-limited free trial.`,
+  },
+  {
+    question: `How can I pay less for ${product.name}?`,
+    answer: `Switch to annual billing, downgrade to a lower tier that still covers the features you actually use, or compare cheaper alternatives. StackCut's Downgrade Engine finds the cheapest plan that keeps your must-have features.`,
+  },
+];
+
 const featuresByCategory: Record<string, string[]> = {};
 product.featureIds.forEach(fid => {
   const name = fid.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
@@ -55,7 +79,7 @@ product.featureIds.forEach(fid => {
 ---
 
 <Layout 
-  title={`${product.name} Pricing 2026 | Complete Cost Breakdown`}
+  title={`${product.name} Pricing ${priceYear} | Complete Cost Breakdown`}
   description={`${product.name} pricing breakdown: all plans, features, and hidden costs. See exactly what you pay and find the cheapest plan that covers your needs.`}
 >
   <Navbar />
@@ -71,7 +95,7 @@ product.featureIds.forEach(fid => {
             <span class="text-xs text-zinc-500 border border-zinc-800 rounded px-2 py-0.5">{product.category}</span>
           </div>
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
-            <span class="text-emerald-400">{product.name}</span> Pricing 2026
+            <span class="text-emerald-400">{product.name}</span> Pricing {priceYear}
           </h1>
           <p class="text-zinc-400 max-w-3xl text-lg">
             {product.description} Here is exactly what each plan costs and what you get.
@@ -315,6 +339,18 @@ product.featureIds.forEach(fid => {
           </p>
           <EmailCapture client:load variant="inline" headline={`${product.name} pricing alerts`} />
         </div>
+
+        <div class="mt-16">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-6">{product.name} Pricing FAQ</h2>
+          <div class="space-y-4">
+            {pricingFaqs.map(faq => (
+              <div class="card-blur rounded-xl p-6">
+                <h3 class="text-lg font-medium text-zinc-100 mb-2">{faq.question}</h3>
+                <p class="text-zinc-400 text-sm">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -322,10 +358,11 @@ product.featureIds.forEach(fid => {
   <Footer />
 </Layout>
 
-<SchemaOrg 
-  type="Product"
-  productName={`${product.name} Pricing`}
+<SchemaOrg
+  type="SoftwareApplication"
+  productName={product.name}
   pageDescription={`${product.name} pricing breakdown: all plans, features, and hidden costs. See exactly what you pay and find the cheapest plan that covers your needs.`}
-  offer1Name={product.name}
   offer1Price={String(cheapestPlan?.priceMonthly ?? 0)}
 />
+
+<SchemaOrg type="FAQPage" faqItems={pricingFaqs} />

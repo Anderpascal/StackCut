@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import { getAllProducts } from '../../lib/saas-data';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import SchemaOrg from '../../components/SchemaOrg.astro';
 
 const allProducts = await getAllProducts();
 const comparisons = [];
@@ -17,9 +18,9 @@ for (const p1 of allProducts) {
 }
 ---
 
-<Layout 
-  title="SaaS Cost Comparisons | StackCut"
-  description="Side-by-side cost comparisons between major SaaS tools. Find exact functional parity at the lowest possible price."
+<Layout
+  title="SaaS Cost Comparisons: Side-by-Side Pricing 2026 | StackCut"
+  description="Head-to-head SaaS cost comparisons across every major category. Find exact feature parity at the lowest price and stop overpaying for software you barely use."
 >
   <Navbar />
   <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Compare' }]} />
@@ -60,9 +61,41 @@ for (const p1 of allProducts) {
             );
           })}
         </div>
+
+        <div class="mt-16 max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-zinc-100 mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-4">
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">How does StackCut compare SaaS costs?</h3>
+              <p class="text-zinc-400 text-sm">StackCut's pricing agents collect live pricing data from vendor pages and match tools by category. Each comparison shows the entry price for both tools and identifies which one offers more value at a lower cost.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">What does "functional parity" mean in a SaaS comparison?</h3>
+              <p class="text-zinc-400 text-sm">Functional parity means both tools cover the same core use cases — so you can switch without losing the workflows your team depends on. StackCut maps shared feature IDs between tools to quantify exactly how close the match is.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">How much can I save by switching SaaS tools?</h3>
+              <p class="text-zinc-400 text-sm">Savings vary widely, but teams switching from enterprise-tier tools to mid-market alternatives commonly save 40–70% per year. The comparison pages show annual savings figures based on verified pricing data.</p>
+            </div>
+            <div class="card-blur rounded-xl p-6">
+              <h3 class="text-lg font-medium text-zinc-100 mb-2">Are these cost comparisons updated regularly?</h3>
+              <p class="text-zinc-400 text-sm">Yes. Pricing agents re-verify data on a rolling weekly basis. If a vendor changes their pricing, the comparison is updated automatically, so you're never working from stale numbers.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
-  
+
   <Footer />
 </Layout>
+
+<SchemaOrg
+  type="FAQPage"
+  faqItems={[
+    { question: "How does StackCut compare SaaS costs?", answer: "StackCut's pricing agents collect live pricing data from vendor pages and match tools by category. Each comparison shows the entry price for both tools and identifies which one offers more value at a lower cost." },
+    { question: "What does \"functional parity\" mean in a SaaS comparison?", answer: "Functional parity means both tools cover the same core use cases — so you can switch without losing the workflows your team depends on. StackCut maps shared feature IDs between tools to quantify exactly how close the match is." },
+    { question: "How much can I save by switching SaaS tools?", answer: "Savings vary widely, but teams switching from enterprise-tier tools to mid-market alternatives commonly save 40–70% per year. The comparison pages show annual savings figures based on verified pricing data." },
+    { question: "Are these cost comparisons updated regularly?", answer: "Yes. Pricing agents re-verify data on a rolling weekly basis. If a vendor changes their pricing, the comparison is updated automatically, so you're never working from stale numbers." },
+  ]}
+/>

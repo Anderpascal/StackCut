@@ -9,17 +9,39 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
   canonicalURL?: string;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  noindex?: boolean;
 }
 
-const { 
-  title, 
+const {
+  title,
   description = "Cut your SaaS spend. Identify redundancies, downgrade plans without losing critical features, and migrate to cheaper alternatives with exact functional parity.",
-  image = "/og-default.jpg",
+  image = "/og-default.png",
+  imageAlt = "StackCut — the audit desk for SaaS spend",
   canonicalURL,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  noindex = false,
 } = Astro.props;
 
 const siteUrl = 'https://stackcut.app';
+const resolvedCanonical = canonicalURL || new URL(Astro.url.pathname, siteUrl).href;
+const resolvedImage = new URL(image, Astro.site || siteUrl).href;
+
+// Site-wide Organization node so Google can attach a logo/brand entity.
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "StackCut",
+  "url": siteUrl,
+  "logo": new URL("/icon-512.png", siteUrl).href,
+  "description": "Independent audit desk for B2B SaaS spend. Manually-verified pricing data and free tools to cut software costs.",
+};
 ---
 
 <!DOCTYPE html>
@@ -28,26 +50,34 @@ const siteUrl = 'https://stackcut.app';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
     <meta name="theme-color" content="#f0f3ea" />
-    <link rel="canonical" href={canonicalURL || new URL(Astro.url.pathname, siteUrl).href} />
+    <link rel="canonical" href={resolvedCanonical} />
+    <link rel="alternate" type="application/rss+xml" title="StackCut Blog" href="/rss.xml" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.site || siteUrl).href} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL || new URL(Astro.url.pathname, siteUrl).href} />
+    <meta property="og:image" content={resolvedImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={resolvedCanonical} />
     <meta property="og:site_name" content="StackCut" />
+    <meta property="og:locale" content="en_US" />
+    {type === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {type === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(image, Astro.site || siteUrl).href} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:ital,wght@0,400..700;1,400&family=Spline+Sans+Mono:wght@400..600&display=swap" as="style" />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:ital,wght@0,400..700;1,400&family=Spline+Sans+Mono:wght@400..600&display=swap" rel="stylesheet" />
+    <meta name="twitter:image" content={resolvedImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
     <link rel="stylesheet" href="/print.css" media="print" />
     <script defer data-domain="stackcut.app" src="https://plausible.io/js/script.js"></script>
     <script>
@@ -131,6 +161,7 @@ const siteUrl = 'https://stackcut.app';
       })();
     </script>
     <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js" onerror="console.info('EthicalAds blocked')"></script>
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <slot name="jsonld" />
   </head>
   <body class="bg-grid min-h-screen flex flex-col">
