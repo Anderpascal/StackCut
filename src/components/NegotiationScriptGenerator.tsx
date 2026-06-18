@@ -433,7 +433,7 @@ function NegotiationScriptGeneratorInner({ products }: { products: SaaSProductDa
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
             <label className="block text-sm font-medium text-zinc-300 mb-2">Template</label>
-            <div className="flex gap-1">
+            <div className="flex flex-wrap gap-1">
               {(Object.keys(TEMPLATE_LABELS) as TemplateType[]).map(t => (
                 <button
                   key={t}
@@ -453,7 +453,7 @@ function NegotiationScriptGeneratorInner({ products }: { products: SaaSProductDa
 
           <div>
             <label className="block text-sm font-medium text-zinc-300 mb-2">Tone</label>
-            <div className="flex gap-1">
+            <div className="flex flex-wrap gap-1">
               {(Object.keys(TONE_LABELS) as ToneType[]).map(t => (
                 <button
                   key={t}

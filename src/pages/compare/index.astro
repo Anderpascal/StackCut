@@ -42,8 +42,8 @@ for (const p1 of allProducts) {
             
             return (
               <a href={`/compare/${p1.slug}-vs-${p2.slug}-costs`} class="card-blur rounded-xl p-5 hover:border-emerald-400/30 transition-all group">
-                <div class="flex items-center justify-between mb-3">
-                  <div class="flex items-center gap-2">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <div class="flex flex-wrap items-center gap-2 min-w-0">
                     <span class="font-semibold text-zinc-100">{p1.name}</span>
                     <span class="text-zinc-500">vs</span>
                     <span class="font-semibold text-zinc-100">{p2.name}</span>
