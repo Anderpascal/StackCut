@@ -410,6 +410,17 @@
   .prose-content img {
     @apply rounded-lg my-6 max-w-full h-auto;
   }
+
+  /* Mobile: let wide markdown tables scroll horizontally instead of pushing
+     the whole page wider than the viewport. Scoped below the `sm` breakpoint
+     so desktop tables stay full-width and visually unchanged. */
+  @media (max-width: 639px) {
+    .prose-content table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
 }
 
 @layer utilities {
