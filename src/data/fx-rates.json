@@ -1,10 +1,10 @@
 {
   "base": "USD",
-  "fetchedAt": "2026-06-13",
-  "source": "committed-fallback",
+  "fetchedAt": "2026-11-16",
+  "source": "https://open.er-api.com/v6/latest/USD",
   "rates": {
     "USD": 1,
-    "EUR": 0.92,
-    "GBP": 0.79
+    "EUR": 0.9066,
+    "GBP": 0.7566
   }
 }
